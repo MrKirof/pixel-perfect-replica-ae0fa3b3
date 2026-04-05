@@ -30,9 +30,7 @@ const AppContent = () => {
       <SplashCursor />
       <PillNav
         logo={
-          <div className="w-9 h-9 rounded-lg bg-accent flex items-center justify-center">
-            <span className="text-accent-foreground font-display font-extrabold text-sm">MR</span>
-          </div>
+          <span className="font-display font-extrabold text-white text-base tracking-tight">Kirof</span>
         }
         items={[
           { label: "Home", href: "/" },
@@ -42,6 +40,8 @@ const AppContent = () => {
           { label: "FAQ", href: "/faq" },
           { label: "Contact", href: "/contact" },
         ]}
+        ctaLabel="Book a Call"
+        ctaHref="/contact"
       />
       <Routes>
         <Route path="/" element={<Index />} />
