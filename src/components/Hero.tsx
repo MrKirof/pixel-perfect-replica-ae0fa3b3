@@ -51,9 +51,9 @@ const Hero = () => {
 
         {/* Eyebrow pill */}
         <div className={`mb-6 md:mb-8 transition-all duration-700 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`} style={{ transitionDelay: "0.1s" }}>
-          <div className="inline-flex items-center gap-2 md:gap-3 border border-white/10 bg-white/[0.04] backdrop-blur-sm px-4 py-2 md:px-5 md:py-2.5 rounded-full">
+          <div className="inline-flex items-center gap-2 md:gap-3 border border-white/20 bg-white/[0.08] backdrop-blur-sm px-4 py-2 md:px-5 md:py-2.5 rounded-full">
             <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-            <span className="font-mono text-xs md:text-xs uppercase tracking-[0.2em] text-white/50">
+            <span className="font-mono text-xs md:text-xs uppercase tracking-[0.2em] text-white/80">
               Est. 2013 | Remote Agency
             </span>
           </div>
