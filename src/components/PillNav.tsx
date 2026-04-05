@@ -250,6 +250,17 @@ const PillNav = ({
               </Link>
             </li>
           ))}
+          {ctaLabel && ctaHref && (
+            <li>
+              <Link
+                to={ctaHref}
+                className="mobile-menu-link pill-cta-mobile"
+                onClick={() => { setIsMobileMenuOpen(false); }}
+              >
+                {ctaLabel}
+              </Link>
+            </li>
+          )}
         </ul>
       </div>
     </div>
