@@ -1,4 +1,4 @@
-import { ArrowRight, ArrowUpRight, Sparkles, Layout, Code, Film, Trophy, Globe, CheckCircle, Star } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Sparkles, Layout, Code, Film, Trophy, Globe, CheckCircle, Star, Megaphone, Video, Palette, BarChart3, PenTool, Camera } from "lucide-react";
 import AnimatedGrid from "@/components/AnimatedGrid";
 import { Link } from "react-router-dom";
 import { useRef, useEffect, useState, useCallback } from "react";
@@ -57,6 +57,10 @@ const services = [
   { icon: Layout, title: "UI/UX Design", desc: "Conversion-driven interfaces that look stunning and feel effortless.", tags: ["User Research", "Wireframing", "Prototyping"] },
   { icon: Code, title: "Web & App Dev", desc: "Full-stack builds: React SPAs to CMS-powered websites.", tags: ["React", "Next.js", "Mobile Apps"] },
   { icon: Film, title: "Motion Graphics", desc: "Explainers, logo reveals, social reels, and broadcast content.", tags: ["Logo Reveals", "Reels", "Explainers"] },
+  { icon: Video, title: "Explainer Videos", desc: "Animated and live-action explainers that simplify your message.", tags: ["2D Animation", "Whiteboard", "Storytelling"] },
+  { icon: Camera, title: "Video Production", desc: "Every kind of video work — commercials, promos, interviews, and more.", tags: ["Commercials", "Promos", "Interviews"] },
+  { icon: Megaphone, title: "Digital Marketing", desc: "Data-driven campaigns across SEO, PPC, social, and email channels.", tags: ["SEO", "PPC", "Social Media"] },
+  { icon: Palette, title: "Graphic Design", desc: "Print and digital visuals — packaging, posters, social assets.", tags: ["Packaging", "Print", "Social"] },
 ];
 
 const ServiceCard = ({ service, index }: { service: typeof services[0]; index: number }) => {
@@ -75,68 +79,114 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
   }, []);
 
   return (
-    <motion.div
-      ref={cardRef}
-      initial={{ opacity: 0, y: 30, rotateY: -5 }}
-      whileInView={{ opacity: 1, y: 0, rotateY: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-      className="service-card group flex-shrink-0 w-[300px] md:w-[340px] bg-card border border-border hover:border-accent/40 transition-all duration-500 hover:-translate-y-2 snap-start"
-      data-cursor-hover
-    >
-      <div className="p-6 md:p-8 relative z-10 flex flex-col h-full min-h-[260px]">
-        <div className="flex items-start justify-between mb-5">
-          <span className="font-mono text-[10px] text-muted-foreground/50 tracking-widest">
-            {String(index + 1).padStart(2, "0")}
-          </span>
-          <div className="w-10 h-10 border border-border/50 flex items-center justify-center group-hover:border-accent/40 group-hover:bg-accent/5 transition-all duration-500">
-            <service.icon size={18} className="text-muted-foreground group-hover:text-accent transition-colors duration-500" />
+    <Link to="/services" className="block flex-shrink-0 w-[300px] md:w-[340px] snap-start">
+      <motion.div
+        ref={cardRef}
+        initial={{ opacity: 0, y: 30, rotateY: -5 }}
+        whileInView={{ opacity: 1, y: 0, rotateY: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+        className="service-card group h-full bg-card border border-border hover:border-accent/40 transition-all duration-500 hover:-translate-y-2"
+        data-cursor-hover
+      >
+        <div className="p-6 md:p-8 relative z-10 flex flex-col h-full min-h-[260px]">
+          <div className="flex items-start justify-between mb-5">
+            <span className="font-mono text-[10px] text-muted-foreground/50 tracking-widest">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <div className="w-10 h-10 border border-border/50 flex items-center justify-center group-hover:border-accent/40 group-hover:bg-accent/5 transition-all duration-500">
+              <service.icon size={18} className="text-muted-foreground group-hover:text-accent transition-colors duration-500" />
+            </div>
+          </div>
+          <h3 className="font-display text-2xl md:text-3xl font-extrabold mb-3 group-hover:text-accent transition-colors tracking-tight leading-[1.1]">
+            {service.title}
+          </h3>
+          <p className="text-muted-foreground font-body text-sm leading-relaxed mb-auto line-clamp-2">
+            {service.desc}
+          </p>
+          <div className="flex flex-wrap gap-2 mt-6 pt-5 border-t border-border/30">
+            {service.tags.map((t) => (
+              <span key={t} className="font-mono text-[9px] uppercase tracking-wider text-muted-foreground/70 bg-secondary/50 px-2.5 py-1 group-hover:bg-accent/10 group-hover:text-accent/80 transition-colors duration-300">
+                {t}
+              </span>
+            ))}
           </div>
         </div>
-        <h3 className="font-display text-2xl md:text-3xl font-extrabold mb-3 group-hover:text-accent transition-colors tracking-tight leading-[1.1]">
-          {service.title}
-        </h3>
-        <p className="text-muted-foreground font-body text-sm leading-relaxed mb-auto line-clamp-2">
-          {service.desc}
-        </p>
-        <div className="flex flex-wrap gap-2 mt-6 pt-5 border-t border-border/30">
-          {service.tags.map((t) => (
-            <span key={t} className="font-mono text-[9px] uppercase tracking-wider text-muted-foreground/70 bg-secondary/50 px-2.5 py-1 group-hover:bg-accent/10 group-hover:text-accent/80 transition-colors duration-300">
-              {t}
-            </span>
-          ))}
+        <div className="h-[2px] bg-border relative overflow-hidden">
+          <div className="absolute inset-y-0 left-0 w-0 group-hover:w-full bg-accent transition-all duration-700 ease-out" />
         </div>
-      </div>
-      <div className="h-[2px] bg-border relative overflow-hidden">
-        <div className="absolute inset-y-0 left-0 w-0 group-hover:w-full bg-accent transition-all duration-700 ease-out" />
-      </div>
-    </motion.div>
+      </motion.div>
+    </Link>
   );
 };
 
 const ServicesSection = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const totalItems = services.length + 1; // +1 for the "explore all" card
+  const [isHovered, setIsHovered] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const dragStartX = useRef(0);
+  const dragScrollLeft = useRef(0);
+  const totalItems = services.length + 1;
+  const CARD_WIDTH = 360;
 
+  // Track active index on scroll
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
     const onScroll = () => {
-      const cardWidth = 360;
-      const idx = Math.round(el.scrollLeft / cardWidth);
+      const idx = Math.round(el.scrollLeft / CARD_WIDTH);
       setActiveIndex(Math.min(idx, totalItems - 1));
     };
     el.addEventListener("scroll", onScroll);
     return () => el.removeEventListener("scroll", onScroll);
   }, [totalItems]);
 
+  // Auto-slide every 3 seconds, pause on hover
+  useEffect(() => {
+    if (isHovered || isDragging) return;
+    const interval = setInterval(() => {
+      const el = scrollRef.current;
+      if (!el) return;
+      const maxScroll = el.scrollWidth - el.clientWidth;
+      if (el.scrollLeft >= maxScroll - 10) {
+        el.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        el.scrollBy({ left: CARD_WIDTH, behavior: "smooth" });
+      }
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [isHovered, isDragging]);
+
+  // Drag support
+  const handleMouseDown = useCallback((e: React.MouseEvent) => {
+    const el = scrollRef.current;
+    if (!el) return;
+    setIsDragging(true);
+    dragStartX.current = e.pageX - el.offsetLeft;
+    dragScrollLeft.current = el.scrollLeft;
+  }, []);
+
+  const handleMouseMove = useCallback((e: React.MouseEvent) => {
+    if (!isDragging) return;
+    const el = scrollRef.current;
+    if (!el) return;
+    e.preventDefault();
+    const x = e.pageX - el.offsetLeft;
+    const walk = (x - dragStartX.current) * 1.5;
+    el.scrollLeft = dragScrollLeft.current - walk;
+  }, [isDragging]);
+
+  const handleMouseUp = useCallback(() => {
+    setIsDragging(false);
+  }, []);
+
   const scroll = (dir: number) => {
-    scrollRef.current?.scrollBy({ left: dir * 360, behavior: "smooth" });
+    scrollRef.current?.scrollBy({ left: dir * CARD_WIDTH, behavior: "smooth" });
   };
 
   const scrollToIndex = (idx: number) => {
-    scrollRef.current?.scrollTo({ left: idx * 360, behavior: "smooth" });
+    scrollRef.current?.scrollTo({ left: idx * CARD_WIDTH, behavior: "smooth" });
   };
 
   return (
@@ -146,10 +196,9 @@ const ServicesSection = () => {
         <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
           <div>
             <SectionHeading
-              
               tag="Services"
-              title="Eleven disciplines, one team"
-              description="From pixel to pipeline. every layer of your brand covered."
+              title="Thirteen disciplines, one team"
+              description="From pixel to pipeline — every layer of your brand covered."
             />
           </div>
           <div className="flex items-center gap-4">
@@ -164,8 +213,13 @@ const ServicesSection = () => {
       </div>
       <div
         ref={scrollRef}
-        className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 relative z-10 pr-6 md:pr-8 lg:pr-16"
+        className={`flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 relative z-10 pr-6 md:pr-8 lg:pr-16 select-none ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
         style={{ scrollbarWidth: "none", msOverflowStyle: "none", paddingLeft: "max(1.5rem, calc((100vw - 80rem) / 2 + 4rem))" }}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => { setIsHovered(false); setIsDragging(false); }}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
       >
         {services.map((service, i) => (
           <ServiceCard key={service.title} service={service} index={i} />
@@ -214,7 +268,6 @@ const ServicesSection = () => {
 };
 
 const Index = () => {
-
 
   return (
     <PageTransition>
