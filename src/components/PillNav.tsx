@@ -37,6 +37,8 @@ const PillNav = ({
   pillTextColor,
   onMobileMenuClick,
   initialLoadAnimation = true,
+  ctaLabel,
+  ctaHref,
 }: PillNavProps) => {
   const resolvedPillTextColor = pillTextColor ?? baseColor;
   const location = useLocation();
