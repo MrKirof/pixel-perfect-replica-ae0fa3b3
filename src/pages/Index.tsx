@@ -10,6 +10,7 @@ import StatCounter from "@/components/StatCounter";
 import PricingSection from "@/components/PricingSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import BookCallSection from "@/components/BookCallSection";
+import FounderSpotlight from "@/components/FounderSpotlight";
 
 
 type AnimStyle = "fade" | "scale" | "blur" | "slide-left" | "slide-right";
