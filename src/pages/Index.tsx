@@ -92,22 +92,22 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
       >
         <div className="p-6 md:p-8 relative z-10 flex flex-col h-full min-h-[260px]">
           <div className="flex items-start justify-between mb-5">
-            <span className="font-mono text-[10px] text-muted-foreground/50 tracking-widest">
+            <span className="font-mono text-xs text-muted-foreground/50 tracking-widest">
               {String(index + 1).padStart(2, "0")}
             </span>
             <div className="w-10 h-10 border border-border/50 flex items-center justify-center group-hover:border-accent/40 group-hover:bg-accent/5 transition-all duration-500">
               <service.icon size={18} className="text-muted-foreground group-hover:text-accent transition-colors duration-500" />
             </div>
           </div>
-          <h3 className="font-display text-2xl md:text-3xl font-extrabold mb-3 group-hover:text-accent transition-colors tracking-tight leading-[1.1]">
+          <h3 className="font-display text-3xl md:text-4xl font-extrabold mb-3 group-hover:text-accent transition-colors tracking-tight leading-[1.1]">
             {service.title}
           </h3>
-          <p className="text-muted-foreground font-body text-sm leading-relaxed mb-auto line-clamp-2">
+          <p className="text-muted-foreground font-body text-base leading-relaxed mb-auto line-clamp-2">
             {service.desc}
           </p>
           <div className="flex flex-wrap gap-2 mt-6 pt-5 border-t border-border/30">
             {service.tags.map((t) => (
-              <span key={t} className="font-mono text-[9px] uppercase tracking-wider text-muted-foreground/70 bg-secondary/50 px-2.5 py-1 group-hover:bg-accent/10 group-hover:text-accent/80 transition-colors duration-300">
+              <span key={t} className="font-mono text-xs uppercase tracking-wider text-muted-foreground/70 bg-secondary/50 px-2.5 py-1 group-hover:bg-accent/10 group-hover:text-accent/80 transition-colors duration-300">
                 {t}
               </span>
             ))}
@@ -233,7 +233,7 @@ const ServicesSection = () => {
           <div className="w-16 h-16 border border-border group-hover:border-accent flex items-center justify-center group-hover:text-accent transition-colors">
             <ArrowRight size={24} />
           </div>
-          <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground group-hover:text-accent transition-colors">
+          <span className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground group-hover:text-accent transition-colors">
             Explore all services
           </span>
         </Link>
@@ -307,7 +307,7 @@ const Index = () => {
                     <stat.icon size={20} strokeWidth={2} />
                   </motion.div>
                   <StatCounter value={stat.value} suffix={stat.suffix} prefix={stat.prefix} label={stat.label} delay={i * 150} trend={stat.trend} />
-                  <p className="font-body text-[11px] mt-3 tracking-wide" style={{ color: '#666666' }}>{stat.tagline}</p>
+                  <p className="font-body text-xs mt-3 tracking-wide" style={{ color: '#666666' }}>{stat.tagline}</p>
                 </div>
                 <div className="absolute bottom-0 left-1/2 md:left-10 -translate-x-1/2 md:translate-x-0 w-0 group-hover:w-16 h-[2px] bg-accent transition-all duration-700 ease-out" />
               </motion.div>
@@ -388,14 +388,14 @@ const Index = () => {
                   animate={{ scale: [1, 1.3, 1], opacity: [1, 0.6, 1] }}
                   transition={{ duration: 2, repeat: Infinity }}
                 />
-                <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">Available Now</span>
+                <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent">Available Now</span>
               </span>
             </motion.div>
 
             {/* Heading */}
             <motion.h2
               className="font-display font-extrabold mb-8 leading-[0.85] tracking-tight"
-              style={{ fontSize: "clamp(2.5rem, 8vw, 7rem)" }}
+              style={{ fontSize: "2.25rem" }}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -420,7 +420,7 @@ const Index = () => {
 
             {/* Subtitle */}
             <motion.p
-              className="text-muted-foreground font-body text-lg md:text-xl mb-14 max-w-lg mx-auto leading-relaxed"
+              className="text-muted-foreground font-body text-base mb-14 max-w-lg mx-auto leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -448,7 +448,7 @@ const Index = () => {
               </Link>
               <Link
                 to="/work"
-                className="magnetic-btn border border-border text-foreground font-display font-bold px-10 py-5 rounded-full inline-flex items-center gap-3 text-sm hover:border-accent hover:text-accent transition-all duration-500 group"
+                className="magnetic-btn border border-border text-foreground font-display font-bold px-10 py-5 rounded-full inline-flex items-center gap-3 text-base hover:border-accent hover:text-accent transition-all duration-500 group"
                 data-cursor-hover
               >
                 See Our Work
@@ -465,7 +465,7 @@ const Index = () => {
               transition={{ duration: 0.6, delay: 0.6 }}
             >
               <div className="w-12 h-px bg-border" />
-              <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-muted-foreground/50">Trusted by 1500+ brands worldwide</span>
+              <span className="font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground/50">Trusted by 1500+ brands worldwide</span>
               <div className="w-12 h-px bg-border" />
             </motion.div>
           </div>

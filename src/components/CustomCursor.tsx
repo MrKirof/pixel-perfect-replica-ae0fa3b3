@@ -105,7 +105,7 @@ const CustomCursor = () => {
           ref={labelRef}
           className="fixed top-0 left-0 pointer-events-none z-[9999] hidden md:block"
         >
-          <span className="bg-accent text-accent-foreground font-mono text-[9px] uppercase tracking-wider px-3 py-1.5 whitespace-nowrap">
+          <span className="bg-accent text-accent-foreground font-mono text-xs uppercase tracking-wider px-3 py-1.5 whitespace-nowrap">
             {cursorLabel}
           </span>
         </div>

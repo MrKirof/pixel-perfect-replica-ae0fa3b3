@@ -50,12 +50,12 @@ const StatCounter = ({ value, suffix = "", prefix = "", label, delay = 0, trend 
       }}
     >
       <div className="flex items-baseline gap-3">
-        <p className="font-mono text-4xl md:text-6xl font-bold tracking-tighter" style={{ color: 'inherit' }}>
+        <p className="font-mono text-3xl md:text-4xl font-bold tracking-tighter" style={{ color: 'inherit' }}>
           {prefix}{count}{suffix}
         </p>
         {trend && (
           <span
-            className={`inline-flex items-center gap-1 font-mono text-[10px] font-bold tracking-wide ${
+            className={`inline-flex items-center gap-1 font-mono text-xs font-bold tracking-wide ${
               trend.direction === "up" ? "text-accent" : "text-destructive"
             }`}
             style={{
@@ -69,7 +69,7 @@ const StatCounter = ({ value, suffix = "", prefix = "", label, delay = 0, trend 
         )}
       </div>
       <div className="w-8 h-px bg-accent mt-4 mb-3 group-hover:w-16 transition-all duration-500" />
-      <p className="text-muted-foreground font-mono text-[10px] uppercase tracking-[0.25em]">
+      <p className="text-muted-foreground font-mono text-xs uppercase tracking-[0.25em]">
         {label}
       </p>
     </div>

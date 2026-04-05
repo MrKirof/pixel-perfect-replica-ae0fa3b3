@@ -146,13 +146,13 @@ const Work = () => {
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
                 <div className="flex items-center gap-4 mb-8">
                   <div className="w-8 h-px bg-border" />
-                  <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-accent">Portfolio</span>
+                  <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent">Portfolio</span>
                 </div>
-                <h1 className="font-display text-5xl md:text-6xl lg:text-8xl font-extrabold leading-[0.9] tracking-tight mb-8">
+                <h1 className="font-display text-3xl md:text-3xl md:text-4xl font-extrabold leading-[0.9] tracking-tight mb-8">
                   Real work,<br />
                   <span className="text-gradient">real impact</span>
                 </h1>
-                <p className="text-muted-foreground font-body text-lg md:text-xl leading-relaxed max-w-xl">
+                <p className="text-muted-foreground font-body text-base leading-relaxed max-w-xl">
                   From website design to branding to packaging, every project is crafted with precision.
                 </p>
               </motion.div>
@@ -161,16 +161,16 @@ const Work = () => {
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}>
                 <div className="space-y-4">
                   <div className="flex items-baseline gap-3">
-                    <span className="font-display text-4xl font-extrabold text-accent">3000+</span>
-                    <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">Projects</span>
+                    <span className="font-display text-3xl md:text-4xl font-extrabold text-accent">3000+</span>
+                    <span className="font-mono text-xs uppercase tracking-wider text-muted-foreground">Projects</span>
                   </div>
                   <div className="flex items-baseline gap-3">
-                    <span className="font-display text-4xl font-extrabold text-foreground">1500+</span>
-                    <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">Happy Clients</span>
+                    <span className="font-display text-3xl md:text-4xl font-extrabold text-foreground">1500+</span>
+                    <span className="font-mono text-xs uppercase tracking-wider text-muted-foreground">Happy Clients</span>
                   </div>
                   <div className="flex items-baseline gap-3">
-                    <span className="font-display text-4xl font-extrabold text-foreground">11</span>
-                    <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">Disciplines</span>
+                    <span className="font-display text-3xl md:text-4xl font-extrabold text-foreground">11</span>
+                    <span className="font-mono text-xs uppercase tracking-wider text-muted-foreground">Disciplines</span>
                   </div>
                 </div>
               </motion.div>
@@ -197,7 +197,7 @@ const Work = () => {
                   <button
                     key={f}
                     onClick={() => setActive(f)}
-                    className={`font-mono text-[10px] uppercase tracking-[0.15em] px-4 py-2.5 transition-all duration-300 inline-flex items-center gap-2 ${
+                    className={`font-mono text-xs uppercase tracking-[0.15em] px-4 py-2.5 transition-all duration-300 inline-flex items-center gap-2 ${
                       active === f
                         ? "text-accent-foreground bg-accent"
                         : "text-white/40 border border-white/10 hover:border-white/30 hover:text-white"
@@ -255,10 +255,10 @@ const Work = () => {
                       {/* Content */}
                       <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8">
                         {/* Category badge */}
-                        <span className="font-mono text-[8px] uppercase tracking-[0.3em] text-accent mb-2 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-75">
+                        <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent mb-2 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-75">
                           {project.category}
                         </span>
-                        <h3 className="font-display text-lg md:text-xl font-extrabold tracking-tight text-white leading-tight mb-2">
+                        <h3 className="font-display text-base font-extrabold tracking-tight text-white leading-tight mb-2">
                           {project.title}
                         </h3>
                         <p className="text-white/50 font-body text-xs leading-relaxed max-w-sm translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100 mb-3 line-clamp-2">
@@ -267,7 +267,7 @@ const Work = () => {
                         {/* Tags */}
                         <div className="flex flex-wrap gap-1.5 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-150">
                           {project.tags.map((t) => (
-                            <span key={t} className="font-mono text-[8px] uppercase tracking-wider text-accent/80 bg-accent/10 px-2 py-0.5 rounded-sm">
+                            <span key={t} className="font-mono text-xs uppercase tracking-wider text-accent/80 bg-accent/10 px-2 py-0.5 rounded-sm">
                               {t}
                             </span>
                           ))}
@@ -296,15 +296,15 @@ const Work = () => {
             <div className="absolute -top-[20%] -right-[10%] w-[70%] h-[140%] bg-black/[0.03] origin-center" style={{ transform: 'rotate(-12deg)' }} />
           </div>
           <div className="max-w-7xl mx-auto text-center relative z-10 px-6 md:px-8 lg:px-16">
-            <span className="inline-flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.3em] text-accent-foreground/60 mb-10">
+            <span className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.3em] text-accent-foreground/60 mb-10">
               <span className="w-8 h-px bg-accent-foreground/30" />
               Start Your Project
               <span className="w-8 h-px bg-accent-foreground/30" />
             </span>
-            <h2 className="font-display text-4xl md:text-6xl lg:text-7xl font-extrabold leading-[0.85] tracking-tight mb-6">
+            <h2 className="font-display text-3xl md:text-4xl font-extrabold leading-[0.85] tracking-tight mb-6">
               Have a project<br />in mind?
             </h2>
-            <p className="text-accent-foreground/60 font-body text-lg mb-14 max-w-md mx-auto leading-relaxed">
+            <p className="text-accent-foreground/60 font-body text-base mb-14 max-w-md mx-auto leading-relaxed">
               Let's discuss how we can bring your vision to life.
             </p>
             <Link

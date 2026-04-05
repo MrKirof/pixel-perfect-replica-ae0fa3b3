@@ -222,7 +222,7 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
           <motion.div
             className="absolute -top-8 font-display font-black leading-none select-none pointer-events-none"
             style={{
-              fontSize: "clamp(100px, 12vw, 180px)",
+              fontSize: "2.25rem",
               color: `hsl(${service.color} / 0.03)`,
               right: isEven ? "20px" : "auto",
               left: isEven ? "auto" : "20px",
@@ -311,12 +311,12 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
                     animate={hovered ? { x: 4 } : { x: 0 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <span className="font-mono text-[10px] uppercase tracking-[0.3em] font-bold" style={{ color: `hsl(${service.color})` }}>
+                    <span className="font-mono text-xs uppercase tracking-[0.3em] font-bold" style={{ color: `hsl(${service.color})` }}>
                       {service.number}
                     </span>
                     <motion.div className="h-px" style={{ background: `hsl(${service.color} / 0.4)` }}
                       animate={hovered ? { width: 40 } : { width: 24 }} transition={{ duration: 0.4 }} />
-                    <motion.span className="font-mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground/50"
+                    <motion.span className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground/50"
                       initial={{ opacity: 0, x: -10 }}
                       animate={hovered ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
                       transition={{ duration: 0.3 }}
@@ -326,13 +326,13 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
                   </motion.div>
 
                   <motion.h3
-                    className="font-display text-2xl md:text-3xl font-extrabold tracking-tight mb-3 transition-colors duration-500"
+                    className="font-display text-3xl md:text-4xl font-extrabold tracking-tight mb-3 transition-colors duration-500"
                     animate={hovered ? { color: `hsl(${service.color})` } : {}}
                   >
                     {service.title}
                   </motion.h3>
 
-                  <p className="text-muted-foreground text-sm md:text-base leading-relaxed max-w-2xl">
+                  <p className="text-muted-foreground text-base leading-relaxed max-w-2xl">
                     {service.desc}
                   </p>
                 </div>
@@ -376,7 +376,7 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.1 }}
                   >
-                    <p className="text-muted-foreground text-sm md:text-base leading-relaxed mb-10 max-w-3xl">
+                    <p className="text-muted-foreground text-base leading-relaxed mb-10 max-w-3xl">
                       {service.longDesc}
                     </p>
 
@@ -384,7 +384,7 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
                       {/* Process steps with animated connectors */}
                       <div>
                         <h4
-                          className="font-mono text-[10px] uppercase tracking-[0.3em] mb-5 flex items-center gap-3"
+                          className="font-mono text-xs uppercase tracking-[0.3em] mb-5 flex items-center gap-3"
                           style={{ color: `hsl(${service.color})` }}
                         >
                           <span className="w-3 h-3 rounded-full" style={{ background: `hsl(${service.color})`, boxShadow: `0 0 12px hsl(${service.color} / 0.4)` }} />
@@ -401,7 +401,7 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
                             >
                               <div className="relative">
                                 <div
-                                  className="w-8 h-8 flex items-center justify-center text-[10px] font-mono font-bold rounded-lg transition-all duration-300 group-hover/step:scale-110"
+                                  className="w-8 h-8 flex items-center justify-center text-xs font-mono font-bold rounded-lg transition-all duration-300 group-hover/step:scale-110"
                                   style={{
                                     background: `hsl(${service.color} / 0.1)`,
                                     border: `1px solid hsl(${service.color} / 0.2)`,
@@ -417,7 +417,7 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
                                   />
                                 )}
                               </div>
-                              <span className="text-sm text-foreground/80 group-hover/step:text-foreground transition-colors">{step}</span>
+                              <span className="text-base text-foreground/80 group-hover/step:text-foreground transition-colors">{step}</span>
                             </motion.div>
                           ))}
                         </div>
@@ -426,7 +426,7 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
                       {/* Deliverables with animated tags */}
                       <div>
                         <h4
-                          className="font-mono text-[10px] uppercase tracking-[0.3em] mb-5 flex items-center gap-3"
+                          className="font-mono text-xs uppercase tracking-[0.3em] mb-5 flex items-center gap-3"
                           style={{ color: `hsl(${service.color})` }}
                         >
                           <span className="w-3 h-3 rounded-sm rotate-45" style={{ background: `hsl(${service.color})`, boxShadow: `0 0 12px hsl(${service.color} / 0.4)` }} />
@@ -471,12 +471,12 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
                         }}
                       />
                       <span
-                        className="font-mono text-[10px] uppercase tracking-[0.3em] block mb-2"
+                        className="font-mono text-xs uppercase tracking-[0.3em] block mb-2"
                         style={{ color: `hsl(${service.color})` }}
                       >
                         ✦ Case Study
                       </span>
-                      <p className="text-sm text-muted-foreground relative z-10">{service.example}</p>
+                      <p className="text-base text-muted-foreground relative z-10">{service.example}</p>
                     </motion.div>
                   </motion.div>
                 </div>
@@ -533,7 +533,7 @@ const ProcessCard = ({ step, index }: { step: typeof processSteps[0]; index: num
 
         {/* Large watermark number */}
         <motion.span
-          className="font-display text-8xl font-black absolute top-2 right-4 select-none pointer-events-none"
+          className="font-display text-3xl md:text-3xl md:text-4xl font-black absolute top-2 right-4 select-none pointer-events-none"
           animate={hovered ? {
             color: "hsl(var(--accent) / 0.15)",
             scale: 1.1,
@@ -565,7 +565,7 @@ const ProcessCard = ({ step, index }: { step: typeof processSteps[0]; index: num
             }}
             transition={{ duration: 0.4 }}
           >
-            <span className="font-mono text-sm text-accent font-bold">{step.step}</span>
+            <span className="font-mono text-base text-accent font-bold">{step.step}</span>
 
             {/* Pulse ring */}
             <motion.div
@@ -578,8 +578,8 @@ const ProcessCard = ({ step, index }: { step: typeof processSteps[0]; index: num
             />
           </motion.div>
 
-          <h3 className="font-display text-xl md:text-2xl font-bold mb-3 group-hover:text-accent transition-colors duration-500">{step.title}</h3>
-          <p className="text-muted-foreground text-sm leading-relaxed">{step.desc}</p>
+          <h3 className="font-display text-base md:text-3xl md:text-4xl font-bold mb-3 group-hover:text-accent transition-colors duration-500">{step.title}</h3>
+          <p className="text-muted-foreground text-base leading-relaxed">{step.desc}</p>
         </div>
 
         {/* Connector arrow */}
@@ -626,9 +626,9 @@ const Services = () => {
                 <div className="flex items-center gap-4 mb-8">
                   <Layers size={14} className="text-accent" />
                   <div className="w-8 h-px bg-accent/30" />
-                  <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-accent">What We Do</span>
+                  <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent">What We Do</span>
                 </div>
-                <h1 className="font-display text-5xl md:text-6xl lg:text-8xl font-extrabold leading-[0.9] tracking-tight mb-8">
+                <h1 className="font-display text-3xl md:text-3xl md:text-4xl font-extrabold leading-[0.9] tracking-tight mb-8">
                   End-to-end<br />
                   solutions,{" "}
                   <span className="text-gradient">expertly</span>
@@ -642,7 +642,7 @@ const Services = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
-                <p className="text-muted-foreground text-base md:text-lg leading-relaxed mb-8">
+                <p className="text-muted-foreground text-base leading-relaxed mb-8">
                   From concept to launch and beyond — we offer a comprehensive
                   suite of 11 specialized services to help you build, grow, and
                   dominate your market.
@@ -656,10 +656,10 @@ const Services = () => {
                     <div key={stat.label} className="flex items-center gap-6">
                       {i > 0 && <div className="w-px h-12 bg-border" />}
                       <div>
-                        <span className={`font-display text-4xl font-extrabold ${stat.accent ? "text-accent" : "text-foreground"}`}>
+                        <span className={`font-display text-3xl md:text-4xl font-extrabold ${stat.accent ? "text-accent" : "text-foreground"}`}>
                           {stat.val}
                         </span>
-                        <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground mt-1">{stat.label}</p>
+                        <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground mt-1">{stat.label}</p>
                       </div>
                     </div>
                   ))}
@@ -690,9 +690,9 @@ const Services = () => {
               <div className="flex items-center gap-4 mb-6">
                 <Layers size={14} className="text-accent" />
                 <div className="w-8 h-px bg-accent/30" />
-                <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-accent">How We Work</span>
+                <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent">How We Work</span>
               </div>
-              <h2 className="font-display text-3xl md:text-5xl font-extrabold leading-[0.9] tracking-tight">
+              <h2 className="font-display text-3xl font-extrabold leading-[0.9] tracking-tight">
                 A process<br />built for{" "}
                 <span className="text-gradient">results</span>
               </h2>
@@ -723,14 +723,14 @@ const Services = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <span className="inline-block font-mono text-[11px] uppercase tracking-[0.3em] text-accent border border-accent/30 px-4 py-1.5 mb-8 rounded-full">
+            <span className="inline-block font-mono text-xs uppercase tracking-[0.3em] text-accent border border-accent/30 px-4 py-1.5 mb-8 rounded-full">
               Ready to start?
             </span>
-            <h2 className="font-display text-4xl md:text-6xl font-extrabold leading-[0.9] tracking-tight mb-6">
+            <h2 className="font-display text-3xl md:text-4xl font-extrabold leading-[0.9] tracking-tight mb-6">
               Let's build something{" "}
               <span className="text-gradient">extraordinary</span>
             </h2>
-            <p className="text-muted-foreground text-lg mb-10 max-w-xl mx-auto">
+            <p className="text-muted-foreground text-base mb-10 max-w-xl mx-auto">
               Tell us about your project and we'll get back within 24 hours with a tailored proposal.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

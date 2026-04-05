@@ -140,13 +140,13 @@ const Blog = () => {
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <div className="flex items-center gap-4 mb-8">
               <div className="w-8 h-px bg-border" />
-              <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-accent">Blog</span>
+              <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent">Blog</span>
             </div>
-            <h1 className="font-display text-5xl md:text-6xl lg:text-8xl font-extrabold leading-[0.9] tracking-tight mb-8">
+            <h1 className="font-display text-3xl md:text-3xl md:text-4xl font-extrabold leading-[0.9] tracking-tight mb-8">
               Ideas, guides &<br />
               <span className="text-gradient">insights</span>
             </h1>
-            <p className="text-muted-foreground font-body text-lg md:text-xl leading-relaxed max-w-xl">
+            <p className="text-muted-foreground font-body text-base leading-relaxed max-w-xl">
               Thoughts on design, development, finance, and building things that last — from the team at Kirof.
             </p>
           </motion.div>
@@ -169,25 +169,25 @@ const Blog = () => {
                   </div>
                   <div className="bg-card/60 border border-border p-8 md:p-12 lg:p-16 flex flex-col justify-center">
                     <div className="flex items-center gap-3 mb-6">
-                      <span className="font-mono text-[9px] uppercase tracking-wider bg-accent text-accent-foreground px-2.5 py-1">{featured.tag}</span>
-                      <span className="font-mono text-[9px] uppercase tracking-wider text-accent border border-accent/30 px-2.5 py-1">Featured</span>
+                      <span className="font-mono text-xs uppercase tracking-wider bg-accent text-accent-foreground px-2.5 py-1">{featured.tag}</span>
+                      <span className="font-mono text-xs uppercase tracking-wider text-accent border border-accent/30 px-2.5 py-1">Featured</span>
                     </div>
-                    <h2 className="font-display text-2xl md:text-4xl font-extrabold tracking-tight leading-tight mb-4 group-hover:text-accent transition-colors">
+                    <h2 className="font-display text-3xl md:text-4xl font-extrabold tracking-tight leading-tight mb-4 group-hover:text-accent transition-colors">
                       {featured.title}
                     </h2>
                     <p className="text-muted-foreground font-body text-base leading-relaxed mb-8">
                       {featured.excerpt}
                     </p>
                     <div className="flex items-center gap-4 mb-8">
-                      <span className="font-mono text-[10px] text-muted-foreground">{featured.author}</span>
+                      <span className="font-mono text-xs text-muted-foreground">{featured.author}</span>
                       <span className="text-border">·</span>
-                      <span className="font-mono text-[10px] text-muted-foreground">{featured.date}</span>
+                      <span className="font-mono text-xs text-muted-foreground">{featured.date}</span>
                       <span className="text-border">·</span>
-                      <span className="font-mono text-[10px] text-muted-foreground inline-flex items-center gap-1">
+                      <span className="font-mono text-xs text-muted-foreground inline-flex items-center gap-1">
                         <Clock size={10} /> {featured.read}
                       </span>
                     </div>
-                    <span className="inline-flex items-center gap-2 font-mono text-sm text-accent group-hover:gap-3 transition-all">
+                    <span className="inline-flex items-center gap-2 font-mono text-base text-accent group-hover:gap-3 transition-all">
                       Read Article <ArrowRight size={14} />
                     </span>
                   </div>
@@ -209,7 +209,7 @@ const Blog = () => {
                 <button
                   key={cat}
                   onClick={() => setActiveTag(cat)}
-                  className={`font-mono text-[10px] uppercase tracking-[0.15em] px-4 py-2 transition-all duration-300 ${
+                  className={`font-mono text-xs uppercase tracking-[0.15em] px-4 py-2 transition-all duration-300 ${
                     activeTag === cat
                       ? "text-accent-foreground bg-accent"
                       : "text-muted-foreground border border-border/40 hover:border-foreground/30 hover:text-foreground"
@@ -227,7 +227,7 @@ const Blog = () => {
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   placeholder="Search articles..."
-                  className="w-full bg-card border border-border pl-10 pr-4 py-2.5 font-body text-sm text-foreground focus:outline-none focus:border-accent transition-all duration-300 placeholder:text-muted-foreground/30"
+                  className="w-full bg-card border border-border pl-10 pr-4 py-2.5 font-body text-base text-foreground focus:outline-none focus:border-accent transition-all duration-300 placeholder:text-muted-foreground/30"
                 />
               </div>
             </div>
@@ -259,27 +259,27 @@ const Blog = () => {
                         className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
                       />
                       <div className="absolute top-4 left-4">
-                        <span className="font-mono text-[9px] uppercase tracking-wider bg-accent text-accent-foreground px-2.5 py-1">
+                        <span className="font-mono text-xs uppercase tracking-wider bg-accent text-accent-foreground px-2.5 py-1">
                           {article.tag}
                         </span>
                       </div>
                     </div>
                     <div className="p-6 md:p-8">
                       <div className="flex items-center gap-3 mb-4">
-                        <span className="font-mono text-[9px] text-muted-foreground">{article.date}</span>
+                        <span className="font-mono text-xs text-muted-foreground">{article.date}</span>
                         <span className="text-border">·</span>
-                        <span className="font-mono text-[9px] text-muted-foreground inline-flex items-center gap-1">
+                        <span className="font-mono text-xs text-muted-foreground inline-flex items-center gap-1">
                           <Clock size={9} /> {article.read}
                         </span>
                       </div>
-                      <h3 className="font-display text-lg font-bold leading-snug tracking-tight mb-3 group-hover:text-accent transition-colors">
+                      <h3 className="font-display text-base font-bold leading-snug tracking-tight mb-3 group-hover:text-accent transition-colors">
                         {article.title}
                       </h3>
-                      <p className="text-muted-foreground font-body text-sm leading-relaxed mb-6 line-clamp-2">
+                      <p className="text-muted-foreground font-body text-base leading-relaxed mb-6 line-clamp-2">
                         {article.excerpt}
                       </p>
                       <div className="flex items-center justify-between">
-                        <span className="font-mono text-[10px] text-muted-foreground/60">{article.author}</span>
+                        <span className="font-mono text-xs text-muted-foreground/60">{article.author}</span>
                         <ArrowUpRight size={14} className="text-muted-foreground/30 group-hover:text-accent transition-colors" />
                       </div>
                     </div>
@@ -290,7 +290,7 @@ const Blog = () => {
 
             {filtered.length === 0 && (
               <div className="text-center py-20">
-                <p className="text-muted-foreground font-mono text-sm">No articles in this category yet.</p>
+                <p className="text-muted-foreground font-mono text-base">No articles in this category yet.</p>
               </div>
             )}
           </div>
@@ -301,12 +301,12 @@ const Blog = () => {
       <FadeIn>
         <section className="surface py-24 md:py-36 relative">
           <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16 text-center">
-            <span className="inline-flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.3em] text-accent mb-8">
+            <span className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.3em] text-accent mb-8">
               <span className="w-8 h-px bg-accent" />
               Stay Updated
               <span className="w-8 h-px bg-accent" />
             </span>
-            <h2 className="font-display text-3xl md:text-5xl font-extrabold tracking-tight leading-[0.9] mb-6">
+            <h2 className="font-display text-3xl font-extrabold tracking-tight leading-[0.9] mb-6">
               Get insights<br />delivered <span className="text-gradient">weekly</span>
             </h2>
             <p className="text-muted-foreground font-body text-base mb-10 max-w-md mx-auto leading-relaxed">
@@ -316,7 +316,7 @@ const Blog = () => {
               <input
                 type="email"
                 placeholder="you@company.com"
-                className="flex-1 bg-card border border-border px-5 py-4 font-body text-sm text-foreground focus:outline-none focus:border-accent transition-colors placeholder:text-muted-foreground/30"
+                className="flex-1 bg-card border border-border px-5 py-4 font-body text-base text-foreground focus:outline-none focus:border-accent transition-colors placeholder:text-muted-foreground/30"
               />
               <button
                 className="magnetic-btn bg-accent text-accent-foreground font-display font-bold px-8 py-4 inline-flex items-center justify-center gap-2 hover:shadow-[0_0_40px_hsl(var(--accent)/0.3)] transition-all duration-500"
@@ -325,7 +325,7 @@ const Blog = () => {
                 Subscribe <ArrowRight size={14} />
               </button>
             </div>
-            <p className="font-mono text-[9px] text-muted-foreground/40 mt-4">
+            <p className="font-mono text-xs text-muted-foreground/40 mt-4">
               Join 2,000+ founders and creatives. Unsubscribe anytime.
             </p>
           </div>

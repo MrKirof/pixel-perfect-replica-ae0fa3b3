@@ -61,7 +61,7 @@ const Navbar = () => {
           >
             {/* Logo mark */}
             <div className="w-9 h-9 rounded-lg bg-accent flex items-center justify-center transition-all duration-500 group-hover:rounded-xl group-hover:shadow-[0_0_20px_hsl(217_92%_60%/0.4)]">
-              <span className="text-accent-foreground font-display font-extrabold text-sm leading-none">
+              <span className="text-accent-foreground font-display font-extrabold text-base leading-none">
                 MR
               </span>
             </div>
@@ -157,7 +157,7 @@ const Navbar = () => {
                     <Link
                       to={link.path}
                       onClick={() => setIsOpen(false)}
-                      className={`block font-display text-4xl md:text-5xl font-extrabold py-3 transition-colors ${
+                      className={`block font-display text-3xl md:text-4xl font-extrabold py-3 transition-colors ${
                         location.pathname === link.path ? "text-accent" : "text-foreground/30 hover:text-foreground"
                       }`}
                     >

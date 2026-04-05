@@ -75,8 +75,8 @@ const FounderSpotlight = () => {
                     transform: "translateZ(40px)",
                   }}
                 >
-                  <p className="font-display font-bold text-sm text-white">Mareful Kirof</p>
-                  <p className="font-mono text-[10px] uppercase tracking-widest text-white/50">Founder & CEO</p>
+                  <p className="font-display font-bold text-base text-white">Mareful Kirof</p>
+                  <p className="font-mono text-xs uppercase tracking-widest text-white/50">Founder & CEO</p>
                 </div>
               </motion.div>
 
@@ -106,16 +106,16 @@ const FounderSpotlight = () => {
           >
             <div className="flex items-center gap-3 mb-6">
               <div className="w-8 h-px bg-accent" />
-              <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-accent">The Founder</span>
+              <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent">The Founder</span>
             </div>
 
-            <h2 className="font-display text-3xl md:text-5xl font-extrabold tracking-tight leading-[0.95] mb-6">
+            <h2 className="font-display text-3xl font-extrabold tracking-tight leading-[0.95] mb-6">
               A vision built on
               <br />
               <span className="hero-gradient-text">obsessive craft</span>
             </h2>
 
-            <div className="space-y-5 text-white/60 font-body text-sm md:text-base leading-relaxed">
+            <div className="space-y-5 text-white/60 font-body text-base leading-relaxed">
               <p>
                 Mareful Kirof founded Kirof in 2013 with a simple belief: every business deserves
                 design that doesn't just look good — it <span className="text-white font-medium">speaks and sells</span>.
@@ -135,7 +135,7 @@ const FounderSpotlight = () => {
             <div className="mt-8 flex items-center gap-4">
               <Link
                 to="/about"
-                className="magnetic-btn inline-flex items-center gap-2 bg-accent text-accent-foreground font-display font-bold text-sm px-7 py-3.5 rounded-full hover:shadow-[0_0_30px_hsl(var(--accent)/0.3)] transition-all duration-500 group"
+                className="magnetic-btn inline-flex items-center gap-2 bg-accent text-accent-foreground font-display font-bold text-base px-7 py-3.5 rounded-full hover:shadow-[0_0_30px_hsl(var(--accent)/0.3)] transition-all duration-500 group"
                 data-cursor-hover
               >
                 Read Our Story
