@@ -74,8 +74,8 @@ const Contact = () => {
     setSubmitted(true);
   };
 
-  const inputStyles = "w-full bg-card border border-border px-5 py-4 font-body text-sm text-foreground focus:outline-none focus:border-accent transition-all duration-300 placeholder:text-muted-foreground/30";
-  const labelStyles = "font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-2 block";
+  const inputStyles = "w-full bg-card border border-border px-5 py-4 font-body text-base text-foreground focus:outline-none focus:border-accent transition-all duration-300 placeholder:text-muted-foreground/30";
+  const labelStyles = "font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground mb-2 block";
 
   return (
     <PageTransition>
@@ -86,13 +86,13 @@ const Contact = () => {
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <div className="flex items-center gap-4 mb-8">
               <div className="w-8 h-px bg-border" />
-              <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-accent">Contact</span>
+              <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent">Contact</span>
             </div>
-            <h1 className="font-display text-5xl md:text-6xl lg:text-8xl font-extrabold leading-[0.9] tracking-tight mb-8">
+            <h1 className="font-display text-3xl md:text-3xl md:text-4xl font-extrabold leading-[0.9] tracking-tight mb-8">
               Let's build<br />
               something <span className="text-gradient">great</span>
             </h1>
-            <p className="text-muted-foreground font-body text-lg md:text-xl leading-relaxed max-w-xl">
+            <p className="text-muted-foreground font-body text-base leading-relaxed max-w-xl">
               Tell us about your project. We respond within 24 hours with a scoped brief and transparent quote. No discovery calls required, unless you want one.
             </p>
           </motion.div>
@@ -120,9 +120,9 @@ const Contact = () => {
                   <div className="w-10 h-10 border border-border/50 flex items-center justify-center mb-5 group-hover:border-accent/40 group-hover:bg-accent/5 transition-all duration-500">
                     <item.icon size={16} className="text-muted-foreground group-hover:text-accent transition-colors" />
                   </div>
-                  <h3 className="font-display text-sm font-bold mb-1">{item.title}</h3>
+                  <h3 className="font-display text-base font-bold mb-1">{item.title}</h3>
                   <p className="text-foreground font-body text-base mb-1">{item.info}</p>
-                  <p className="text-muted-foreground font-mono text-[10px] uppercase tracking-wider">{item.sub}</p>
+                  <p className="text-muted-foreground font-mono text-xs uppercase tracking-wider">{item.sub}</p>
                 </motion.div>
               ))}
             </div>
@@ -138,8 +138,8 @@ const Contact = () => {
               {/* Form */}
               <div className="lg:col-span-7">
                 <div className="mb-10">
-                  <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent mb-4 block">Get in Touch</span>
-                  <h2 className="font-display text-3xl md:text-4xl font-extrabold tracking-tight leading-[0.9]">
+                  <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent mb-4 block">Get in Touch</span>
+                  <h2 className="font-display text-3xl font-extrabold tracking-tight leading-[0.9]">
                     Tell us about<br />your <span className="text-gradient">project</span>
                   </h2>
                 </div>
@@ -254,7 +254,7 @@ const Contact = () => {
                         <Send size={16} className="group-hover:translate-x-1 transition-transform" />
                       </button>
 
-                      <p className="font-mono text-[9px] text-muted-foreground/40 uppercase tracking-wider">
+                      <p className="font-mono text-xs text-muted-foreground/40 uppercase tracking-wider">
                         Your data is secure · NDA available on request · We never share your information
                       </p>
                     </motion.form>
@@ -266,7 +266,7 @@ const Contact = () => {
                       className="border border-accent/30 bg-accent/[0.03] p-12 text-center"
                     >
                       <CheckCircle size={48} className="text-accent mx-auto mb-6" />
-                      <h3 className="font-display text-2xl font-extrabold mb-3">Message Sent!</h3>
+                      <h3 className="font-display text-3xl md:text-4xl font-extrabold mb-3">Message Sent!</h3>
                       <p className="text-muted-foreground font-body text-base mb-8 max-w-md mx-auto leading-relaxed">
                         Thanks for reaching out. We'll review your project and get back to you within 24 hours with a scoped brief and quote.
                       </p>
@@ -288,15 +288,15 @@ const Contact = () => {
               {/* Sidebar. FAQ */}
               <div className="lg:col-span-5">
                 <div className="lg:sticky lg:top-32">
-                  <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent mb-4 block">FAQ</span>
-                  <h3 className="font-display text-2xl font-extrabold tracking-tight leading-[0.9] mb-8">
+                  <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent mb-4 block">FAQ</span>
+                  <h3 className="font-display text-3xl md:text-4xl font-extrabold tracking-tight leading-[0.9] mb-8">
                     Quick <span className="text-gradient">answers</span>
                   </h3>
                   <div className="space-y-0 divide-y divide-border/50">
                     {faqs.map((faq, i) => (
                       <details key={faq.q} className="group py-5 first:pt-0" data-cursor-hover>
                         <summary className="cursor-none flex items-start justify-between gap-4 list-none">
-                          <h4 className="font-display text-sm font-bold group-hover:text-accent transition-colors leading-snug">
+                          <h4 className="font-display text-base font-bold group-hover:text-accent transition-colors leading-snug">
                             {faq.q}
                           </h4>
                           <span className="w-5 h-5 border border-border/50 flex items-center justify-center text-muted-foreground text-xs flex-shrink-0 mt-0.5 group-open:rotate-45 group-open:bg-accent group-open:text-accent-foreground group-open:border-accent transition-all duration-300">
@@ -304,7 +304,7 @@ const Contact = () => {
                           </span>
                         </summary>
                         <div className="pt-3">
-                          <p className="text-muted-foreground font-body text-sm leading-relaxed">{faq.a}</p>
+                          <p className="text-muted-foreground font-body text-base leading-relaxed">{faq.a}</p>
                         </div>
                       </details>
                     ))}
@@ -312,7 +312,7 @@ const Contact = () => {
 
                   {/* Quick links */}
                   <div className="mt-12 pt-8 border-t border-border/30">
-                    <h4 className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-6">Quick Links</h4>
+                    <h4 className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground mb-6">Quick Links</h4>
                     <div className="space-y-3">
                       {[
                         { label: "View our services", href: "/services" },
@@ -326,7 +326,7 @@ const Contact = () => {
                           className="flex items-center justify-between group/link py-2 hover:pl-2 transition-all duration-300"
                           data-cursor-hover
                         >
-                          <span className="font-body text-sm text-muted-foreground group-hover/link:text-accent transition-colors">{link.label}</span>
+                          <span className="font-body text-base text-muted-foreground group-hover/link:text-accent transition-colors">{link.label}</span>
                           <ArrowRight size={12} className="text-muted-foreground/30 group-hover/link:text-accent transition-colors" />
                         </a>
                       ))}
@@ -345,12 +345,12 @@ const Contact = () => {
           <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16">
             <div className="mb-14 flex items-end justify-between">
               <div>
-                <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent mb-4 block">Global Reach</span>
-                <h2 className="font-display text-3xl md:text-4xl font-extrabold tracking-tight leading-[0.9]">
+                <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent mb-4 block">Global Reach</span>
+                <h2 className="font-display text-3xl font-extrabold tracking-tight leading-[0.9]">
                   Working <span className="text-gradient">worldwide</span>
                 </h2>
               </div>
-              <p className="hidden md:block font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+              <p className="hidden md:block font-mono text-xs uppercase tracking-wider text-muted-foreground">
                 Remote-first · Async-friendly
               </p>
             </div>
@@ -371,12 +371,12 @@ const Contact = () => {
 
                   <div className="flex items-center gap-3 mb-5">
                     <div className="w-2.5 h-2.5 rounded-full bg-accent shadow-[0_0_12px_hsl(var(--accent)/0.6)] group-hover:shadow-[0_0_20px_hsl(var(--accent)/0.8)] transition-shadow" />
-                    <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground">{loc.timezone}</span>
+                    <span className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">{loc.timezone}</span>
                   </div>
 
-                  <h3 className="font-display text-lg font-bold tracking-tight mb-4">{loc.city}</h3>
+                  <h3 className="font-display text-base font-bold tracking-tight mb-4">{loc.city}</h3>
 
-                  <div className="space-y-2 font-mono text-[10px] uppercase tracking-wider">
+                  <div className="space-y-2 font-mono text-xs uppercase tracking-wider">
                     <div className="flex justify-between">
                       <span className="text-muted-foreground">Clients</span>
                       <span className="text-foreground font-bold">{loc.clients}</span>
@@ -389,7 +389,7 @@ const Contact = () => {
 
                   <div className="mt-5 pt-4 border-t border-border/30 flex items-center gap-1.5">
                     <div className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-                    <span className="font-mono text-[8px] uppercase tracking-wider text-green-400/70">Active</span>
+                    <span className="font-mono text-xs uppercase tracking-wider text-green-400/70">Active</span>
                   </div>
                 </motion.div>
               ))}
@@ -404,8 +404,8 @@ const Contact = () => {
                 { value: "6", label: "Timezones" },
               ].map((stat) => (
                 <div key={stat.label} className="text-center">
-                  <div className="text-2xl font-extrabold text-foreground tracking-tight">{stat.value}</div>
-                  <div className="font-mono text-[9px] uppercase tracking-wider text-muted-foreground mt-1">{stat.label}</div>
+                  <div className="text-3xl md:text-4xl font-extrabold text-foreground tracking-tight">{stat.value}</div>
+                  <div className="font-mono text-xs uppercase tracking-wider text-muted-foreground mt-1">{stat.label}</div>
                 </div>
               ))}
             </div>

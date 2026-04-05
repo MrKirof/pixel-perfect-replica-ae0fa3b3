@@ -101,12 +101,12 @@ const TestimonialsSection = () => {
                 transition={{ duration: 0.5, delay: 0.2, ease }}
                 style={{ transformOrigin: "left" }}
               />
-              <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-accent">Testimonials</span>
+              <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent">Testimonials</span>
             </motion.div>
 
             <div className="overflow-hidden">
               <motion.h2
-                className="font-display text-3xl md:text-4xl font-extrabold leading-[0.9] tracking-tight mb-4"
+                className="font-display text-3xl font-extrabold leading-[0.9] tracking-tight mb-4"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -117,7 +117,7 @@ const TestimonialsSection = () => {
             </div>
 
             <motion.p
-              className="text-muted-foreground font-body text-sm leading-relaxed mb-8"
+              className="text-muted-foreground font-body text-base leading-relaxed mb-8"
               initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
               whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               viewport={{ once: true }}
@@ -196,7 +196,7 @@ const TestimonialsSection = () => {
                       ))}
                     </div>
 
-                    <p className="font-display text-2xl md:text-3xl lg:text-4xl font-bold leading-[1.15] tracking-tight mb-8 relative z-10">
+                    <p className="font-display text-3xl md:text-4xl font-bold leading-[1.15] tracking-tight mb-8 relative z-10">
                       {t.quote}
                     </p>
 
@@ -207,7 +207,7 @@ const TestimonialsSection = () => {
                         animate={{ scale: 1, rotate: 0 }}
                         transition={{ delay: 0.2, duration: 0.4, ease }}
                       >
-                        <span className="font-display text-sm font-bold text-accent-foreground">
+                        <span className="font-display text-base font-bold text-accent-foreground">
                           {t.name.split(" ").map((n) => n[0]).join("")}
                         </span>
                       </motion.div>
@@ -216,8 +216,8 @@ const TestimonialsSection = () => {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.3, duration: 0.4 }}
                       >
-                        <p className="font-display font-bold text-sm">{t.name}</p>
-                        <p className="text-muted-foreground font-mono text-[11px]">{t.title}</p>
+                        <p className="font-display font-bold text-base">{t.name}</p>
+                        <p className="text-muted-foreground font-mono text-xs">{t.title}</p>
                       </motion.div>
                     </div>
                   </motion.div>

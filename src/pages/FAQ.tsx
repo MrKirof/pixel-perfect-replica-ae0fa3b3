@@ -55,9 +55,9 @@ const FAQ = () => (
               transition={{ duration: 0.6, delay: gi * 0.1, ease: [0.16, 1, 0.3, 1] }}
             >
               <div className="flex items-center gap-4 mb-8">
-                <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">{String(gi + 1).padStart(2, "0")}</span>
+                <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent">{String(gi + 1).padStart(2, "0")}</span>
                 <div className="h-px flex-1 bg-gradient-to-r from-accent/30 to-transparent" />
-                <span className="font-display text-sm font-bold text-muted-foreground uppercase tracking-wider">{group.category}</span>
+                <span className="font-display text-base font-bold text-muted-foreground uppercase tracking-wider">{group.category}</span>
                 <div className="h-px flex-1 bg-gradient-to-l from-accent/30 to-transparent" />
               </div>
 
@@ -74,15 +74,15 @@ const FAQ = () => (
                   >
                     <summary className="cursor-none flex items-start justify-between gap-6 list-none">
                       <div className="flex items-start gap-5">
-                        <span className="font-mono text-[10px] text-accent/40 mt-1">{String(gi * 3 + i + 1).padStart(2, "0")}</span>
-                        <h3 className="font-display text-base md:text-lg font-bold group-hover:text-accent transition-colors leading-snug">{item.q}</h3>
+                        <span className="font-mono text-xs text-accent/40 mt-1">{String(gi * 3 + i + 1).padStart(2, "0")}</span>
+                        <h3 className="font-display text-base font-bold group-hover:text-accent transition-colors leading-snug">{item.q}</h3>
                       </div>
                       <span className="w-7 h-7 border border-border/50 rounded-full flex items-center justify-center text-muted-foreground text-xs flex-shrink-0 mt-0.5 group-open:rotate-45 group-open:bg-accent group-open:text-accent-foreground group-open:border-accent transition-all duration-300">
                         +
                       </span>
                     </summary>
                     <div className="pl-10 md:pl-[3.25rem] pt-4 pb-2">
-                      <p className="text-muted-foreground font-body text-sm leading-relaxed max-w-2xl border-l-2 border-accent/20 pl-5">{item.a}</p>
+                      <p className="text-muted-foreground font-body text-base leading-relaxed max-w-2xl border-l-2 border-accent/20 pl-5">{item.a}</p>
                     </div>
                   </motion.details>
                 ))}
@@ -102,7 +102,7 @@ const FAQ = () => (
           <p className="text-muted-foreground font-body text-base mb-6">Still have questions?</p>
           <Link
             to="/contact"
-            className="magnetic-btn bg-accent text-accent-foreground font-display font-bold text-sm px-10 py-4 rounded-full inline-flex items-center gap-3 hover:shadow-[0_0_40px_hsl(var(--accent)/0.3)] transition-all duration-500 group"
+            className="magnetic-btn bg-accent text-accent-foreground font-display font-bold text-base px-10 py-4 rounded-full inline-flex items-center gap-3 hover:shadow-[0_0_40px_hsl(var(--accent)/0.3)] transition-all duration-500 group"
             data-cursor-hover
           >
             Get in Touch

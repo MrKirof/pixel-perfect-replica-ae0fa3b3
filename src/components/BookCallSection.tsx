@@ -163,13 +163,13 @@ const BookCallSection = () => {
                   animate={{ scale: [1, 1.4, 1], opacity: [1, 0.5, 1] }}
                   transition={{ duration: 2, repeat: Infinity }}
                 />
-                <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">
+                <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent">
                   Book a Call
                 </span>
               </motion.div>
 
               <motion.h2
-                className="font-display text-4xl md:text-6xl font-extrabold leading-[0.85] tracking-tight mb-6"
+                className="font-display text-3xl md:text-4xl font-extrabold leading-[0.85] tracking-tight mb-6"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -182,7 +182,7 @@ const BookCallSection = () => {
               </motion.h2>
 
               <motion.p
-                className="text-muted-foreground font-body text-lg leading-relaxed mb-10 max-w-md"
+                className="text-muted-foreground font-body text-base leading-relaxed mb-10 max-w-md"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -223,7 +223,7 @@ const BookCallSection = () => {
                       {stepIndex > i ? <CheckCircle2 size={16} /> : i + 1}
                     </motion.div>
                     <span className={cn(
-                      "font-mono text-[10px] uppercase tracking-wider hidden sm:inline",
+                      "font-mono text-xs uppercase tracking-wider hidden sm:inline",
                       stepIndex >= i ? "text-accent" : "text-muted-foreground/40"
                     )}>{label}</span>
                     {i < 2 && (
@@ -265,7 +265,7 @@ const BookCallSection = () => {
                     transition={{ delay: 0.7 + i * 0.1 }}
                   >
                     <item.icon size={12} className="text-accent" />
-                    <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground/70">
+                    <span className="font-mono text-xs uppercase tracking-wider text-muted-foreground/70">
                       {item.text}
                     </span>
                   </motion.div>
@@ -324,8 +324,8 @@ const BookCallSection = () => {
                         <CalendarIcon size={18} className="text-accent" />
                       </motion.div>
                       <div>
-                        <h3 className="font-display font-bold text-sm text-foreground">Discovery Call</h3>
-                        <p className="font-mono text-[10px] text-muted-foreground mt-0.5">30 min · Free · Online</p>
+                        <h3 className="font-display font-bold text-base text-foreground">Discovery Call</h3>
+                        <p className="font-mono text-xs text-muted-foreground mt-0.5">30 min · Free · Online</p>
                       </div>
                     </div>
                     {selectedDate && step !== "date" && (
@@ -333,7 +333,7 @@ const BookCallSection = () => {
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         onClick={handleReset}
-                        className="font-mono text-[10px] uppercase tracking-wider text-accent hover:text-accent/80 transition-colors px-3 py-1.5 rounded-full border border-accent/20 hover:border-accent/40"
+                        className="font-mono text-xs uppercase tracking-wider text-accent hover:text-accent/80 transition-colors px-3 py-1.5 rounded-full border border-accent/20 hover:border-accent/40"
                       >
                         Reset
                       </motion.button>
@@ -355,7 +355,7 @@ const BookCallSection = () => {
                         >
                           <div className="flex items-center gap-2 mb-5">
                             <CalendarIcon size={14} className="text-accent" />
-                            <span className="font-display font-semibold text-sm text-foreground">Pick your date</span>
+                            <span className="font-display font-semibold text-base text-foreground">Pick your date</span>
                           </div>
                           <Calendar
                             mode="single"
@@ -381,11 +381,11 @@ const BookCallSection = () => {
                           <div className="flex items-center justify-between mb-2">
                             <div className="flex items-center gap-2">
                               <Clock size={14} className="text-accent" />
-                              <span className="font-display font-semibold text-sm text-foreground">Choose a time</span>
+                              <span className="font-display font-semibold text-base text-foreground">Choose a time</span>
                             </div>
                           </div>
                           {selectedDate && (
-                            <p className="font-mono text-[11px] text-muted-foreground mb-3">
+                            <p className="font-mono text-xs text-muted-foreground mb-3">
                               📅 {format(selectedDate, "EEEE, MMMM d, yyyy")}
                               <button onClick={() => setStep("date")} className="ml-2 text-accent hover:underline">change</button>
                             </p>
@@ -484,10 +484,10 @@ const BookCallSection = () => {
                         >
                           <div className="flex items-center gap-2 mb-2">
                             <User size={14} className="text-accent" />
-                            <span className="font-display font-semibold text-sm text-foreground">Your details</span>
+                            <span className="font-display font-semibold text-base text-foreground">Your details</span>
                           </div>
                           {selectedDate && (
-                            <p className="font-mono text-[11px] text-muted-foreground mb-5">
+                            <p className="font-mono text-xs text-muted-foreground mb-5">
                               📅 {format(selectedDate, "EEE, MMM d")} · ⏰ {selectedTime} · 🌍 {TIMEZONES.find(t => t.value === selectedTimezone)?.short}
                               <button onClick={() => setStep("time")} className="ml-2 text-accent hover:underline">change</button>
                             </p>
@@ -528,7 +528,7 @@ const BookCallSection = () => {
                               initial={{ opacity: 0, y: 10 }}
                               animate={{ opacity: 1, y: 0 }}
                               transition={{ delay: 0.4 }}
-                              className="w-full relative overflow-hidden bg-accent text-accent-foreground font-display font-bold text-sm px-8 py-4 rounded-xl inline-flex items-center justify-center gap-3 group transition-all duration-500"
+                              className="w-full relative overflow-hidden bg-accent text-accent-foreground font-display font-bold text-base px-8 py-4 rounded-xl inline-flex items-center justify-center gap-3 group transition-all duration-500"
                               whileHover={{ scale: 1.02, boxShadow: "0 0 40px hsl(var(--accent) / 0.4)" }}
                               whileTap={{ scale: 0.98 }}
                             >
@@ -587,7 +587,7 @@ const BookCallSection = () => {
                           </motion.div>
 
                           <motion.h3
-                            className="font-display font-bold text-2xl text-foreground mb-3"
+                            className="font-display font-bold text-3xl md:text-4xl text-foreground mb-3"
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.3 }}
@@ -599,14 +599,14 @@ const BookCallSection = () => {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.4 }}
                           >
-                            <p className="text-muted-foreground font-body text-sm mb-2">Your call is booked for</p>
+                            <p className="text-muted-foreground font-body text-base mb-2">Your call is booked for</p>
                             <p className="font-display font-bold text-accent text-base">
                               {selectedDate && format(selectedDate, "EEEE, MMMM d, yyyy")}
                             </p>
                             <p className="font-display font-semibold text-accent text-base mb-1">
                               at {selectedTime}
                             </p>
-                            <p className="font-mono text-[11px] text-muted-foreground mb-6">
+                            <p className="font-mono text-xs text-muted-foreground mb-6">
                               🌍 {TIMEZONES.find(t => t.value === selectedTimezone)?.label}
                             </p>
                           </motion.div>
@@ -620,7 +620,7 @@ const BookCallSection = () => {
                           </motion.p>
                           <motion.button
                             onClick={handleReset}
-                            className="font-mono text-[11px] uppercase tracking-wider text-accent hover:text-accent/80 transition-colors px-5 py-2 rounded-full border border-accent/20 hover:border-accent/40"
+                            className="font-mono text-xs uppercase tracking-wider text-accent hover:text-accent/80 transition-colors px-5 py-2 rounded-full border border-accent/20 hover:border-accent/40"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.6 }}

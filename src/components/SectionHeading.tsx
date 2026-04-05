@@ -25,7 +25,7 @@ const SectionHeading = ({ tag, title, description, align = "left", number }: Sec
       {tag && (
         <>
           {number && <motion.div className="w-8 h-px bg-border" initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2, ease }} style={{ transformOrigin: "left" }} />}
-          <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-accent">
+          <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent">
             {tag}
           </span>
         </>
@@ -34,7 +34,7 @@ const SectionHeading = ({ tag, title, description, align = "left", number }: Sec
 
     <div className="overflow-hidden">
       <motion.h2
-        className="font-display text-3xl md:text-5xl lg:text-6xl font-extrabold leading-[0.9] tracking-tight max-w-5xl"
+        className="font-display text-3xl font-extrabold leading-[0.9] tracking-tight max-w-5xl"
         initial={{ opacity: 0, y: 60 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-60px" }}
@@ -46,7 +46,7 @@ const SectionHeading = ({ tag, title, description, align = "left", number }: Sec
 
     {description && (
       <motion.p
-        className={`text-muted-foreground font-body text-base md:text-lg mt-6 max-w-2xl leading-relaxed ${align === "center" ? "mx-auto text-center" : ""}`}
+        className={`text-muted-foreground font-body text-base mt-6 max-w-2xl leading-relaxed ${align === "center" ? "mx-auto text-center" : ""}`}
         initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
         whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
         viewport={{ once: true, margin: "-60px" }}

@@ -67,14 +67,14 @@ const About = () => {
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
                 <div className="flex items-center gap-4 mb-8">
                   <div className="w-8 h-px bg-border" />
-                  <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-accent">About Us</span>
+                  <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent">About Us</span>
                 </div>
-                <h1 className="font-display text-5xl md:text-6xl lg:text-8xl font-extrabold leading-[0.9] tracking-tight mb-8">
+                <h1 className="font-display text-3xl md:text-3xl md:text-4xl font-extrabold leading-[0.9] tracking-tight mb-8">
                   We craft brands<br />
                   that{" "}
                   <span className="text-gradient">endure</span>
                 </h1>
-                <p className="text-muted-foreground font-body text-lg md:text-xl leading-relaxed max-w-xl">
+                <p className="text-muted-foreground font-body text-base leading-relaxed max-w-xl">
                   A remote-first creative and financial agency built on craft, precision, and partnership. 12 years. 1500+ clients. Zero shortcuts.
                 </p>
               </motion.div>
@@ -83,20 +83,20 @@ const About = () => {
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}>
                 <div className="grid grid-cols-2 gap-6">
                   <div>
-                    <span className="font-display text-5xl font-extrabold text-accent">20</span>
-                    <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground mt-2">Team Members</p>
+                    <span className="font-display text-3xl md:text-3xl md:text-4xl font-extrabold text-accent">20</span>
+                    <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground mt-2">Team Members</p>
                   </div>
                   <div>
-                    <span className="font-display text-5xl font-extrabold text-foreground">3</span>
-                    <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground mt-2">Continents</p>
+                    <span className="font-display text-3xl md:text-3xl md:text-4xl font-extrabold text-foreground">3</span>
+                    <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground mt-2">Continents</p>
                   </div>
                   <div>
-                    <span className="font-display text-5xl font-extrabold text-foreground">14+</span>
-                    <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground mt-2">Countries Served</p>
+                    <span className="font-display text-3xl md:text-3xl md:text-4xl font-extrabold text-foreground">14+</span>
+                    <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground mt-2">Countries Served</p>
                   </div>
                   <div>
-                    <span className="font-display text-5xl font-extrabold text-foreground">0</span>
-                    <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground mt-2">Missed Deadlines</p>
+                    <span className="font-display text-3xl md:text-3xl md:text-4xl font-extrabold text-foreground">0</span>
+                    <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground mt-2">Missed Deadlines</p>
                   </div>
                 </div>
               </motion.div>
@@ -111,13 +111,13 @@ const About = () => {
           <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
               <div className="lg:col-span-5">
-                <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent mb-4 block">Our Story</span>
-                <h2 className="font-display text-3xl md:text-5xl font-extrabold tracking-tight leading-[0.9]">
+                <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent mb-4 block">Our Story</span>
+                <h2 className="font-display text-3xl font-extrabold tracking-tight leading-[0.9]">
                   12 years of<br />building things<br />that <span className="text-gradient">last</span>
                 </h2>
               </div>
               <div className="lg:col-span-7 flex flex-col justify-center">
-                <div className="text-muted-foreground font-body text-base md:text-lg leading-relaxed space-y-6">
+                <div className="text-muted-foreground font-body text-base leading-relaxed space-y-6">
                   <p>
                     Founded in 2013, Kirof started as a solo design studio with one belief:
                     <span className="text-foreground font-semibold"> great work changes how people see a business.</span> Today
@@ -169,8 +169,8 @@ const About = () => {
           <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16">
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
               <div>
-                <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent mb-4 block">Values</span>
-                <h2 className="font-display text-3xl md:text-5xl font-extrabold tracking-tight leading-[0.9]">
+                <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent mb-4 block">Values</span>
+                <h2 className="font-display text-3xl font-extrabold tracking-tight leading-[0.9]">
                   What we<br />stand <span className="text-gradient">for</span>
                 </h2>
               </div>
@@ -189,8 +189,8 @@ const About = () => {
                   <div className="w-12 h-12 border border-border/50 flex items-center justify-center mb-6 group-hover:border-accent/40 group-hover:bg-accent/5 transition-all duration-500">
                     <v.icon size={20} className="text-muted-foreground group-hover:text-accent transition-colors duration-500" />
                   </div>
-                  <h3 className="font-display text-lg font-bold mb-3 group-hover:text-accent transition-colors">{v.title}</h3>
-                  <p className="text-muted-foreground font-body text-sm leading-relaxed">{v.desc}</p>
+                  <h3 className="font-display text-base font-bold mb-3 group-hover:text-accent transition-colors">{v.title}</h3>
+                  <p className="text-muted-foreground font-body text-base leading-relaxed">{v.desc}</p>
                 </motion.div>
               ))}
             </div>
@@ -203,8 +203,8 @@ const About = () => {
         <section className="surface py-24 md:py-36 relative">
           <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16">
             <div className="mb-16">
-              <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent mb-4 block">Journey</span>
-              <h2 className="font-display text-3xl md:text-5xl font-extrabold tracking-tight leading-[0.9]">
+              <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent mb-4 block">Journey</span>
+              <h2 className="font-display text-3xl font-extrabold tracking-tight leading-[0.9]">
                 How we got <span className="text-gradient">here</span>
               </h2>
             </div>
@@ -228,26 +228,26 @@ const About = () => {
                     <div className={`flex-1 hidden md:block ${i % 2 === 0 ? "pr-12" : "pl-12"}`}>
                       {i % 2 === 0 && (
                         <div>
-                          <h3 className="font-display text-lg font-bold mb-1">{item.title}</h3>
-                          <p className="text-muted-foreground font-body text-sm leading-relaxed">{item.desc}</p>
+                          <h3 className="font-display text-base font-bold mb-1">{item.title}</h3>
+                          <p className="text-muted-foreground font-body text-base leading-relaxed">{item.desc}</p>
                         </div>
                       )}
                       {i % 2 === 1 && (
                         <div>
-                          <h3 className="font-display text-lg font-bold mb-1">{item.title}</h3>
-                          <p className="text-muted-foreground font-body text-sm leading-relaxed">{item.desc}</p>
+                          <h3 className="font-display text-base font-bold mb-1">{item.title}</h3>
+                          <p className="text-muted-foreground font-body text-base leading-relaxed">{item.desc}</p>
                         </div>
                       )}
                     </div>
                     {/* Center dot */}
                     <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-8 h-8 border border-accent/40 bg-background flex items-center justify-center z-10">
-                      <span className="font-mono text-[8px] text-accent">{item.year.slice(2)}</span>
+                      <span className="font-mono text-xs text-accent">{item.year.slice(2)}</span>
                     </div>
                     <div className={`flex-1 pl-16 md:pl-0 ${i % 2 === 0 ? "md:pl-12" : "md:pr-12"}`}>
                       <span className="font-mono text-xs text-accent">{item.year}</span>
                       <div className="md:hidden mt-1">
-                        <h3 className="font-display text-lg font-bold mb-1">{item.title}</h3>
-                        <p className="text-muted-foreground font-body text-sm leading-relaxed">{item.desc}</p>
+                        <h3 className="font-display text-base font-bold mb-1">{item.title}</h3>
+                        <p className="text-muted-foreground font-body text-base leading-relaxed">{item.desc}</p>
                       </div>
                     </div>
                   </motion.div>
@@ -264,12 +264,12 @@ const About = () => {
           <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16">
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
               <div>
-                <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent mb-4 block">Team</span>
-                <h2 className="font-display text-3xl md:text-5xl font-extrabold tracking-tight leading-[0.9]">
+                <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent mb-4 block">Team</span>
+                <h2 className="font-display text-3xl font-extrabold tracking-tight leading-[0.9]">
                   The minds behind<br />the <span className="text-gradient">magic</span>
                 </h2>
               </div>
-              <p className="text-muted-foreground font-body text-sm max-w-sm leading-relaxed">
+              <p className="text-muted-foreground font-body text-base max-w-sm leading-relaxed">
                 A carefully assembled team of specialists who care deeply about their craft and your success.
               </p>
             </div>
@@ -307,8 +307,8 @@ const About = () => {
           <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16">
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
               <div>
-                <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent mb-4 block">Recognition</span>
-                <h2 className="font-display text-3xl md:text-5xl font-extrabold tracking-tight leading-[0.9]">
+                <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent mb-4 block">Recognition</span>
+                <h2 className="font-display text-3xl font-extrabold tracking-tight leading-[0.9]">
                   Awards &<br /><span className="text-gradient">features</span>
                 </h2>
               </div>
@@ -327,8 +327,8 @@ const About = () => {
                   <div className="flex items-center gap-5">
                     <Trophy size={16} className="text-accent flex-shrink-0" />
                     <div>
-                      <h3 className="font-display text-base md:text-lg font-bold group-hover:text-accent transition-colors">{a.award}</h3>
-                      <p className="text-muted-foreground font-body text-sm mt-0.5">{a.project}</p>
+                      <h3 className="font-display text-base font-bold group-hover:text-accent transition-colors">{a.award}</h3>
+                      <p className="text-muted-foreground font-body text-base mt-0.5">{a.project}</p>
                     </div>
                   </div>
                   <span className="font-mono text-xs text-muted-foreground/50">{a.year}</span>
@@ -345,8 +345,8 @@ const About = () => {
           <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
               <div className="lg:col-span-5">
-                <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent mb-4 block">Culture</span>
-                <h2 className="font-display text-3xl md:text-5xl font-extrabold tracking-tight leading-[0.9] mb-8">
+                <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent mb-4 block">Culture</span>
+                <h2 className="font-display text-3xl font-extrabold tracking-tight leading-[0.9] mb-8">
                   How we<br /><span className="text-gradient">work</span>
                 </h2>
                 <div className="w-24 h-px bg-gradient-to-r from-accent to-transparent" />
@@ -372,7 +372,7 @@ const About = () => {
                       </div>
                       <div>
                         <h3 className="font-display text-base font-bold mb-2">{item.title}</h3>
-                        <p className="text-muted-foreground font-body text-sm leading-relaxed">{item.desc}</p>
+                        <p className="text-muted-foreground font-body text-base leading-relaxed">{item.desc}</p>
                       </div>
                     </motion.div>
                   ))}
@@ -391,15 +391,15 @@ const About = () => {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px]" style={{ background: 'radial-gradient(ellipse 50% 40% at 50% 50%, hsl(var(--accent) / 0.06), transparent 70%)' }} />
           </div>
           <div className="max-w-7xl mx-auto text-center relative z-10 px-6 md:px-8 lg:px-16">
-            <span className="inline-flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.3em] text-accent mb-10">
+            <span className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.3em] text-accent mb-10">
               <span className="w-8 h-px bg-accent" />
               Join 1500+ Happy Clients
               <span className="w-8 h-px bg-accent" />
             </span>
-            <h2 className="font-display text-4xl md:text-6xl lg:text-7xl font-extrabold leading-[0.85] tracking-tight mb-6">
+            <h2 className="font-display text-3xl md:text-4xl font-extrabold leading-[0.85] tracking-tight mb-6">
               Ready to work with<br />a team that <span className="text-gradient">cares</span>?
             </h2>
-            <p className="text-muted-foreground font-body text-lg md:text-xl mb-14 max-w-md mx-auto leading-relaxed">
+            <p className="text-muted-foreground font-body text-base mb-14 max-w-md mx-auto leading-relaxed">
               Let's talk about your next project.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -412,7 +412,7 @@ const About = () => {
               </Link>
               <Link
                 to="/work"
-                className="magnetic-btn border border-foreground/20 text-foreground font-display font-bold px-10 py-5 rounded-full inline-flex items-center gap-3 text-sm hover:border-accent hover:text-accent transition-all duration-500 group"
+                className="magnetic-btn border border-foreground/20 text-foreground font-display font-bold px-10 py-5 rounded-full inline-flex items-center gap-3 text-base hover:border-accent hover:text-accent transition-all duration-500 group"
                 data-cursor-hover
               >
                 See Our Work <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />

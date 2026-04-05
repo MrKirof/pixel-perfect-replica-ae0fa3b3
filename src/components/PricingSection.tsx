@@ -135,25 +135,25 @@ const PricingCard = ({
                   <Icon size={18} className="text-white" />
                 </div>
                 {plan.featured && (
-                  <span className="font-mono text-[9px] uppercase tracking-[0.2em] px-3 py-1 rounded-full bg-accent/10 text-accent border border-accent/20">
+                  <span className="font-mono text-xs uppercase tracking-[0.2em] px-3 py-1 rounded-full bg-accent/10 text-accent border border-accent/20">
                     Popular
                   </span>
                 )}
               </div>
               <h3
-                className={`font-display text-2xl font-extrabold tracking-tight ${
+                className={`font-display text-3xl md:text-4xl font-extrabold tracking-tight ${
                   plan.featured ? "text-accent" : "text-foreground"
                 }`}
               >
                 {plan.name}
               </h3>
-              <p className="text-muted-foreground font-body text-sm mt-1">{plan.tagline}</p>
+              <p className="text-muted-foreground font-body text-base mt-1">{plan.tagline}</p>
             </div>
           </div>
 
           {/* Custom quote badge */}
           <div className="mb-8">
-            <span className="font-display text-2xl md:text-3xl font-extrabold tracking-tight text-foreground">
+            <span className="font-display text-3xl md:text-4xl font-extrabold tracking-tight text-foreground">
               Custom Quote
             </span>
             <p className="font-body text-xs text-muted-foreground mt-2">
@@ -184,7 +184,7 @@ const PricingCard = ({
                 >
                   <Check size={12} strokeWidth={3} />
                 </div>
-                <span className="font-body text-sm text-foreground/80">{f}</span>
+                <span className="font-body text-base text-foreground/80">{f}</span>
               </motion.li>
             ))}
           </ul>
@@ -192,7 +192,7 @@ const PricingCard = ({
           {/* CTA */}
           <Link
             to="/contact"
-            className={`w-full inline-flex items-center justify-center gap-2 font-display font-bold text-sm px-8 py-4 rounded-xl transition-all duration-500 group/btn ${
+            className={`w-full inline-flex items-center justify-center gap-2 font-display font-bold text-base px-8 py-4 rounded-xl transition-all duration-500 group/btn ${
               plan.featured
                 ? "bg-accent text-accent-foreground hover:shadow-[0_8px_40px_hsl(var(--accent)/0.35)] hover:-translate-y-0.5"
                 : "bg-secondary text-foreground hover:bg-accent hover:text-accent-foreground hover:-translate-y-0.5"
@@ -244,10 +244,10 @@ const PricingSection = () => {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-16"
         >
-          <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent mb-4 block">
+          <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent mb-4 block">
             Pricing
           </span>
-          <h2 className="font-display text-4xl md:text-6xl lg:text-7xl font-extrabold leading-[0.9] tracking-tight mb-4">
+          <h2 className="font-display text-3xl md:text-4xl font-extrabold leading-[0.9] tracking-tight mb-4">
             Simple, transparent
             <br />
             <span className="text-gradient">pricing</span>
@@ -269,7 +269,7 @@ const PricingSection = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.6 }}
-          className="text-center text-muted-foreground font-mono text-[10px] uppercase tracking-wider mt-12"
+          className="text-center text-muted-foreground font-mono text-xs uppercase tracking-wider mt-12"
         >
           Every project is unique · Free consultation · NDA available
         </motion.p>
