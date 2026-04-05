@@ -21,6 +21,8 @@ interface PillNavProps {
   pillTextColor?: string;
   onMobileMenuClick?: () => void;
   initialLoadAnimation?: boolean;
+  ctaLabel?: string;
+  ctaHref?: string;
 }
 
 const PillNav = ({
@@ -35,6 +37,8 @@ const PillNav = ({
   pillTextColor,
   onMobileMenuClick,
   initialLoadAnimation = true,
+  ctaLabel,
+  ctaHref,
 }: PillNavProps) => {
   const resolvedPillTextColor = pillTextColor ?? baseColor;
   const location = useLocation();
@@ -106,8 +110,8 @@ const PillNav = ({
         gsap.to(logoEl, { scale: 1, duration: 0.6, ease });
       }
       if (navItems) {
-        gsap.set(navItems, { width: 0, overflow: 'hidden' });
-        gsap.to(navItems, { width: 'auto', duration: 0.6, ease });
+        gsap.set(navItems, { opacity: 0 });
+        gsap.to(navItems, { opacity: 1, duration: 0.6, ease });
       }
     }
 
@@ -216,6 +220,12 @@ const PillNav = ({
           </ul>
         </div>
 
+        {ctaLabel && ctaHref && (
+          <Link to={ctaHref} className="pill-cta desktop-only">
+            {ctaLabel}
+          </Link>
+        )}
+
         <button
           className="mobile-menu-button mobile-only"
           onClick={toggleMobileMenu}
@@ -240,6 +250,17 @@ const PillNav = ({
               </Link>
             </li>
           ))}
+          {ctaLabel && ctaHref && (
+            <li>
+              <Link
+                to={ctaHref}
+                className="mobile-menu-link pill-cta-mobile"
+                onClick={() => { setIsMobileMenuOpen(false); }}
+              >
+                {ctaLabel}
+              </Link>
+            </li>
+          )}
         </ul>
       </div>
     </div>
