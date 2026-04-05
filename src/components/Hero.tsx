@@ -116,7 +116,7 @@ const Hero = () => {
           <MarqueeStrip speed={60}>
             <div className="flex items-center mr-0">
               {clients.map((c, i) => {
-                const sizes = ["text-xs", "text-[12px]", "text-xs", "text-[13px]", "text-xs"];
+                const sizes = ["text-xs", "text-xs", "text-xs", "text-xs", "text-xs"];
                 return (
                   <span key={i} className="flex items-center gap-8">
                     <span className={`font-mono ${sizes[i % sizes.length]} uppercase tracking-[0.25em] text-white/30 whitespace-nowrap transition-all duration-300 hover:text-accent hover:drop-shadow-[0_0_8px_hsl(var(--accent)/0.5)] cursor-default`}>
