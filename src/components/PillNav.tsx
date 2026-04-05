@@ -21,6 +21,8 @@ interface PillNavProps {
   pillTextColor?: string;
   onMobileMenuClick?: () => void;
   initialLoadAnimation?: boolean;
+  ctaLabel?: string;
+  ctaHref?: string;
 }
 
 const PillNav = ({
