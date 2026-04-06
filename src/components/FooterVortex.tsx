@@ -184,14 +184,14 @@ const Meteor = ({ cfg }: { cfg: MeteorCfg }) => {
             roughness={0.7}
             metalness={0.4}
             emissive="#ff5500"
-            emissiveIntensity={0.6}
+            emissiveIntensity={1.2}
             envMapIntensity={0.6}
           />
         </mesh>
         {/* Hot glow */}
-        <mesh ref={glowRef} scale={cfg.scale * 4}>
+        <mesh ref={glowRef} scale={cfg.scale * 6}>
           <sphereGeometry args={[1, 12, 12]} />
-          <meshBasicMaterial color="#ff7722" transparent opacity={0.25} depthWrite={false} />
+          <meshBasicMaterial color="#ff6611" transparent opacity={0.35} depthWrite={false} />
         </mesh>
       </group>
 
