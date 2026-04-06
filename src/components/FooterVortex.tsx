@@ -34,6 +34,22 @@ const MetallicSphere = () => {
 };
 
 /* ── Meteor shooting through the sphere ── */
+const createAsteroidGeometry = (seed: number) => {
+  const geo = new THREE.IcosahedronGeometry(1, 2);
+  const pos = geo.attributes.position;
+  const rng = (n: number) => {
+    let x = Math.sin(seed * 9301 + n * 4973) * 49297;
+    return x - Math.floor(x);
+  };
+  for (let i = 0; i < pos.count; i++) {
+    const v = new THREE.Vector3(pos.getX(i), pos.getY(i), pos.getZ(i));
+    v.multiplyScalar(0.7 + rng(i) * 0.6);
+    pos.setXYZ(i, v.x, v.y, v.z);
+  }
+  geo.computeVertexNormals();
+  return geo;
+};
+
 interface MeteorData {
   startX: number;
   startY: number;
