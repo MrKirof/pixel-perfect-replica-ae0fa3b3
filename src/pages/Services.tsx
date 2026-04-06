@@ -722,7 +722,7 @@ const Services = () => {
               >
                 <p className="text-muted-foreground text-base leading-relaxed mb-8">
                   From concept to launch and beyond, we offer a comprehensive
-                  suite of 11 specialized services to help you build, grow, and
+                  suite of 18 specialized services to help you build, grow, and
                   dominate your market.
                 </p>
                 <div className="flex items-center gap-6">
