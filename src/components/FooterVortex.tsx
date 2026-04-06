@@ -228,25 +228,29 @@ const Meteor = ({ startAngle, yStart, speed, delay, size, seed }: MeteorProps) =
     <>
       {/* Meteor head */}
       <group ref={headRef}>
-        {/* White-hot core */}
-        <mesh scale={size * 0.5}>
-          <sphereGeometry args={[1, 16, 16]} />
-          <meshBasicMaterial color="#fffef0" />
+        {/* Rocky irregular meteor body */}
+        <mesh geometry={rockGeo} scale={size * 0.7}>
+          <meshStandardMaterial
+            color="#aa9988"
+            roughness={0.9}
+            metalness={0.2}
+            emissive="#ff4400"
+            emissiveIntensity={1.5}
+          />
         </mesh>
-        {/* Yellow-hot inner fire */}
-        <mesh scale={size * 1.2}>
-          <sphereGeometry args={[1, 16, 16]} />
-          <meshBasicMaterial color="#ffdd44" transparent opacity={0.7} depthWrite={false} />
+        {/* Hot ablation glow wrapping the rock */}
+        <mesh geometry={rockGeo} scale={size * 1.1}>
+          <meshBasicMaterial color="#ffaa22" transparent opacity={0.5} depthWrite={false} />
         </mesh>
-        {/* Orange corona */}
+        {/* Plasma corona */}
         <mesh scale={size * 2.5}>
           <sphereGeometry args={[1, 16, 16]} />
-          <meshBasicMaterial color="#ff6600" transparent opacity={0.25} depthWrite={false} />
+          <meshBasicMaterial color="#ff5500" transparent opacity={0.2} depthWrite={false} />
         </mesh>
-        {/* Red outer glow */}
+        {/* Outer heat glow */}
         <mesh scale={size * 4.5}>
           <sphereGeometry args={[1, 12, 12]} />
-          <meshBasicMaterial color="#cc2200" transparent opacity={0.08} depthWrite={false} />
+          <meshBasicMaterial color="#cc2200" transparent opacity={0.06} depthWrite={false} />
         </mesh>
       </group>
 
