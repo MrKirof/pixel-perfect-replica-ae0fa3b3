@@ -378,7 +378,8 @@
 .pc-details {
   width: 100%;
   position: absolute;
-  top: 3em;
+  bottom: 0.5em;
+  top: auto;
   display: flex;
   flex-direction: column;
 }
