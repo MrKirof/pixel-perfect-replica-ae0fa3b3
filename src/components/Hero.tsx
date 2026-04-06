@@ -11,7 +11,7 @@ const clients = [
   "Pivvo", "Blumora", "Tethyr", "Solace Co.", "Arxfield",
 ];
 
-const Hero = () => {
+const Hero = ({ onStartProject }: { onStartProject?: () => void }) => {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
