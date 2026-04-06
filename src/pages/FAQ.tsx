@@ -7,7 +7,7 @@ const faqs = [
   {
     category: "Working With Us",
     items: [
-      { q: "How does your remote team work?", a: "We're a 20-person crew spread across 3 continents. Every project gets a dedicated lead, a private Slack channel, and weekly video check-ins. You'll never wonder what's happening — our async workflow means progress happens around the clock." },
+      { q: "How does your remote team work?", a: "We're a 20-person crew spread across 3 continents. Every project gets a dedicated lead, a private Slack channel, and weekly video check-ins. You'll never wonder what's happening. Our async workflow means progress happens around the clock." },
       { q: "What's your typical turnaround time?", a: "A brand identity ships in 1-2 weeks. A full website build takes 3-6 weeks depending on complexity. We lock timelines before kickoff, and in 12 years we've never missed a deadline. Not once." },
       { q: "How do I get started?", a: "Hit the 'Get in Touch' button, tell us what you need in 2-3 sentences. Within 24 hours you'll have a scoped brief, timeline, and transparent quote on your desk. No discovery calls required unless you want one." },
     ],
