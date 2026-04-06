@@ -29,12 +29,6 @@ const team = [
   { name: "Tariful Nafees", role: "Project Manager & Client Relations", handle: "tarifulnafees", bio: "Manages meetings, project coordination, and client communication.", image: tarifulNafeesImg, gradient: "linear-gradient(145deg, #0c4a6e8c 0%, #0ea5e944 100%)", glowColor: "rgba(14, 165, 233, 0.5)" },
 ];
 
-const values = [
-  { icon: Target, title: "Attention to Detail", desc: "We care about the small things that most people overlook. Every pixel, every word, every interaction matters to us." },
-  { icon: Heart, title: "Client-First", desc: "Your success is our success. We treat every project like our own. because our reputation depends on it." },
-  { icon: Rocket, title: "Ship Fast, Ship Right", desc: "Speed without sacrifice. In 12 years, we've never missed a deadline. Not once." },
-  { icon: Globe, title: "Remote-First", desc: "20 people across 3 continents. Async workflows that produce better work than any open-plan office." },
-];
 
 const timeline = [
   { year: "2013", title: "Founded", desc: "Mareful Kirof launches Kirof as a solo brand design studio." },
