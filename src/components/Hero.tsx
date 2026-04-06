@@ -99,7 +99,7 @@ const Hero = ({ onStartProject }: { onStartProject?: () => void }) => {
         </div>
 
         {/* Decorative line */}
-        <div className={`mt-10 md:mt-14 flex items-center gap-4 transition-all duration-700 ${loaded ? "opacity-100" : "opacity-0"}`} style={{ transitionDelay: "0.8s" }}>
+        <div className={`mt-8 md:mt-14 hidden sm:flex items-center gap-4 transition-all duration-700 ${loaded ? "opacity-100" : "opacity-0"}`} style={{ transitionDelay: "0.8s" }}>
           <div className="w-16 h-px bg-accent/40" />
           <span className="font-mono text-xs uppercase tracking-[0.3em] text-white/30">Scroll to explore</span>
         </div>
