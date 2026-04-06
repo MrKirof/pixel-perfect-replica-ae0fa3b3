@@ -16,7 +16,7 @@ const MetallicSphere = () => {
 
   return (
     <Float speed={1.2} rotationIntensity={0.2} floatIntensity={0.6}>
-      <mesh ref={meshRef} scale={1.8}>
+      <mesh ref={meshRef} scale={1.4}>
         <icosahedronGeometry args={[1, 128]} />
         <MeshDistortMaterial
           color="#aabbcc"
@@ -44,7 +44,7 @@ const OrbitParticles = () => {
     const radii = new Float32Array(count);
     const offsets = new Float32Array(count);
     for (let i = 0; i < count; i++) {
-      radii[i] = 2.2 + Math.random() * 2;
+      radii[i] = 1.8 + Math.random() * 1.5;
       speeds[i] = 0.08 + Math.random() * 0.3;
       offsets[i] = Math.random() * Math.PI * 2;
       positions[i * 3] = Math.cos(offsets[i]) * radii[i];
@@ -101,7 +101,7 @@ const OrbitParticles = () => {
 
 /* ── Main ── */
 const FooterVortex = () => (
-  <div className="relative h-[360px] w-full max-w-[380px]">
+  <div className="relative h-[320px] w-full max-w-[340px] overflow-hidden">
     <div
       className="absolute inset-0 rounded-full opacity-35"
       style={{
@@ -109,7 +109,7 @@ const FooterVortex = () => (
         filter: "blur(45px)",
       }}
     />
-    <Canvas camera={{ position: [0, 0.3, 5], fov: 42 }} dpr={[1, 1.5]} gl={{ antialias: true, alpha: true }}>
+    <Canvas camera={{ position: [0, 0.3, 5.5], fov: 38 }} dpr={[1, 1.5]} gl={{ antialias: true, alpha: true }}>
       <ambientLight intensity={0.15} />
       <directionalLight position={[5, 5, 5]} intensity={0.6} />
       <pointLight position={[-4, 3, -2]} intensity={0.4} color="#6644ff" />
