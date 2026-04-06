@@ -4,7 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
-import { lazy, Suspense, useState, useEffect } from "react";
+import { lazy, Suspense, useState, useEffect, useMemo } from "react";
 import NoiseOverlay from "@/components/NoiseOverlay";
 
 import PillNav from "@/components/PillNav";
@@ -42,6 +42,7 @@ const ScrollToTop = () => {
 const AppContent = () => {
   const [bookCallOpen, setBookCallOpen] = useState(false);
   const [startProjectOpen, setStartProjectOpen] = useState(false);
+  const isTouchDevice = useMemo(() => typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0), []);
   return (
     <>
       <ScrollToTop />
@@ -49,9 +50,11 @@ const AppContent = () => {
         <FloatingRocks />
       </Suspense>
       <NoiseOverlay />
-      <Suspense fallback={null}>
-        <SplashCursor DYE_RESOLUTION={512} SIM_RESOLUTION={64} />
-      </Suspense>
+      {!isTouchDevice && (
+        <Suspense fallback={null}>
+          <SplashCursor DYE_RESOLUTION={512} SIM_RESOLUTION={64} />
+        </Suspense>
+      )}
       <PillNav
         logo={null}
         items={[
