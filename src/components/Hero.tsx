@@ -109,9 +109,9 @@ const Hero = ({ onStartProject }: { onStartProject?: () => void }) => {
       {/* Client marquee */}
       <div className={`relative z-10 mt-auto transition-all duration-700 ${loaded ? "opacity-100" : "opacity-0"}`} style={{ transitionDelay: "0.6s" }}>
         <div className="border-t border-white/10" />
-        <div className="flex items-center py-5">
-          <div className="shrink-0 pl-6 pr-8 border-r border-white/10">
-            <span className="font-mono text-xs uppercase tracking-[0.2em] text-white/40 whitespace-nowrap">200+ Brands</span>
+        <div className="flex items-center py-3 sm:py-5">
+          <div className="shrink-0 pl-4 sm:pl-6 pr-4 sm:pr-8 border-r border-white/10">
+            <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.2em] text-white/40 whitespace-nowrap">200+ Brands</span>
           </div>
           <MarqueeStrip speed={60}>
             <div className="flex items-center mr-0">
