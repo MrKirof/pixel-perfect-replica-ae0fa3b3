@@ -1,7 +1,8 @@
 import { useState, useRef } from "react";
 import {
   Sparkles, Layout, Code, BookOpen, Tag, Book, Film, Video,
-  Megaphone, Search, Table, DollarSign, ArrowRight, ChevronDown, Layers, ExternalLink, BarChart3
+  Megaphone, Search, Table, DollarSign, ArrowRight, ChevronDown, Layers, ExternalLink, BarChart3,
+  Share2, PenTool, Camera, Bot, Package
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence, useMotionValue, useTransform, useSpring } from "framer-motion";
