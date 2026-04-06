@@ -47,11 +47,11 @@ interface MeteorCfg {
 }
 
 const meteorConfigs: MeteorCfg[] = Array.from({ length: METEOR_COUNT }, (_, i) => ({
-  angle: (i / METEOR_COUNT) * Math.PI * 2 + i * 0.3,
-  yEntry: (Math.random() - 0.5) * 1.0,
-  speed: 0.4 + Math.random() * 0.3,
-  delay: i * 1.8 + Math.random() * 1,
-  scale: 0.025 + Math.random() * 0.025,
+  angle: (i / METEOR_COUNT) * Math.PI * 2 + i * 0.5,
+  yEntry: (Math.random() - 0.5) * 0.6,
+  speed: 0.25 + Math.random() * 0.15,
+  delay: i * 3 + Math.random() * 1.5,
+  scale: 0.06 + Math.random() * 0.04,
   rotSpeed: 2 + Math.random() * 4,
   seed: i * 137 + 7,
 }));
