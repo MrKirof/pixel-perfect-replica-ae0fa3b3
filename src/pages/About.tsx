@@ -29,7 +29,7 @@ const team = [
 ];
 
 const values = [
-  { icon: Target, title: "Obsessive Craft", desc: "We sweat the details others skip. Every pixel, every word, every interaction is intentional." },
+  { icon: Target, title: "Attention to Detail", desc: "We care about the small things that most people overlook. Every pixel, every word, every interaction matters to us." },
   { icon: Heart, title: "Client-First", desc: "Your success is our success. We treat every project like our own. because our reputation depends on it." },
   { icon: Rocket, title: "Ship Fast, Ship Right", desc: "Speed without sacrifice. In 12 years, we've never missed a deadline. Not once." },
   { icon: Globe, title: "Remote-First", desc: "20 people across 3 continents. Async workflows that produce better work than any open-plan office." },
@@ -72,7 +72,7 @@ const About = () => {
                   <span className="text-gradient">endure</span>
                 </h1>
                 <p className="text-muted-foreground font-body text-base leading-relaxed max-w-xl">
-                  A remote-first creative and financial agency built on craft, precision, and partnership. 12 years. 1500+ clients. Zero shortcuts.
+                  A remote-first creative and financial agency built on craft, precision, and partnership. 12 years. 1500+ clients. No shortcuts.
                 </p>
               </motion.div>
             </div>
@@ -151,13 +151,13 @@ const About = () => {
                   <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent/70 mb-6">Founder & CEO</p>
                   <div className="text-white/60 font-body text-base leading-relaxed space-y-4 mb-8 max-w-xl">
                     <p>
-                      In 2013, Mareful Kirof walked away from a comfortable career to chase an obsession. Building brands that don't just exist, but <span className="text-white font-semibold">demand attention</span>. What started as a one-man studio in a tiny apartment became <span className="text-white font-semibold">MrKirof</span>, a full-service creative powerhouse.
+                      In 2013, Mareful Kirof walked away from a comfortable career to follow a simple goal. Building brands that don't just exist, but <span className="text-white font-semibold">get noticed</span>. What started as a one-man studio in a tiny apartment became <span className="text-white font-semibold">MrKirof</span>, a full-service creative agency.
                     </p>
                     <p>
-                      His philosophy is brutally simple: if it doesn't make the client's jaw drop, it doesn't ship. That relentless standard has attracted <span className="text-white font-semibold">1,500+ clients across 14 countries</span>, built a remote team of 20 specialists spanning 13 disciplines, and delivered <span className="text-white font-semibold">3,000+ projects</span> without missing a single deadline.
+                      His philosophy is pretty straightforward: if it doesn't make the client's say wow, it doesn't ship. That high standard has attracted <span className="text-white font-semibold">1,500+ clients across 14 countries</span>, built a remote team of 20 specialists spanning 13 disciplines, and delivered <span className="text-white font-semibold">3,000+ projects</span> without missing a single deadline.
                     </p>
                     <p>
-                      Mareful doesn't just run MrKirof. He obsesses over every detail, every pixel, every word. Because average was never an option.
+                      Mareful doesn't just run MrKirof. He pays close attention to every detail, every pixel, every word. Average was never good enough.
                     </p>
                   </div>
                   {/* Quick stats */}
@@ -209,7 +209,7 @@ const About = () => {
                   </p>
                   <p>
                     We've worked with over 1500 clients, from bootstrapped founders to established enterprises
-                    across 14 countries. Every project gets the same obsessive attention to detail, whether
+                    across 14 countries. Every project gets the same level of care and attention, whether
                     it's a logo, a full-stack platform, or a financial dashboard.
                   </p>
                   <p>
