@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
-import FooterOrb from "./FooterOrb";
+import { lazy, Suspense } from "react";
+const FooterVortex = lazy(() => import("./FooterVortex"));
 
 const navLinks = [
   { label: "Home", path: "/" },
@@ -21,7 +22,9 @@ const Footer = () => (
     <div className="mx-auto max-w-7xl px-6 py-16 md:px-8 lg:px-16 lg:py-20">
       <div className="grid gap-14 lg:grid-cols-[minmax(320px,0.9fr)_minmax(0,1.1fr)] lg:items-center">
         <div className="flex justify-center lg:justify-start">
-          <FooterOrb />
+          <Suspense fallback={<div className="h-[360px] w-full max-w-[380px]" />}>
+            <FooterVortex />
+          </Suspense>
         </div>
 
         <div className="grid gap-10 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
