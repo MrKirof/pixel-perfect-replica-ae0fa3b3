@@ -1,4 +1,4 @@
-import { ArrowRight, ArrowUpRight, Globe, Users, Award, Trophy, Heart, Target, Rocket, Clock } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Trophy } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import PageTransition from "@/components/PageTransition";
