@@ -13,6 +13,7 @@ import Footer from "@/components/Footer";
 import BookCallSection from "@/components/BookCallSection";
 import StartProjectPopup from "@/components/StartProjectPopup";
 import QuotePopup from "@/components/QuotePopup";
+import ServiceContactPopup from "@/components/ServiceContactPopup";
 
 const FloatingRocks = lazy(() => import("@/components/FloatingRocks"));
 import { Dialog, DialogContent } from "@/components/ui/dialog";
@@ -46,6 +47,8 @@ const AppContent = () => {
   const [startProjectOpen, setStartProjectOpen] = useState(false);
   const [quoteOpen, setQuoteOpen] = useState(false);
   const [quotePlan, setQuotePlan] = useState<{ planName: string; features: string[] } | null>(null);
+  const [serviceContactOpen, setServiceContactOpen] = useState(false);
+  const [serviceContactName, setServiceContactName] = useState<string | null>(null);
   const isTouchDevice = useMemo(() => typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0), []);
 
   useEffect(() => {
@@ -55,11 +58,18 @@ const AppContent = () => {
       setQuotePlan(detail);
       setQuoteOpen(true);
     };
+    const handleServiceContact = (e: Event) => {
+      const detail = (e as CustomEvent).detail;
+      setServiceContactName(detail?.serviceName || null);
+      setServiceContactOpen(true);
+    };
     window.addEventListener('open-start-project', handleStartProject);
     window.addEventListener('open-quote', handleQuote);
+    window.addEventListener('open-service-contact', handleServiceContact);
     return () => {
       window.removeEventListener('open-start-project', handleStartProject);
       window.removeEventListener('open-quote', handleQuote);
+      window.removeEventListener('open-service-contact', handleServiceContact);
     };
   }, []);
   return (
