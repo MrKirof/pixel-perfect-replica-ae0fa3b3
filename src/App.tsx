@@ -29,9 +29,7 @@ const AppContent = () => {
       <NoiseOverlay />
       <SplashCursor />
       <PillNav
-        logo={
-          <span className="font-display font-extrabold text-white text-base tracking-tight">Kirof</span>
-        }
+        logo={null}
         items={[
           { label: "Home", href: "/" },
           { label: "About", href: "/about" },
