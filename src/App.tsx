@@ -44,12 +44,23 @@ const ScrollToTop = () => {
 const AppContent = () => {
   const [bookCallOpen, setBookCallOpen] = useState(false);
   const [startProjectOpen, setStartProjectOpen] = useState(false);
+  const [quoteOpen, setQuoteOpen] = useState(false);
+  const [quotePlan, setQuotePlan] = useState<{ planName: string; features: string[] } | null>(null);
   const isTouchDevice = useMemo(() => typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0), []);
 
   useEffect(() => {
-    const handler = () => setStartProjectOpen(true);
-    window.addEventListener('open-start-project', handler);
-    return () => window.removeEventListener('open-start-project', handler);
+    const handleStartProject = () => setStartProjectOpen(true);
+    const handleQuote = (e: Event) => {
+      const detail = (e as CustomEvent).detail;
+      setQuotePlan(detail);
+      setQuoteOpen(true);
+    };
+    window.addEventListener('open-start-project', handleStartProject);
+    window.addEventListener('open-quote', handleQuote);
+    return () => {
+      window.removeEventListener('open-start-project', handleStartProject);
+      window.removeEventListener('open-quote', handleQuote);
+    };
   }, []);
   return (
     <>
