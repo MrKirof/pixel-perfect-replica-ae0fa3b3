@@ -44,7 +44,7 @@ const OrbitParticles = () => {
     const radii = new Float32Array(count);
     const offsets = new Float32Array(count);
     for (let i = 0; i < count; i++) {
-      radii[i] = 2.2 + Math.random() * 2;
+      radii[i] = 1.8 + Math.random() * 1.5;
       speeds[i] = 0.08 + Math.random() * 0.3;
       offsets[i] = Math.random() * Math.PI * 2;
       positions[i * 3] = Math.cos(offsets[i]) * radii[i];
