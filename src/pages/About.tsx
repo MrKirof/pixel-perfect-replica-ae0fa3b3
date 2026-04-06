@@ -364,50 +364,6 @@ const About = () => {
         </section>
       </FadeIn>
 
-      {/* ── Culture ── */}
-      <FadeIn>
-        <section className="surface py-16 md:py-24 relative">
-          <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
-              <div className="lg:col-span-5">
-                <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent mb-4 block">Culture</span>
-                <h2 className="font-display text-4xl md:text-5xl font-extrabold tracking-tight leading-[0.9] mb-8">
-                  How we<br /><span className="text-gradient">work</span>
-                </h2>
-                <div className="w-24 h-px bg-gradient-to-r from-accent to-transparent" />
-              </div>
-              <div className="lg:col-span-7">
-                <div className="space-y-8">
-                  {[
-                    { icon: Clock, title: "Async-First", desc: "Deep focus time over constant meetings. We communicate asynchronously, which means better thinking and fewer interruptions. Weekly syncs keep everyone aligned." },
-                    { icon: Globe, title: "Remote by Design", desc: "We didn't go remote because of a pandemic. we chose it. The best talent isn't confined to one city. Our team spans 3 continents and 6 time zones." },
-                    { icon: Users, title: "Small Teams, Big Impact", desc: "Every project gets a dedicated pod: a lead, a designer, and a developer. You'll never get lost in a machine. Your work gets our full attention." },
-                    { icon: Award, title: "Continuous Learning", desc: "Monthly skill shares, quarterly workshops, and an annual team retreat. We invest in our people because better people make better work." },
-                  ].map((item, i) => (
-                    <motion.div
-                      key={item.title}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: i * 0.1 }}
-                      className="flex gap-6"
-                    >
-                      <div className="w-10 h-10 border border-border/50 flex items-center justify-center flex-shrink-0 mt-1">
-                        <item.icon size={16} className="text-accent" />
-                      </div>
-                      <div>
-                        <h3 className="font-display text-base font-bold mb-2">{item.title}</h3>
-                        <p className="text-muted-foreground font-body text-base leading-relaxed">{item.desc}</p>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </FadeIn>
-
       {/* ── CTA ── */}
       <FadeIn>
         <section className="surface py-16 md:py-24 relative overflow-hidden">
