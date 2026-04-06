@@ -190,8 +190,12 @@ const PricingCard = ({
           </ul>
 
           {/* CTA */}
-          <Link
-            to="/contact"
+          <button
+            onClick={() => {
+              window.dispatchEvent(new CustomEvent('open-quote', {
+                detail: { planName: plan.name, features: plan.features }
+              }));
+            }}
             className={`w-full inline-flex items-center justify-center gap-2 font-display font-bold text-base px-6 py-2.5 rounded-xl transition-all duration-500 group/btn ${
               plan.featured
                 ? "bg-accent text-accent-foreground hover:shadow-[0_8px_40px_hsl(var(--accent)/0.35)] hover:-translate-y-0.5"
@@ -204,7 +208,7 @@ const PricingCard = ({
               size={14}
               className="group-hover/btn:translate-x-1 transition-transform"
             />
-          </Link>
+          </button>
         </div>
       </motion.div>
     </motion.div>
