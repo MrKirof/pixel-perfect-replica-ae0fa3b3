@@ -50,7 +50,7 @@ const AppContent = () => {
       </Suspense>
       <NoiseOverlay />
       <Suspense fallback={null}>
-        <SplashCursor />
+        <SplashCursor DYE_RESOLUTION={512} SIM_RESOLUTION={64} />
       </Suspense>
       <PillNav
         logo={null}
