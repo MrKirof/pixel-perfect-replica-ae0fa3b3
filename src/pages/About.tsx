@@ -364,6 +364,7 @@ const About = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.06 }}
                   className="team-card-wrapper"
+                  style={{ '--avatar-bottom': (member as any).avatarBottom || '-1px' } as React.CSSProperties}
                 >
                   <ProfileCard
                     avatarUrl={member.image}
