@@ -82,7 +82,7 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
   }, []);
 
   return (
-    <Link to="/services" className="block flex-shrink-0 w-[300px] md:w-[340px] snap-start">
+    <Link to="/services" className="block flex-shrink-0 w-[260px] sm:w-[300px] md:w-[340px] snap-start">
       <motion.div
         ref={cardRef}
         initial={{ opacity: 0, y: 30, rotateY: -5 }}
@@ -101,7 +101,7 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
               <service.icon size={18} className="text-muted-foreground group-hover:text-accent transition-colors duration-500" />
             </div>
           </div>
-          <h3 className="font-display text-3xl md:text-4xl font-extrabold mb-3 group-hover:text-accent transition-colors tracking-tight leading-[1.1]">
+          <h3 className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold mb-3 group-hover:text-accent transition-colors tracking-tight leading-[1.1]">
             {service.title}
           </h3>
           <p className="text-muted-foreground font-body text-base leading-relaxed mb-auto line-clamp-2">
@@ -196,7 +196,7 @@ const ServicesSection = () => {
     <section className="relative py-10" style={{ backgroundColor: '#0a0a0a', color: '#ffffff' }}>
       <AnimatedGrid />
       <div className="mb-12 relative z-10">
-        <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16 flex flex-col items-center text-center gap-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-16 flex flex-col items-center text-center gap-4 sm:gap-6">
           <SectionHeading
             tag="Services"
             title="Eighteen disciplines, one team"
@@ -225,9 +225,9 @@ const ServicesSection = () => {
         {services.map((service, i) => (
           <ServiceCard key={service.title} service={service} index={i} />
         ))}
-        <Link
-          to="/services"
-          className="flex-shrink-0 w-[300px] md:w-[340px] border border-dashed border-border hover:border-accent flex flex-col items-center justify-center gap-4 snap-start transition-colors group"
+          <Link
+            to="/services"
+            className="flex-shrink-0 w-[260px] sm:w-[300px] md:w-[340px] border border-dashed border-border hover:border-accent flex flex-col items-center justify-center gap-4 snap-start transition-colors group"
           data-cursor-hover
         >
           <div className="w-16 h-16 border border-border group-hover:border-accent flex items-center justify-center group-hover:text-accent transition-colors">
@@ -285,8 +285,8 @@ const Index = ({ onStartProject }: { onStartProject?: () => void }) => {
       <section className="relative py-10 overflow-hidden" style={{ backgroundColor: '#ffffff', color: '#000000' }}>
         {/* Ambient glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] pointer-events-none" style={{ background: 'radial-gradient(ellipse 60% 40% at 50% 50%, hsl(var(--accent) / 0.04), transparent 70%)' }} />
-        <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16 relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-0">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-16 relative z-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-0">
             {[
               { value: 12, label: "Years", suffix: "", prefix: "", tagline: "Of dedicated work", icon: Trophy, trend: { direction: "up" as const, text: "+2 YoY" } },
               { value: 1500, label: "Clients", suffix: "+", prefix: "", tagline: "Across 14 countries", icon: Globe, trend: { direction: "up" as const, text: "+34%" } },
@@ -299,13 +299,13 @@ const Index = ({ onStartProject }: { onStartProject?: () => void }) => {
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] }}
-                className="group relative py-8 md:py-10 text-center md:text-left md:pl-10 first:md:pl-0"
+                className="group relative py-6 md:py-10 text-center md:text-left md:pl-10 first:md:pl-0"
               >
                 {i > 0 && <div className="hidden md:block absolute left-0 top-8 bottom-8 w-px" style={{ background: 'linear-gradient(to bottom, transparent, #e0e0e0, transparent)' }} />}
                 {i > 0 && <div className="md:hidden absolute top-0 left-8 right-8 h-px" style={{ background: 'linear-gradient(to right, transparent, #e0e0e0, transparent)' }} />}
                 <div className="relative">
                   <motion.div
-                    className="w-12 h-12 rounded-full flex items-center justify-center mb-5 transition-all duration-500 group-hover:scale-110 bg-accent text-accent-foreground"
+                    className="w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center mb-3 md:mb-5 transition-all duration-500 group-hover:scale-110 bg-accent text-accent-foreground mx-auto md:mx-0"
                     whileHover={{ rotate: [0, -10, 10, 0] }}
                     transition={{ duration: 0.5 }}
                   >
@@ -374,7 +374,7 @@ const Index = ({ onStartProject }: { onStartProject?: () => void }) => {
         <div className="absolute inset-0 pointer-events-none opacity-[0.03]" style={{ backgroundImage: 'linear-gradient(hsl(var(--accent)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--accent)) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
 
         <div className="relative z-10 py-16 md:py-24">
-          <div className="max-w-7xl mx-auto text-center px-6 md:px-8 lg:px-16">
+          <div className="max-w-7xl mx-auto text-center px-4 sm:px-6 md:px-8 lg:px-16">
             {/* Eyebrow */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -395,8 +395,7 @@ const Index = ({ onStartProject }: { onStartProject?: () => void }) => {
 
             {/* Heading */}
             <motion.h2
-              className="font-display font-extrabold mb-8 leading-[0.85] tracking-tight"
-              style={{ fontSize: "2.25rem" }}
+              className="font-display font-extrabold mb-8 leading-[0.85] tracking-tight text-xl sm:text-2xl md:text-[2.25rem]"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

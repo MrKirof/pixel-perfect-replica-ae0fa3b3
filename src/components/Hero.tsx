@@ -20,7 +20,7 @@ const Hero = ({ onStartProject }: { onStartProject?: () => void }) => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex flex-col overflow-hidden">
+    <section className="relative min-h-screen flex flex-col overflow-hidden px-0">
       {/* Star particles */}
       <HeroScene />
 
@@ -44,8 +44,8 @@ const Hero = ({ onStartProject }: { onStartProject?: () => void }) => {
       <AnimatedPlanet />
 
       {/* Content. left-aligned editorial layout */}
-      <div className="relative z-10 flex-1 flex flex-col justify-end pb-[22vh] sm:pb-[18vh] md:pb-[14vh]">
-        <div className="max-w-7xl mx-auto w-full px-6 md:px-8 lg:px-16">
+      <div className="relative z-10 flex-1 flex flex-col justify-center sm:justify-end pb-[12vh] sm:pb-[22vh] md:pb-[14vh]">
+        <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 md:px-8 lg:px-16">
         {/* Radial glow behind content */}
         <div className="absolute bottom-[10vh] left-0 w-[700px] h-[500px] md:w-[1000px] md:h-[600px] pointer-events-none" style={{ background: 'radial-gradient(ellipse 60% 50% at 30% 60%, hsl(var(--accent) / 0.06), transparent 70%)', filter: 'blur(60px)' }} />
 
@@ -60,7 +60,7 @@ const Hero = ({ onStartProject }: { onStartProject?: () => void }) => {
         </div>
 
         {/* Main heading. massive, left-aligned */}
-        <h1 className="font-display font-extrabold text-left leading-[0.9] tracking-tight mb-6 md:mb-8 max-w-4xl text-5xl md:text-6xl">
+        <h1 className="font-display font-extrabold text-left leading-[0.9] tracking-tight mb-6 md:mb-8 max-w-4xl text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
           <span className={`block overflow-hidden`}>
             <span className={`block transition-all duration-700 ease-out text-white ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-full"}`} style={{ transitionDelay: "0.15s" }}>
               <TextScramble text="We craft brands" delay={200} />
@@ -75,15 +75,15 @@ const Hero = ({ onStartProject }: { onStartProject?: () => void }) => {
         </h1>
 
         {/* Subtitle */}
-        <p className={`text-white/70 font-body font-medium text-base leading-relaxed mb-8 max-w-md transition-all duration-700 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`} style={{ transitionDelay: "0.5s" }}>
+        <p className={`text-white/70 font-body font-medium text-sm sm:text-base leading-relaxed mb-6 sm:mb-8 max-w-md transition-all duration-700 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`} style={{ transitionDelay: "0.5s" }}>
           20 specialists. 13 disciplines. 1500+ clients across design, development, and financial operations.
         </p>
 
         {/* CTAs */}
-        <div className={`flex flex-col sm:flex-row items-start gap-3 sm:gap-4 transition-all duration-700 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`} style={{ transitionDelay: "0.65s" }}>
+        <div className={`flex flex-col sm:flex-row items-start gap-3 transition-all duration-700 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`} style={{ transitionDelay: "0.65s" }}>
           <Link
             to="/work"
-            className="magnetic-btn bg-accent text-accent-foreground font-display font-bold text-base px-6 py-2.5 rounded-full inline-flex items-center justify-center gap-3 hover:shadow-[0_0_40px_hsl(var(--accent)/0.3)] group transition-all duration-500 ease-out"
+            className="magnetic-btn bg-accent text-accent-foreground font-display font-bold text-sm sm:text-base px-5 sm:px-6 py-2.5 rounded-full inline-flex items-center justify-center gap-2 sm:gap-3 hover:shadow-[0_0_40px_hsl(var(--accent)/0.3)] group transition-all duration-500 ease-out"
             data-cursor-hover
           >
             Our Work
@@ -91,7 +91,7 @@ const Hero = ({ onStartProject }: { onStartProject?: () => void }) => {
           </Link>
           <button
             onClick={onStartProject}
-            className="magnetic-btn border border-white/20 text-white font-display text-base px-6 py-2.5 rounded-full inline-flex items-center justify-center gap-3 hover:border-accent hover:text-accent transition-all duration-500 ease-out"
+            className="magnetic-btn border border-white/20 text-white font-display text-sm sm:text-base px-5 sm:px-6 py-2.5 rounded-full inline-flex items-center justify-center gap-2 sm:gap-3 hover:border-accent hover:text-accent transition-all duration-500 ease-out"
             data-cursor-hover
           >
             Start a Project
@@ -99,7 +99,7 @@ const Hero = ({ onStartProject }: { onStartProject?: () => void }) => {
         </div>
 
         {/* Decorative line */}
-        <div className={`mt-10 md:mt-14 flex items-center gap-4 transition-all duration-700 ${loaded ? "opacity-100" : "opacity-0"}`} style={{ transitionDelay: "0.8s" }}>
+        <div className={`mt-8 md:mt-14 hidden sm:flex items-center gap-4 transition-all duration-700 ${loaded ? "opacity-100" : "opacity-0"}`} style={{ transitionDelay: "0.8s" }}>
           <div className="w-16 h-px bg-accent/40" />
           <span className="font-mono text-xs uppercase tracking-[0.3em] text-white/30">Scroll to explore</span>
         </div>
@@ -109,9 +109,9 @@ const Hero = ({ onStartProject }: { onStartProject?: () => void }) => {
       {/* Client marquee */}
       <div className={`relative z-10 mt-auto transition-all duration-700 ${loaded ? "opacity-100" : "opacity-0"}`} style={{ transitionDelay: "0.6s" }}>
         <div className="border-t border-white/10" />
-        <div className="flex items-center py-5">
-          <div className="shrink-0 pl-6 pr-8 border-r border-white/10">
-            <span className="font-mono text-xs uppercase tracking-[0.2em] text-white/40 whitespace-nowrap">200+ Brands</span>
+        <div className="flex items-center py-3 sm:py-5">
+          <div className="shrink-0 pl-4 sm:pl-6 pr-4 sm:pr-8 border-r border-white/10">
+            <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.2em] text-white/40 whitespace-nowrap">200+ Brands</span>
           </div>
           <MarqueeStrip speed={60}>
             <div className="flex items-center mr-0">
