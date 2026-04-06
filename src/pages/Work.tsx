@@ -19,7 +19,7 @@ const FadeIn = ({ children, className = "", delay = 0 }: { children: React.React
   </motion.div>
 );
 
-const filters = ["All", "Website", "Branding", "Packaging", "Print", "Social Media"];
+const filters = ["All", "Website", "App Design", "Branding", "Packaging", "Print", "Social Media"];
 
 const projects = [
   {
