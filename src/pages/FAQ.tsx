@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import PageTransition from "@/components/PageTransition";
 import SectionHeading from "@/components/SectionHeading";
+import SEOHead from "@/components/SEOHead";
 
 const faqs = [
   {
@@ -32,6 +33,25 @@ const faqs = [
 
 const FAQ = () => (
   <PageTransition>
+    <SEOHead
+      title="FAQ - Frequently Asked Questions"
+      description="Get answers about working with MrKirof, our services, pricing, payment plans, and project process. We reply within 24 hours."
+      path="/faq"
+      jsonLd={{
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": faqs.flatMap((group) =>
+          group.items.map((item) => ({
+            "@type": "Question",
+            "name": item.q,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": item.a,
+            },
+          }))
+        ),
+      }}
+    />
     <section className="pt-32 pb-20 relative" style={{ backgroundColor: "#0a0a0a", color: "#ffffff" }}>
       {/* Ambient glows */}
       <div className="absolute top-0 left-1/4 w-[600px] h-[400px] pointer-events-none" style={{ background: "radial-gradient(ellipse 50% 50% at 50% 50%, hsl(var(--accent) / 0.06), transparent 70%)", filter: "blur(80px)" }} />

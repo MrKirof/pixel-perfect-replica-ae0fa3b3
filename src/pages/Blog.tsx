@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import PageTransition from "@/components/PageTransition";
 import BackgroundPaths from "@/components/BackgroundPaths";
+import SEOHead from "@/components/SEOHead";
 
 const FadeIn = ({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => (
   <motion.div
@@ -133,6 +134,21 @@ const Blog = () => {
 
   return (
     <PageTransition>
+      <SEOHead
+        title="Blog - Design, Development & Marketing Insights"
+        description="Ideas, guides, and insights on branding, web development, finance, SEO, and digital marketing from the MrKirof team."
+        path="/blog"
+        jsonLd={articles.map((a) => ({
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          "headline": a.title,
+          "author": { "@type": "Person", "name": a.author },
+          "datePublished": a.date,
+          "description": a.excerpt,
+          "image": a.image,
+          "publisher": { "@type": "Organization", "name": "MrKirof" },
+        }))}
+      />
       {/* ── Hero ── */}
       <section className="pt-28 md:pt-36 pb-16 md:pb-20 relative overflow-hidden">
         <BackgroundPaths />

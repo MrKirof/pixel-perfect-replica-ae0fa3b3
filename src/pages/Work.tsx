@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import PageTransition from "@/components/PageTransition";
 import BackgroundPaths from "@/components/BackgroundPaths";
+import SEOHead from "@/components/SEOHead";
 
 const FadeIn = ({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => (
   <motion.div
@@ -137,6 +138,11 @@ const Work = () => {
 
   return (
     <PageTransition>
+      <SEOHead
+        title="Our Work - Portfolio & Case Studies"
+        description="Browse 3000+ projects across website design, branding, packaging, print, and social media. Real work, real impact from MrKirof creative agency."
+        path="/work"
+      />
       {/* ── Hero ── */}
       <section className="pt-28 md:pt-36 pb-16 md:pb-24 relative overflow-hidden">
         <BackgroundPaths />

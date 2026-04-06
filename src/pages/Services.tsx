@@ -10,6 +10,7 @@ import PageTransition from "@/components/PageTransition";
 import BackgroundPaths from "@/components/BackgroundPaths";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import ServiceInfographic from "@/components/ServiceInfographic";
+import SEOHead from "@/components/SEOHead";
 
 const services = [
   {
@@ -676,6 +677,19 @@ const Services = () => {
 
   return (
     <PageTransition>
+      <SEOHead
+        title="Our 18 Services - Design, Development, Marketing & More"
+        description="From brand identity and web development to motion graphics, AI automation, and digital marketing. 18 disciplines, one team. See our full service offering."
+        path="/services"
+        jsonLd={services.map((s, i) => ({
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "name": s.title,
+          "description": s.desc,
+          "provider": { "@type": "Organization", "name": "MrKirof" },
+          "serviceType": s.title,
+        }))}
+      />
       {/* ── Hero ── */}
       <section className="section-padding pt-28 md:pt-36 pb-16 md:pb-24 relative overflow-hidden">
         <BackgroundPaths />

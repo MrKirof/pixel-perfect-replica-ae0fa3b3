@@ -9,6 +9,7 @@ import marefulFounderImg from "@/assets/mareful-kirof-founder.jpg";
 import StatCounter from "@/components/StatCounter";
 import BackgroundPaths from "@/components/BackgroundPaths";
 import ProfileCard from "@/components/ProfileCard";
+import SEOHead from "@/components/SEOHead";
 
 const FadeIn = ({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => (
   <motion.div
@@ -55,7 +56,11 @@ const awards = [
 const About = () => {
   return (
     <PageTransition>
-      {/* ── Hero ── */}
+      <SEOHead
+        title="About Us - Our Team, Story & Values"
+        description="Meet the 20-person remote team behind MrKirof. 12 years of experience, 1500+ clients across 14 countries, and 3000+ projects delivered with zero missed deadlines."
+        path="/about"
+      />
       <section className="pt-28 md:pt-36 pb-16 md:pb-20 relative overflow-hidden">
         <BackgroundPaths />
         <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16 relative z-10">
