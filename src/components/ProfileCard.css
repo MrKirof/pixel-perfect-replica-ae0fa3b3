@@ -85,6 +85,21 @@
   margin: 0 auto;
 }
 
+.team-card-wrapper .pc-details {
+  bottom: 0;
+  top: auto;
+  padding-bottom: 8px;
+}
+
+.team-card-wrapper .pc-details h3 {
+  font-size: min(3svh, 1.6em);
+}
+
+.team-card-wrapper .pc-details p {
+  font-size: 12px;
+  top: -6px;
+}
+
 .pc-card:hover,
 .pc-card.active {
   transition: none;
