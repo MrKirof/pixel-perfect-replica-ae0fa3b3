@@ -7,25 +7,25 @@ const faqs = [
   {
     category: "Working With Us",
     items: [
-      { q: "How does your remote team work?", a: "We're a 20-person crew spread across 3 continents. Every project gets a dedicated lead, a private Slack channel, and weekly video check-ins. You'll never wonder what's happening — our async workflow means progress happens around the clock." },
-      { q: "What's your typical turnaround time?", a: "A brand identity ships in 1–2 weeks. A full website build takes 3–6 weeks depending on complexity. We lock timelines before kickoff, and in 12 years we've never missed a deadline — not once." },
-      { q: "How do I get started?", a: "Hit the 'Get in Touch' button, tell us what you need in 2–3 sentences. Within 24 hours you'll have a scoped brief, timeline, and transparent quote on your desk. No discovery calls required unless you want one." },
+      { q: "How does your remote team work?", a: "We're a 20-person crew spread across 3 continents. Every project gets a dedicated lead, a private Slack channel, and weekly video check-ins. You'll never wonder what's happening. Our async workflow means progress happens around the clock." },
+      { q: "What's your typical turnaround time?", a: "A brand identity ships in 1-2 weeks. A full website build takes 3-6 weeks depending on complexity. We lock timelines before kickoff, and in 12 years we've never missed a deadline. Not once." },
+      { q: "How do I get started?", a: "Hit the 'Get in Touch' button, tell us what you need in 2-3 sentences. Within 24 hours you'll have a scoped brief, timeline, and transparent quote on your desk. No discovery calls required unless you want one." },
     ],
   },
   {
     category: "Services & Scope",
     items: [
-      { q: "Do you work with startups or only established brands?", a: "Both — and everything in between. We've helped 40+ startups launch from scratch and rebranded Fortune-adjacent companies. Whether you're pre-seed or scaling past $10M ARR, we adapt our process to your stage." },
-      { q: "Can I hire you for just one service?", a: "Absolutely. Need a single logo, one motion reel, or a killer Excel dashboard? Done. But most clients start with one service and end up bundling 3–4 because they see the quality difference across disciplines." },
+      { q: "Do you work with startups or only established brands?", a: "Both, and everything in between. We've helped 40+ startups launch from scratch and rebranded Fortune-adjacent companies. Whether you're pre-seed or scaling past $10M ARR, we adapt our process to your stage." },
+      { q: "Can I hire you for just one service?", a: "Absolutely. Need a single logo, one motion reel, or a killer Excel dashboard? Done. But most clients start with one service and end up bundling 3-4 because they see the quality difference across disciplines." },
       { q: "What makes Kirof different?", a: "We're a full-service IT agency that handles everything under one roof: web development, app builds, UI/UX design, branding, motion graphics, and digital strategy. No outsourcing, no freelancer handoffs. Your project stays with our in-house team from start to finish, so every piece works together seamlessly. That's how we've delivered 3000+ projects without a single missed deadline." },
     ],
   },
   {
     category: "Pricing & Payment",
     items: [
-      { q: "How is pricing structured?", a: "We offer both project-based fixed pricing and monthly retainers. Every engagement starts with a transparent quote — no hidden fees, no surprise invoices. You know exactly what you're paying before we write a single line of code." },
+      { q: "How is pricing structured?", a: "We offer both project-based fixed pricing and monthly retainers. Every engagement starts with a transparent quote with no hidden fees, no surprise invoices. You know exactly what you're paying before we write a single line of code." },
       { q: "Do you offer payment plans?", a: "Yes. For larger projects we typically split payments into milestones: 40% upfront, 30% at midpoint, 30% on delivery. For retainers, it's a simple monthly invoice." },
-      { q: "What's your refund policy?", a: "We stand behind our work. If we haven't started production, you get a full refund. Once work begins, we'll work with you until you're satisfied — our 98% client satisfaction rate speaks for itself." },
+      { q: "What's your refund policy?", a: "We stand behind our work. If we haven't started production, you get a full refund. Once work begins, we'll work with you until you're satisfied. Our 98% client satisfaction rate speaks for itself." },
     ],
   },
 ];
@@ -41,7 +41,7 @@ const FAQ = () => (
         <SectionHeading
           tag="FAQ"
           title="Frequently asked questions"
-          description="Can't find what you're looking for? Get in touch — we reply within 24 hours."
+          description="Can't find what you're looking for? Get in touch, we reply within 24 hours."
           align="center"
         />
 
