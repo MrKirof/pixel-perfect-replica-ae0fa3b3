@@ -112,6 +112,11 @@ const AppContent = () => {
           <QuotePopup planName={quotePlan?.planName || null} features={quotePlan?.features || []} />
         </DialogContent>
       </Dialog>
+      <Dialog open={serviceContactOpen} onOpenChange={setServiceContactOpen}>
+        <DialogContent className="max-w-lg w-[95vw] p-0 border-none bg-transparent overflow-y-auto max-h-[90vh] [&>button]:text-white [&>button]:z-50">
+          <ServiceContactPopup serviceName={serviceContactName} />
+        </DialogContent>
+      </Dialog>
       <Suspense fallback={<div className="min-h-screen" />}>
         <Routes>
           <Route path="/" element={<Index onStartProject={() => setStartProjectOpen(true)} />} />
