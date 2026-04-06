@@ -266,6 +266,7 @@ const projects = [
 
 const categoryIcons: Record<string, typeof Globe> = {
   "Website": Globe,
+  "App Design": Smartphone,
   "Branding": Palette,
   "Packaging": Package,
   "Print": BookOpen,
