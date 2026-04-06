@@ -12,7 +12,7 @@ const testimonials = [
   },
   {
     quote: "Our financial dashboards were delivered on time and built exactly to spec. Couldn't be happier.",
-    name: "Priya Mehta",
+    name: "Michael Anderson",
     title: "Head of Finance at Crestfield",
     rating: 5,
   },
