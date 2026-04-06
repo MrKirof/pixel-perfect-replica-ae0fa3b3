@@ -305,7 +305,7 @@ const Index = ({ onStartProject }: { onStartProject?: () => void }) => {
                 {i > 0 && <div className="md:hidden absolute top-0 left-8 right-8 h-px" style={{ background: 'linear-gradient(to right, transparent, #e0e0e0, transparent)' }} />}
                 <div className="relative">
                   <motion.div
-                    className="w-12 h-12 rounded-full flex items-center justify-center mb-5 transition-all duration-500 group-hover:scale-110 bg-accent text-accent-foreground"
+                    className="w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center mb-3 md:mb-5 transition-all duration-500 group-hover:scale-110 bg-accent text-accent-foreground mx-auto md:mx-0"
                     whileHover={{ rotate: [0, -10, 10, 0] }}
                     transition={{ duration: 0.5 }}
                   >
