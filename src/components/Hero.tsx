@@ -12,6 +12,10 @@ const clients = [
 ];
 
 const Hero = ({ onStartProject }: { onStartProject?: () => void }) => {
+  const handleStartProject = () => {
+    if (onStartProject) onStartProject();
+    else window.dispatchEvent(new Event('open-start-project'));
+  };
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
