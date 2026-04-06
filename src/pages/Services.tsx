@@ -543,6 +543,25 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
                       </span>
                       <p className="text-base text-muted-foreground relative z-10">{service.example}</p>
                     </motion.div>
+
+                    {/* Start a Project button */}
+                    <motion.button
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.6, duration: 0.4 }}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        window.dispatchEvent(new CustomEvent('open-start-project'));
+                      }}
+                      className="mt-8 inline-flex items-center gap-2 px-7 py-3 rounded-full font-bold text-sm transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                      style={{
+                        background: `linear-gradient(135deg, hsl(${service.color}), hsl(${service.color} / 0.8))`,
+                        color: '#fff',
+                        boxShadow: `0 4px 20px hsl(${service.color} / 0.3)`,
+                      }}
+                    >
+                      Start a Project <ArrowRight size={15} />
+                    </motion.button>
                   </motion.div>
                 </div>
               </motion.div>
