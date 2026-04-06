@@ -6,7 +6,7 @@ import StarBorder from "@/components/StarBorder";
 const testimonials = [
   {
     quote: "Kirof changed how we think about our brand. They didn't just design a logo, they built us an identity.",
-    name: "Rania Solis",
+    name: "Jessica Thompson",
     title: "Founder at Noxian",
     rating: 5,
   },
