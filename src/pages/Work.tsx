@@ -19,7 +19,7 @@ const FadeIn = ({ children, className = "", delay = 0 }: { children: React.React
   </motion.div>
 );
 
-const filters = ["All", "Website", "Branding", "Packaging", "Print", "Social Media"];
+const filters = ["All", "Website", "App Design", "Branding", "Packaging", "Print", "Social Media"];
 
 const projects = [
   {
@@ -167,6 +167,70 @@ const projects = [
     tags: ["Social Media", "Content", "Digital"],
   },
   {
+    title: "BBQ Tool Set Packaging",
+    category: "Packaging Design",
+    filter: "Packaging",
+    desc: "Premium BBQ tool set product packaging with sleek dark design and professional 3D rendering.",
+    image: "/works/bbq-toolset-packaging.jpg",
+    tags: ["Packaging", "3D Render", "Product"],
+  },
+  {
+    title: "Check-In App Design",
+    category: "App Design",
+    filter: "App Design",
+    desc: "Event management and check-in app with QR scanning, guest lists, and real-time analytics.",
+    image: "/works/checkin-app-design.jpg",
+    tags: ["App Design", "UI/UX", "Events"],
+  },
+  {
+    title: "ZenPath Healthcare App",
+    category: "App Design",
+    filter: "App Design",
+    desc: "Wellness and meditation mobile app with course tracking, AI coaching, and health metrics.",
+    image: "/works/zenpath-healthcare-app.png",
+    tags: ["App Design", "Healthcare", "Wellness"],
+  },
+  {
+    title: "West Branch Coffee Co. Branding",
+    category: "Brand Identity",
+    filter: "Branding",
+    desc: "Rustic artisan branding for West Branch Coffee Co. with hand-drawn illustrations and moose motif.",
+    image: "/works/west-branch-coffee-branding.png",
+    tags: ["Branding", "Logo", "Artisan"],
+  },
+  {
+    title: "Sailing iOS App",
+    category: "App Design",
+    filter: "App Design",
+    desc: "Marine navigation iOS app with GPS tracking, weather data, and elegant purple-magenta UI.",
+    image: "/works/sailing-ios-app.png",
+    tags: ["App Design", "iOS", "Navigation"],
+  },
+  {
+    title: "Zesty Paws 3D Product Render",
+    category: "Packaging Design",
+    filter: "Packaging",
+    desc: "Photorealistic 3D product render for Zesty Paws pet water additive bottles.",
+    image: "/works/zesty-paws-3d-render.jpg",
+    tags: ["3D Render", "Product", "Packaging"],
+  },
+  {
+    title: "RE Call Landing Page",
+    category: "Website Design",
+    filter: "Website",
+    desc: "Professional landing page for RE Call center with digital process flow and testimonials.",
+    image: "/works/recall-landing-page.jpg",
+    tags: ["Web Design", "Landing Page", "SaaS"],
+  },
+  {
+    title: "Next Pace Fitness App",
+    category: "App Design",
+    filter: "App Design",
+    desc: "AI-powered fitness tracking app with workout analysis, progress metrics, and coaching chat.",
+    image: "/works/next-pace-fitness-app.png",
+    tags: ["App Design", "Fitness", "AI"],
+  },
+  {
     title: "SUV Wrap Design",
     category: "Brand Identity",
     filter: "Branding",
@@ -202,6 +266,7 @@ const projects = [
 
 const categoryIcons: Record<string, typeof Globe> = {
   "Website": Globe,
+  "App Design": Smartphone,
   "Branding": Palette,
   "Packaging": Package,
   "Print": BookOpen,
