@@ -21,7 +21,7 @@ const services = [
     popular: true,
   },
   {
-    icon: Layout, title: "UI/UX Design", number: "02", color: "199 89% 48%",
+    icon: Layout, title: "Web & App Design", number: "02", color: "199 89% 48%",
     desc: "Intuitive, conversion-driven interfaces.",
     details: "Research-backed design that turns visitors into customers. We design wireframes, prototypes, and pixel-perfect interfaces optimized for engagement and usability.",
     deliverables: ["User Research", "Wireframes", "UI Design", "Prototyping", "Design System"],
