@@ -244,11 +244,15 @@ const PillNav = ({
           </ul>
         </div>
 
-        {ctaLabel && ctaHref && (
+        {ctaLabel && (onCtaClick ? (
+          <button onClick={onCtaClick} className="pill-cta desktop-only">
+            {ctaLabel}
+          </button>
+        ) : ctaHref ? (
           <Link to={ctaHref} className="pill-cta desktop-only">
             {ctaLabel}
           </Link>
-        )}
+        ) : null)}
 
         <button
           className="mobile-menu-button mobile-only"
