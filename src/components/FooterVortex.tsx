@@ -92,14 +92,38 @@ const Meteor = ({ startAngle, yStart, speed, delay, size }: MeteorProps) => {
       fragmentShader: `
         varying vec2 vUv;
         void main() {
-          float alpha = (1.0 - vUv.x) * 0.9;
-          alpha *= smoothstep(0.0, 0.1, 1.0 - abs(vUv.y - 0.5) * 2.0);
-          vec3 hot = vec3(1.0, 0.95, 0.8);
-          vec3 warm = vec3(1.0, 0.5, 0.1);
-          vec3 cool = vec3(0.8, 0.2, 0.05);
-          vec3 col = mix(hot, warm, vUv.x * 2.0);
-          col = mix(col, cool, max(vUv.x - 0.5, 0.0) * 2.0);
-          gl_FragColor = vec4(col, alpha);
+          float along = vUv.x; // 0 = head, 1 = tail
+          float across = abs(vUv.y - 0.5) * 2.0; // 0 = center, 1 = edge
+          
+          // Core brightness - bright white-hot center that tapers
+          float coreMask = smoothstep(1.0, 0.0, across) * (1.0 - along);
+          float edgeSoft = smoothstep(1.0, 0.3, across);
+          
+          // Fire color gradient: white-hot → yellow → orange → red → dark
+          vec3 whiteHot = vec3(1.0, 1.0, 0.95);
+          vec3 yellow = vec3(1.0, 0.85, 0.3);
+          vec3 orange = vec3(1.0, 0.45, 0.05);
+          vec3 red = vec3(0.7, 0.12, 0.02);
+          vec3 smoke = vec3(0.15, 0.05, 0.02);
+          
+          // Along the trail: hot to cool
+          vec3 col = mix(whiteHot, yellow, smoothstep(0.0, 0.1, along));
+          col = mix(col, orange, smoothstep(0.05, 0.35, along));
+          col = mix(col, red, smoothstep(0.3, 0.7, along));
+          col = mix(col, smoke, smoothstep(0.6, 1.0, along));
+          
+          // Across: edges are cooler/darker
+          col = mix(col, orange * 0.8, across * 0.5);
+          
+          // Flickering turbulence
+          float flicker = 0.85 + 0.15 * sin(along * 40.0 + across * 10.0);
+          
+          // Alpha: bright core, soft edges, fading tail
+          float alpha = coreMask * edgeSoft * flicker;
+          alpha *= smoothstep(1.0, 0.85, along); // fade tail end
+          alpha = clamp(alpha, 0.0, 1.0);
+          
+          gl_FragColor = vec4(col * (1.0 + coreMask * 0.5), alpha);
         }
       `,
     });
