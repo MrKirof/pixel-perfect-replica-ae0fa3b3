@@ -23,6 +23,7 @@ interface PillNavProps {
   initialLoadAnimation?: boolean;
   ctaLabel?: string;
   ctaHref?: string;
+  onCtaClick?: () => void;
 }
 
 const PillNav = ({
