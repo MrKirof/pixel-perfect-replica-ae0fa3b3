@@ -30,7 +30,7 @@ const testimonials = [
   },
   {
     quote: "We tripled our organic traffic in 3 months. The SEO strategy was bulletproof.",
-    name: "Aisha Kone",
+    name: "Emily Parker",
     title: "CMO at Tethyr",
     rating: 5,
   },
