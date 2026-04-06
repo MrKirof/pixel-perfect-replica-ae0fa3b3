@@ -179,7 +179,7 @@ const About = () => {
                     className="magnetic-btn border border-white/20 text-white font-display text-sm px-6 py-2.5 rounded-full inline-flex items-center gap-2 hover:border-accent hover:text-accent transition-all duration-500 group"
                     data-cursor-hover
                   >
-                    Work with Mareful
+                    Work with FarHan
                     <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </motion.div>
