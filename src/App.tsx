@@ -7,11 +7,12 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { lazy, Suspense, useState, useEffect } from "react";
 import NoiseOverlay from "@/components/NoiseOverlay";
 
-import FloatingRocks from "@/components/FloatingRocks";
 import PillNav from "@/components/PillNav";
 import Footer from "@/components/Footer";
 import BookCallSection from "@/components/BookCallSection";
 import StartProjectPopup from "@/components/StartProjectPopup";
+
+const FloatingRocks = lazy(() => import("@/components/FloatingRocks"));
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 // Lazy-loaded routes for code splitting
@@ -44,10 +45,12 @@ const AppContent = () => {
   return (
     <>
       <ScrollToTop />
-      <FloatingRocks />
+      <Suspense fallback={null}>
+        <FloatingRocks />
+      </Suspense>
       <NoiseOverlay />
       <Suspense fallback={null}>
-        <SplashCursor />
+        <SplashCursor DYE_RESOLUTION={512} SIM_RESOLUTION={64} />
       </Suspense>
       <PillNav
         logo={null}
