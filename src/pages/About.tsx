@@ -1,4 +1,4 @@
-import { ArrowRight, ArrowUpRight, Globe, Users, Award, Trophy, Heart, Target, Rocket, Clock } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Trophy } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import PageTransition from "@/components/PageTransition";
@@ -29,15 +29,9 @@ const team = [
   { name: "Tariful Nafees", role: "Project Manager & Client Relations", handle: "tarifulnafees", bio: "Manages meetings, project coordination, and client communication.", image: tarifulNafeesImg, gradient: "linear-gradient(145deg, #0c4a6e8c 0%, #0ea5e944 100%)", glowColor: "rgba(14, 165, 233, 0.5)" },
 ];
 
-const values = [
-  { icon: Target, title: "Attention to Detail", desc: "We care about the small things that most people overlook. Every pixel, every word, every interaction matters to us." },
-  { icon: Heart, title: "Client-First", desc: "Your success is our success. We treat every project like our own. because our reputation depends on it." },
-  { icon: Rocket, title: "Ship Fast, Ship Right", desc: "Speed without sacrifice. In 12 years, we've never missed a deadline. Not once." },
-  { icon: Globe, title: "Remote-First", desc: "20 people across 3 continents. Async workflows that produce better work than any open-plan office." },
-];
 
 const timeline = [
-  { year: "2013", title: "Founded", desc: "Marcus Riley launches Kirof as a solo brand design studio." },
+  { year: "2013", title: "Founded", desc: "Mareful Kirof launches Kirof as a solo brand design studio." },
   { year: "2015", title: "First 50 Clients", desc: "Expanded to web development. Hired the first 3 team members." },
   { year: "2018", title: "18 Services", desc: "Full-service offering complete — from brand to AI automation. Team of 12." },
   { year: "2020", title: "Fully Remote", desc: "Transitioned to remote-first. Hired across 3 continents." },
@@ -194,41 +188,6 @@ const About = () => {
         </section>
       </FadeIn>
 
-      {/* ── Story ── */}
-      <FadeIn>
-        <section className="surface py-16 md:py-24 relative">
-          <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
-              <div className="lg:col-span-5">
-                <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent mb-4 block">Our Story</span>
-                <h2 className="font-display text-4xl md:text-5xl font-extrabold tracking-tight leading-[0.9]">
-                  12 years of<br />building things<br />that <span className="text-gradient">last</span>
-                </h2>
-              </div>
-              <div className="lg:col-span-7 flex flex-col justify-center">
-                <div className="text-muted-foreground font-body text-base leading-relaxed space-y-6">
-                  <p>
-                    Founded in 2013, Kirof started as a solo design studio with one belief:
-                    <span className="text-foreground font-semibold"> great work changes how people see a business.</span> Today
-                    we're a 20-person remote team delivering across 18 disciplines, from brand identity
-                    and web development to AI automation, video production, and editorial design.
-                  </p>
-                  <p>
-                    We've worked with over 1500 clients, from bootstrapped founders to established enterprises
-                    across 14 countries. Every project gets the same level of care and attention, whether
-                    it's a logo, a full-stack platform, or a financial dashboard.
-                  </p>
-                  <p>
-                    We don't do average. We don't do "good enough." We build things that make our clients
-                    say <span className="text-accent italic">"how did we survive without this?"</span>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </FadeIn>
-
       {/* ── Stats ── */}
       <FadeIn>
         <section className="surface py-16 md:py-24 relative overflow-hidden">
@@ -246,41 +205,6 @@ const About = () => {
                   {i > 0 && <div className="md:hidden absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-border to-transparent" />}
                   <StatCounter value={stat.value} suffix={stat.suffix} prefix={stat.prefix} label={stat.label} delay={i * 150} trend={stat.trend} />
                 </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      </FadeIn>
-
-      {/* ── Values ── */}
-      <FadeIn>
-        <section className="surface py-16 md:py-24 relative">
-          <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16">
-            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
-              <div>
-                <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent mb-4 block">Values</span>
-                <h2 className="font-display text-4xl md:text-5xl font-extrabold tracking-tight leading-[0.9]">
-                  What we<br />stand <span className="text-gradient">for</span>
-                </h2>
-              </div>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              {values.map((v, i) => (
-                <motion.div
-                  key={v.title}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className="group border border-border bg-card/30 p-8 hover:border-accent/40 transition-all duration-500 relative overflow-hidden"
-                >
-                  <div className="absolute -right-8 -top-8 w-32 h-32 rounded-full bg-accent/[0.03] blur-2xl" />
-                  <div className="w-12 h-12 border border-border/50 flex items-center justify-center mb-6 group-hover:border-accent/40 group-hover:bg-accent/5 transition-all duration-500">
-                    <v.icon size={20} className="text-muted-foreground group-hover:text-accent transition-colors duration-500" />
-                  </div>
-                  <h3 className="font-display text-base font-bold mb-3 group-hover:text-accent transition-colors">{v.title}</h3>
-                  <p className="text-muted-foreground font-body text-base leading-relaxed">{v.desc}</p>
-                </motion.div>
               ))}
             </div>
           </div>
@@ -429,50 +353,6 @@ const About = () => {
                   <span className="font-mono text-xs text-muted-foreground/50">{a.year}</span>
                 </motion.div>
               ))}
-            </div>
-          </div>
-        </section>
-      </FadeIn>
-
-      {/* ── Culture ── */}
-      <FadeIn>
-        <section className="surface py-16 md:py-24 relative">
-          <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
-              <div className="lg:col-span-5">
-                <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent mb-4 block">Culture</span>
-                <h2 className="font-display text-4xl md:text-5xl font-extrabold tracking-tight leading-[0.9] mb-8">
-                  How we<br /><span className="text-gradient">work</span>
-                </h2>
-                <div className="w-24 h-px bg-gradient-to-r from-accent to-transparent" />
-              </div>
-              <div className="lg:col-span-7">
-                <div className="space-y-8">
-                  {[
-                    { icon: Clock, title: "Async-First", desc: "Deep focus time over constant meetings. We communicate asynchronously, which means better thinking and fewer interruptions. Weekly syncs keep everyone aligned." },
-                    { icon: Globe, title: "Remote by Design", desc: "We didn't go remote because of a pandemic. we chose it. The best talent isn't confined to one city. Our team spans 3 continents and 6 time zones." },
-                    { icon: Users, title: "Small Teams, Big Impact", desc: "Every project gets a dedicated pod: a lead, a designer, and a developer. You'll never get lost in a machine. Your work gets our full attention." },
-                    { icon: Award, title: "Continuous Learning", desc: "Monthly skill shares, quarterly workshops, and an annual team retreat. We invest in our people because better people make better work." },
-                  ].map((item, i) => (
-                    <motion.div
-                      key={item.title}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: i * 0.1 }}
-                      className="flex gap-6"
-                    >
-                      <div className="w-10 h-10 border border-border/50 flex items-center justify-center flex-shrink-0 mt-1">
-                        <item.icon size={16} className="text-accent" />
-                      </div>
-                      <div>
-                        <h3 className="font-display text-base font-bold mb-2">{item.title}</h3>
-                        <p className="text-muted-foreground font-body text-base leading-relaxed">{item.desc}</p>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
             </div>
           </div>
         </section>
