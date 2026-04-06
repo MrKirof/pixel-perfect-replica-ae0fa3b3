@@ -153,15 +153,19 @@ const Meteor = ({ startAngle, yStart, speed, delay, size }: MeteorProps) => {
         const p = i < hist.length ? hist[i] : hist[hist.length - 1];
         const next = i + 1 < hist.length ? hist[i + 1] : p;
         
-        // Direction perpendicular to trail path (facing camera = z-axis)
         const dx = next.x - p.x;
         const dy = next.y - p.y;
         const len = Math.sqrt(dx * dx + dy * dy) || 1;
         const nx = -dy / len;
         const ny = dx / len;
 
+        // Clip trail to sphere boundary
+        const sphereR = 1.35;
+        const ptDist = Math.sqrt(p.x * p.x + p.y * p.y) / sphereR;
+        const ptFade = ptDist > 0.65 ? Math.max(0, 1 - (ptDist - 0.65) / 0.35) : 1;
+
         const taper = 1 - (i / TRAIL_LENGTH);
-        const w = ribbonWidth * taper * fade;
+        const w = ribbonWidth * taper * fade * ptFade;
 
         positions[i * 6] = p.x + nx * w;
         positions[i * 6 + 1] = p.y + ny * w;
