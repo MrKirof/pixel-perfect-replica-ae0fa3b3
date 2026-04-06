@@ -138,6 +138,11 @@ const Work = () => {
 
   return (
     <PageTransition>
+      <SEOHead
+        title="Our Work - Portfolio & Case Studies"
+        description="Browse 3000+ projects across website design, branding, packaging, print, and social media. Real work, real impact from MrKirof creative agency."
+        path="/work"
+      />
       {/* ── Hero ── */}
       <section className="pt-28 md:pt-36 pb-16 md:pb-24 relative overflow-hidden">
         <BackgroundPaths />

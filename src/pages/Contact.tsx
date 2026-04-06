@@ -80,6 +80,11 @@ const Contact = () => {
 
   return (
     <PageTransition>
+      <SEOHead
+        title="Contact Us - Start Your Project Today"
+        description="Tell us about your project. We respond within 24 hours with a scoped brief and transparent quote. Email hello@mrkirof.com or fill out our form."
+        path="/contact"
+      />
       {/* ── Hero ── */}
       <section className="pt-28 md:pt-36 pb-16 md:pb-20 relative overflow-hidden">
         <BackgroundPaths />

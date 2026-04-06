@@ -134,6 +134,21 @@ const Blog = () => {
 
   return (
     <PageTransition>
+      <SEOHead
+        title="Blog - Design, Development & Marketing Insights"
+        description="Ideas, guides, and insights on branding, web development, finance, SEO, and digital marketing from the MrKirof team."
+        path="/blog"
+        jsonLd={articles.map((a) => ({
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          "headline": a.title,
+          "author": { "@type": "Person", "name": a.author },
+          "datePublished": a.date,
+          "description": a.excerpt,
+          "image": a.image,
+          "publisher": { "@type": "Organization", "name": "MrKirof" },
+        }))}
+      />
       {/* ── Hero ── */}
       <section className="pt-28 md:pt-36 pb-16 md:pb-20 relative overflow-hidden">
         <BackgroundPaths />
