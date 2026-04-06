@@ -42,6 +42,7 @@ const ScrollToTop = () => {
 const AppContent = () => {
   const [bookCallOpen, setBookCallOpen] = useState(false);
   const [startProjectOpen, setStartProjectOpen] = useState(false);
+  const isTouchDevice = useMemo(() => typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0), []);
   return (
     <>
       <ScrollToTop />
