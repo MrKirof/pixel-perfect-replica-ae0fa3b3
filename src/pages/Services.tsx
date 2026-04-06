@@ -722,12 +722,12 @@ const Services = () => {
               >
                 <p className="text-muted-foreground text-base leading-relaxed mb-8">
                   From concept to launch and beyond, we offer a comprehensive
-                  suite of 11 specialized services to help you build, grow, and
+                  suite of 18 specialized services to help you build, grow, and
                   dominate your market.
                 </p>
                 <div className="flex items-center gap-6">
                   {[
-                    { val: "11", label: "Services", accent: true },
+                    { val: "18", label: "Services", accent: true },
                     { val: "3000+", label: "Projects", accent: false },
                     { val: "100%", label: "Satisfaction", accent: false },
                   ].map((stat, i) => (
