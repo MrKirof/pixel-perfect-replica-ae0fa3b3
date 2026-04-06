@@ -50,9 +50,11 @@ const AppContent = () => {
         <FloatingRocks />
       </Suspense>
       <NoiseOverlay />
-      <Suspense fallback={null}>
-        <SplashCursor DYE_RESOLUTION={512} SIM_RESOLUTION={64} />
-      </Suspense>
+      {!isTouchDevice && (
+        <Suspense fallback={null}>
+          <SplashCursor DYE_RESOLUTION={512} SIM_RESOLUTION={64} />
+        </Suspense>
+      )}
       <PillNav
         logo={null}
         items={[
