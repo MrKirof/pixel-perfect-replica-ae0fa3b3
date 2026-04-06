@@ -52,8 +52,13 @@ const AppContent = () => {
           <BookCallSection />
         </DialogContent>
       </Dialog>
+      <Dialog open={startProjectOpen} onOpenChange={setStartProjectOpen}>
+        <DialogContent className="max-w-6xl w-[95vw] p-0 border-none bg-transparent overflow-y-auto max-h-[90vh] [&>button]:text-white [&>button]:z-50">
+          <StartProjectPopup />
+        </DialogContent>
+      </Dialog>
       <Routes>
-        <Route path="/" element={<Index />} />
+        <Route path="/" element={<Index startProjectOpen={() => setStartProjectOpen(true)} />} />
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
         <Route path="/work" element={<Work />} />
