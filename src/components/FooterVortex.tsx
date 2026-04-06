@@ -75,7 +75,7 @@ const Meteor = ({ cfg }: { cfg: MeteorCfg }) => {
   const geo = useMemo(() => createRockGeometry(cfg.seed), [cfg.seed]);
 
   // Trail stored positions
-  const TRAIL = 40;
+  const TRAIL = 60;
   const trailPos = useMemo(() => new Float32Array(TRAIL * 3), []);
   const trailSizes = useMemo(() => {
     const s = new Float32Array(TRAIL);
