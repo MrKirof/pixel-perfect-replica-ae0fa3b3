@@ -4,7 +4,7 @@ import {
   Sparkles, Layout, Code, BookOpen, Tag, Book, Film, Video,
   Megaphone, Search, Table, DollarSign, ArrowRight, CheckCircle2,
   Share2, PenTool, Camera, Bot, Package, BarChart3, X,
-  HelpCircle, ArrowLeft, Clock, Zap, Star
+  HelpCircle, ArrowLeft, Clock, Zap, Star, User, Mail, Send
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
