@@ -354,7 +354,7 @@ const About = () => {
                 A carefully assembled team of specialists who care deeply about their craft and your success.
               </p>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-12 md:gap-14">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-16 md:gap-20 max-w-5xl mx-auto">
               {team.map((member, i) => (
                 <motion.div
                   key={member.name}
