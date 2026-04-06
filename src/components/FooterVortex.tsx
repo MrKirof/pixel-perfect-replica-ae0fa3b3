@@ -33,6 +33,25 @@ const MetallicSphere = () => {
   );
 };
 
+/* ── Irregular rocky meteor geometry ── */
+const createMeteorGeo = (seed: number) => {
+  const geo = new THREE.IcosahedronGeometry(1, 2);
+  const pos = geo.attributes.position;
+  for (let i = 0; i < pos.count; i++) {
+    const rng1 = Math.sin(seed * 9301 + i * 4973) * 49297;
+    const rng2 = Math.sin(seed * 7919 + i * 6151) * 39119;
+    const f1 = 0.5 + (rng1 - Math.floor(rng1)) * 0.7;
+    const f2 = 0.8 + (rng2 - Math.floor(rng2)) * 0.4;
+    // Elongate along one axis for teardrop/irregular shape
+    const x = pos.getX(i) * f1 * 1.4;
+    const y = pos.getY(i) * f1 * f2 * 0.7;
+    const z = pos.getZ(i) * f1 * 0.8;
+    pos.setXYZ(i, x, y, z);
+  }
+  geo.computeVertexNormals();
+  return geo;
+};
+
 /* ── Single Meteor with glowing trail ── */
 const TRAIL_LENGTH = 80;
 
@@ -42,12 +61,14 @@ interface MeteorProps {
   speed: number;
   delay: number;
   size: number;
+  seed: number;
 }
 
-const Meteor = ({ startAngle, yStart, speed, delay, size }: MeteorProps) => {
+const Meteor = ({ startAngle, yStart, speed, delay, size, seed }: MeteorProps) => {
   const headRef = useRef<THREE.Group>(null);
   const trailMeshRef = useRef<THREE.Mesh>(null);
   const posHistory = useRef<THREE.Vector3[]>([]);
+  const rockGeo = useMemo(() => createMeteorGeo(seed), [seed]);
 
   // Create trail geometry (tube that follows meteor path)
   const trailGeo = useMemo(() => {
