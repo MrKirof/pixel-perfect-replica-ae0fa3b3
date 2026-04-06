@@ -82,7 +82,7 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
   }, []);
 
   return (
-    <Link to="/services" className="block flex-shrink-0 w-[300px] md:w-[340px] snap-start">
+    <Link to="/services" className="block flex-shrink-0 w-[260px] sm:w-[300px] md:w-[340px] snap-start">
       <motion.div
         ref={cardRef}
         initial={{ opacity: 0, y: 30, rotateY: -5 }}
