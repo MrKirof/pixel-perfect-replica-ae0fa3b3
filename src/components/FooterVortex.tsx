@@ -16,7 +16,7 @@ const MetallicSphere = () => {
 
   return (
     <Float speed={1.2} rotationIntensity={0.2} floatIntensity={0.6}>
-      <mesh ref={meshRef} scale={1.8}>
+      <mesh ref={meshRef} scale={1.4}>
         <icosahedronGeometry args={[1, 128]} />
         <MeshDistortMaterial
           color="#aabbcc"
