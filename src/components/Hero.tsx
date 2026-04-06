@@ -94,7 +94,7 @@ const Hero = () => {
             className="magnetic-btn border border-white/20 text-white font-display text-base px-6 py-2.5 rounded-full inline-flex items-center justify-center gap-3 hover:border-accent hover:text-accent transition-all duration-500 ease-out"
             data-cursor-hover
           >
-            Get in Touch
+            Start a Project
           </Link>
         </div>
 
