@@ -260,7 +260,7 @@ const FooterVortex = () => (
       <spotLight position={[0, 5, 0]} intensity={0.5} angle={0.4} penumbra={1} color="#4488ff" />
 
       <MetallicSphere />
-      <AsteroidBelt />
+      <MeteorShower />
       <OrbitParticles />
 
       <Environment preset="night" />
