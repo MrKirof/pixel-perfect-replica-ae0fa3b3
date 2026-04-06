@@ -110,16 +110,19 @@ const Meteor = ({ startAngle, yStart, speed, delay, size }: MeteorProps) => {
     const cycleDuration = 5.0 / speed;
     const progress = ((t + delay) % cycleDuration) / cycleDuration;
 
-    // Meteor path: diagonal across the sphere face
-    const x = THREE.MathUtils.lerp(1.8, -1.8, progress);
-    const y = THREE.MathUtils.lerp(yStart + 0.8, yStart - 0.8, progress);
-    const z = 1.6 + Math.sin(startAngle) * 0.3; // always in front
+    // Meteor path: diagonal across sphere face, constrained within sphere radius
+    const sphereR = 1.35; // visual sphere radius
+    const x = THREE.MathUtils.lerp(sphereR, -sphereR, progress);
+    const yRange = Math.sqrt(Math.max(0, sphereR * sphereR - x * x)) * 0.6;
+    const y = THREE.MathUtils.lerp(yStart * yRange + yRange * 0.3, yStart * yRange - yRange * 0.3, progress);
+    const z = 1.55 + Math.sin(startAngle) * 0.15; // always in front
 
-    // Fade in/out at edges
-    const fade = progress < 0.1
-      ? progress / 0.1
-      : progress > 0.9
-      ? (1.0 - progress) / 0.1
+    // Fade in/out at edges of sphere
+    const edgeDist = Math.sqrt(x * x + y * y) / sphereR;
+    const fade = edgeDist > 0.7
+      ? Math.max(0, 1 - (edgeDist - 0.7) / 0.3)
+      : progress < 0.05
+      ? progress / 0.05
       : 1.0;
 
     if (headRef.current) {
