@@ -56,10 +56,28 @@ const PillNav = ({
   const logoRef = useRef<HTMLAnchorElement | null>(null);
   const navContainerRef = useRef<HTMLDivElement>(null);
 
+  // Scroll detection
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   // Close mobile menu on route change
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [location.pathname]);
+
+  // Animate nav on route change
+  useEffect(() => {
+    const container = navContainerRef.current;
+    if (container) {
+      gsap.fromTo(container, { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease });
+    }
+  }, [location.pathname, ease]);
 
   useEffect(() => {
     const layout = () => {
