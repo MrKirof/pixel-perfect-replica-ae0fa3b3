@@ -692,7 +692,7 @@ const Services = () => {
                 <div className="w-8 h-px bg-accent/30" />
                 <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent">How We Work</span>
               </div>
-              <h2 className="font-display text-3xl font-extrabold leading-[0.9] tracking-tight">
+              <h2 className="font-display text-4xl md:text-5xl font-extrabold leading-[0.9] tracking-tight">
                 A process<br />built for{" "}
                 <span className="text-gradient">results</span>
               </h2>
