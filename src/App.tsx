@@ -4,8 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
-import { lazy, Suspense, useState } from "react";
-import SplashCursor from "@/components/SplashCursor";
+import { lazy, Suspense, useState, useEffect } from "react";
 import NoiseOverlay from "@/components/NoiseOverlay";
 
 import FloatingRocks from "@/components/FloatingRocks";
@@ -25,17 +24,31 @@ const Contact = lazy(() => import("./pages/Contact.tsx"));
 const FAQ = lazy(() => import("./pages/FAQ.tsx"));
 const NotFound = lazy(() => import("./pages/NotFound.tsx"));
 
+// Lazy load heavy SplashCursor (1000+ line WebGL component)
+const SplashCursor = lazy(() => import("@/components/SplashCursor"));
+
 const queryClient = new QueryClient();
 
-const AppContent = () => {
+// Scroll to top on route change
+const ScrollToTop = () => {
   const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+};
+
+const AppContent = () => {
   const [bookCallOpen, setBookCallOpen] = useState(false);
   const [startProjectOpen, setStartProjectOpen] = useState(false);
   return (
     <>
+      <ScrollToTop />
       <FloatingRocks />
       <NoiseOverlay />
-      <SplashCursor />
+      <Suspense fallback={null}>
+        <SplashCursor />
+      </Suspense>
       <PillNav
         logo={null}
         items={[
