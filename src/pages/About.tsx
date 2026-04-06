@@ -155,10 +155,10 @@ const About = () => {
                   <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent/70 mb-6">Director & COO</p>
                   <div className="text-white/60 font-body text-base leading-relaxed space-y-4 mb-8 max-w-xl">
                     <p>
-                      Built Kirof from the ground up in 2013 as a one-person design studio. Today, he leads a 20-person remote team across 3 continents, overseeing every aspect of the agency's operations and growth.
+                      As Director & COO of Kirof, FarHan Rayyan oversees operations, strategy, and delivery across all departments. He ensures the agency runs with precision and every client gets world-class results.
                     </p>
                     <p>
-                      His obsession with craft and zero-compromise approach to quality has delivered <span className="text-white font-semibold">3,000+ projects</span> without a single missed deadline — a record he takes personally.
+                      His leadership has helped scale Kirof to a 20-person team delivering <span className="text-white font-semibold">3,000+ projects</span> across 14 countries — with zero missed deadlines.
                     </p>
                   </div>
                   {/* Quick stats */}
