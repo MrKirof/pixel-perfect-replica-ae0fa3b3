@@ -285,8 +285,8 @@ const Index = ({ onStartProject }: { onStartProject?: () => void }) => {
       <section className="relative py-10 overflow-hidden" style={{ backgroundColor: '#ffffff', color: '#000000' }}>
         {/* Ambient glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] pointer-events-none" style={{ background: 'radial-gradient(ellipse 60% 40% at 50% 50%, hsl(var(--accent) / 0.04), transparent 70%)' }} />
-        <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16 relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-0">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-16 relative z-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-0">
             {[
               { value: 12, label: "Years", suffix: "", prefix: "", tagline: "Of dedicated work", icon: Trophy, trend: { direction: "up" as const, text: "+2 YoY" } },
               { value: 1500, label: "Clients", suffix: "+", prefix: "", tagline: "Across 14 countries", icon: Globe, trend: { direction: "up" as const, text: "+34%" } },
