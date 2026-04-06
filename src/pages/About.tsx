@@ -36,7 +36,7 @@ const values = [
 const timeline = [
   { year: "2013", title: "Founded", desc: "Marcus Riley launches Kirof as a solo brand design studio." },
   { year: "2015", title: "First 50 Clients", desc: "Expanded to web development. Hired the first 3 team members." },
-  { year: "2018", title: "11 Services", desc: "Full-service offering complete. from brand to finance. Team of 12." },
+  { year: "2018", title: "18 Services", desc: "Full-service offering complete — from brand to AI automation. Team of 12." },
   { year: "2020", title: "Fully Remote", desc: "Transitioned to remote-first. Hired across 3 continents." },
   { year: "2023", title: "3000+ Projects", desc: "Milestone: 3000 projects delivered with zero missed deadlines." },
   { year: "2025", title: "The Future", desc: "Expanding into AI-powered design systems and product strategy." },
@@ -202,8 +202,8 @@ const About = () => {
                   <p>
                     Founded in 2013, Kirof started as a solo design studio with one belief:
                     <span className="text-foreground font-semibold"> great work changes how people see a business.</span> Today
-                    we're a 20-person remote team delivering across 11 disciplines, from brand identity
-                    and web development to financial management and editorial design.
+                    we're a 20-person remote team delivering across 18 disciplines, from brand identity
+                    and web development to AI automation, video production, and editorial design.
                   </p>
                   <p>
                     We've worked with over 1500 clients, from bootstrapped founders to established enterprises

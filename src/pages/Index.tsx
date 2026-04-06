@@ -1,4 +1,4 @@
-import { ArrowRight, ArrowUpRight, Sparkles, Layout, Code, Film, Trophy, Globe, CheckCircle, Star, Megaphone, Video, Palette, BarChart3, PenTool, Camera } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Sparkles, Layout, Code, Film, Trophy, Globe, CheckCircle, Star, Megaphone, Video, PenTool, Camera, BarChart3 } from "lucide-react";
 import AnimatedGrid from "@/components/AnimatedGrid";
 import { Link } from "react-router-dom";
 import { useRef, useEffect, useState, useCallback } from "react";
@@ -58,10 +58,11 @@ const services = [
   { icon: Layout, title: "UI/UX Design", desc: "Conversion-driven interfaces that look stunning and feel effortless.", tags: ["User Research", "Wireframing", "Prototyping"] },
   { icon: Code, title: "Web & App Dev", desc: "Full-stack builds: React SPAs to CMS-powered websites.", tags: ["React", "Next.js", "Mobile Apps"] },
   { icon: Film, title: "Motion Graphics", desc: "Explainers, logo reveals, social reels, and broadcast content.", tags: ["Logo Reveals", "Reels", "Explainers"] },
-  { icon: Video, title: "Explainer Videos", desc: "Animated and live-action explainers that simplify your message.", tags: ["2D Animation", "Whiteboard", "Storytelling"] },
-  { icon: Camera, title: "Video Production", desc: "Every kind of video work — commercials, promos, interviews, and more.", tags: ["Commercials", "Promos", "Interviews"] },
+  { icon: Video, title: "Video Production", desc: "End-to-end video — commercials, promos, interviews, and more.", tags: ["Commercials", "Promos", "Interviews"] },
+  { icon: Camera, title: "Photography", desc: "Professional product shoots, team portraits, and event coverage.", tags: ["Product", "Portraits", "Events"] },
   { icon: Megaphone, title: "Digital Marketing", desc: "Data-driven campaigns across SEO, PPC, social, and email channels.", tags: ["SEO", "PPC", "Social Media"] },
-  { icon: Palette, title: "Graphic Design", desc: "Print and digital visuals — packaging, posters, social assets.", tags: ["Packaging", "Print", "Social"] },
+  { icon: PenTool, title: "Copywriting & Content", desc: "Compelling copy for websites, ads, blogs, and email sequences.", tags: ["Web Copy", "Blogs", "Email"] },
+  { icon: BarChart3, title: "AI & Automation", desc: "Smart chatbots, workflow automation, and AI integrations.", tags: ["Chatbots", "Workflows", "AI"] },
 ];
 
 const ServiceCard = ({ service, index }: { service: typeof services[0]; index: number }) => {
@@ -198,7 +199,7 @@ const ServicesSection = () => {
           <div>
             <SectionHeading
               tag="Services"
-              title="Thirteen disciplines, one team"
+              title="Eighteen disciplines, one team"
               description="From pixel to pipeline — every layer of your brand covered."
             />
           </div>
