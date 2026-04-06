@@ -189,9 +189,14 @@ const Meteor = ({ cfg }: { cfg: MeteorCfg }) => {
           />
         </mesh>
         {/* Hot glow */}
-        <mesh ref={glowRef} scale={cfg.scale * 6}>
-          <sphereGeometry args={[1, 12, 12]} />
-          <meshBasicMaterial color="#ff6611" transparent opacity={0.35} depthWrite={false} />
+        <mesh ref={glowRef} scale={cfg.scale * 8}>
+          <sphereGeometry args={[1, 16, 16]} />
+          <meshBasicMaterial color="#ff5500" transparent opacity={0.5} depthWrite={false} />
+        </mesh>
+        {/* Outer glow halo */}
+        <mesh scale={cfg.scale * 14}>
+          <sphereGeometry args={[1, 16, 16]} />
+          <meshBasicMaterial color="#ff4400" transparent opacity={0.15} depthWrite={false} />
         </mesh>
       </group>
 
