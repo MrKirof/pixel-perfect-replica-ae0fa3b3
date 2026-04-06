@@ -51,7 +51,7 @@ const meteorConfigs: MeteorCfg[] = Array.from({ length: METEOR_COUNT }, (_, i) =
   yEntry: (Math.random() - 0.5) * 0.6,
   speed: 0.25 + Math.random() * 0.15,
   delay: i * 3 + Math.random() * 1.5,
-  scale: 0.06 + Math.random() * 0.04,
+  scale: 0.12 + Math.random() * 0.08,
   rotSpeed: 2 + Math.random() * 4,
   seed: i * 137 + 7,
 }));
