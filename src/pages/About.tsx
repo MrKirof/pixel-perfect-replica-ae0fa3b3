@@ -194,41 +194,6 @@ const About = () => {
         </section>
       </FadeIn>
 
-      {/* ── Story ── */}
-      <FadeIn>
-        <section className="surface py-16 md:py-24 relative">
-          <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
-              <div className="lg:col-span-5">
-                <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent mb-4 block">Our Story</span>
-                <h2 className="font-display text-4xl md:text-5xl font-extrabold tracking-tight leading-[0.9]">
-                  12 years of<br />building things<br />that <span className="text-gradient">last</span>
-                </h2>
-              </div>
-              <div className="lg:col-span-7 flex flex-col justify-center">
-                <div className="text-muted-foreground font-body text-base leading-relaxed space-y-6">
-                  <p>
-                    Founded in 2013, Kirof started as a solo design studio with one belief:
-                    <span className="text-foreground font-semibold"> great work changes how people see a business.</span> Today
-                    we're a 20-person remote team delivering across 18 disciplines, from brand identity
-                    and web development to AI automation, video production, and editorial design.
-                  </p>
-                  <p>
-                    We've worked with over 1500 clients, from bootstrapped founders to established enterprises
-                    across 14 countries. Every project gets the same level of care and attention, whether
-                    it's a logo, a full-stack platform, or a financial dashboard.
-                  </p>
-                  <p>
-                    We don't do average. We don't do "good enough." We build things that make our clients
-                    say <span className="text-accent italic">"how did we survive without this?"</span>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </FadeIn>
-
       {/* ── Stats ── */}
       <FadeIn>
         <section className="surface py-16 md:py-24 relative overflow-hidden">
