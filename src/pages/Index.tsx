@@ -282,7 +282,7 @@ const Index = ({ onStartProject }: { onStartProject?: () => void }) => {
         <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-0">
             {[
-              { value: 12, label: "Years", suffix: "", prefix: "", tagline: "Of obsessive craft", icon: Trophy, trend: { direction: "up" as const, text: "+2 YoY" } },
+              { value: 12, label: "Years", suffix: "", prefix: "", tagline: "Of dedicated work", icon: Trophy, trend: { direction: "up" as const, text: "+2 YoY" } },
               { value: 1500, label: "Clients", suffix: "+", prefix: "", tagline: "Across 14 countries", icon: Globe, trend: { direction: "up" as const, text: "+34%" } },
               { value: 3000, label: "Projects", suffix: "+", prefix: "", tagline: "Zero missed deadlines", icon: CheckCircle, trend: { direction: "up" as const, text: "+28%" } },
               { value: 500, label: "5-Star Reviews", suffix: "+", prefix: "", tagline: "Client satisfaction proof", icon: Star, trend: { direction: "up" as const, text: "+52%" } },

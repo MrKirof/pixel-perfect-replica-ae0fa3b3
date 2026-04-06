@@ -24,7 +24,7 @@ const services = [
   {
     icon: Layout, title: "Web & App Design", number: "02",
     desc: "Intuitive, conversion-driven interfaces that look stunning and feel effortless.",
-    longDesc: "We combine user psychology with aesthetic precision. Every screen is prototyped, tested, and iterated until the experience is seamless.",
+    longDesc: "We combine user psychology with aesthetic precision. Every screen is prototyped, tested, and iterated until the experience feels natural.",
     process: ["User Research & Personas", "Information Architecture", "High-Fidelity Design", "Usability Testing & Iteration"],
     deliverables: ["Wireframes", "UI Kit", "Prototypes", "Design System", "Handoff Files"],
     example: "Blumora. Redesigned their app, improving user retention by 42% in 3 months.",
@@ -32,7 +32,7 @@ const services = [
   },
   {
     icon: Code, title: "Web & App Dev", number: "03",
-    desc: "Full-stack builds. React SPAs to CMS-powered websites. Clean code, blazing performance.",
+    desc: "Full-stack builds. React SPAs to CMS-powered websites. Clean code, fast performance.",
     longDesc: "We engineer products that scale. Our stack is modern, our code is maintainable, and our architecture decisions are made for the long term.",
     process: ["Architecture & Planning", "Frontend Development", "Backend & API Integration", "QA, Testing & Launch"],
     deliverables: ["Source Code", "Documentation", "CI/CD Pipeline", "Hosting Setup", "Training"],
@@ -60,7 +60,7 @@ const services = [
   {
     icon: Book, title: "Magazine & Book", number: "06",
     desc: "Beautiful layouts for publications, e-books, and long-form editorial projects.",
-    longDesc: "We bring stories to life through masterful editorial design with visually rich reading experiences.",
+    longDesc: "We bring stories to life through thoughtful editorial design that makes content easy and enjoyable to read.",
     process: ["Grid System & Structure", "Typography & Style Selection", "Layout Execution & Proofing", "Pre-press & Production"],
     deliverables: ["Print Layouts", "Digital Editions", "Cover Design", "Template System"],
     example: "Veltro. Quarterly magazine design spanning 60 pages per issue.",
@@ -78,7 +78,7 @@ const services = [
   {
     icon: Megaphone, title: "Product Marketing", number: "08",
     desc: "Strategy + execution: campaigns, creatives, and funnels that drive real growth.",
-    longDesc: "We don't just run ads, we build growth engines backed by data.",
+    longDesc: "We don't just run ads, we build systems that actually drive results using real data.",
     process: ["Market & Competitor Research", "Campaign Strategy & Planning", "Creative Production & A/B Testing", "Performance Tracking & Optimization"],
     deliverables: ["Campaign Strategy", "Ad Creatives", "Landing Pages", "Analytics Dashboard"],
     example: "Veltro. Growth campaign that increased qualified leads by 180%.",
@@ -105,7 +105,7 @@ const services = [
   {
     icon: DollarSign, title: "Accounts Management", number: "11",
     desc: "Income/expense tracking, invoicing, ledger management, and financial reporting.",
-    longDesc: "We keep your numbers clean, invoices on time, and financial picture crystal clear.",
+    longDesc: "We keep your numbers clean, invoices on time, and financial picture easy to understand.",
     process: ["System Setup & Configuration", "Data Migration & Cleanup", "Reporting Templates & Automation", "Ongoing Management & Support"],
     deliverables: ["Financial Reports", "Invoice Templates", "Ledger Management", "Tax-Ready Docs"],
     example: "Arxfield. Managed accounts for 3 years, saving $50K.",
@@ -114,7 +114,7 @@ const services = [
   {
     icon: Video, title: "Video Production", number: "12",
     desc: "End-to-end video production, from concept and scripting to shooting, editing, and final delivery.",
-    longDesc: "We produce cinematic brand videos, product demos, testimonials, and social content that captivate audiences and drive engagement.",
+    longDesc: "We produce cinematic brand videos, product demos, testimonials, and social content that connect with your audience and keep them watching.",
     process: ["Creative Brief & Pre-production", "Scripting & Storyboarding", "Filming & Direction", "Post-production & Color Grading"],
     deliverables: ["Raw Footage", "Edited Videos", "Social Cuts", "Thumbnail Designs", "Subtitles & Captions"],
     example: "Zenith Labs. Brand film that boosted conversions by 65% on landing pages.",
@@ -123,7 +123,7 @@ const services = [
   {
     icon: BarChart3, title: "Digital Marketing", number: "13",
     desc: "Data-driven digital marketing strategies across paid ads, social media, email, and content.",
-    longDesc: "We build full-funnel digital marketing ecosystems, from awareness campaigns to retention strategies, all backed by analytics and continuous optimization.",
+    longDesc: "We build digital marketing systems that cover everything from getting attention to keeping customers, all backed by analytics and continuous optimization.",
     process: ["Audience Research & Segmentation", "Channel Strategy & Budget Planning", "Campaign Execution & A/B Testing", "Analytics, Reporting & Optimization"],
     deliverables: ["Marketing Strategy Doc", "Ad Campaigns", "Email Sequences", "Social Media Calendar", "Performance Reports"],
     example: "Orbitra. Multi-channel campaign that delivered 320% ROI in 90 days.",
@@ -159,7 +159,7 @@ const services = [
   {
     icon: Bot, title: "AI & Automation", number: "17",
     desc: "Smart chatbots, workflow automation, and AI integrations that save time and scale operations.",
-    longDesc: "We leverage cutting-edge AI to automate repetitive tasks, build intelligent chatbots, and create custom AI-powered workflows that transform your business efficiency.",
+    longDesc: "We use the latest AI tools to automate repetitive tasks, build intelligent chatbots, and create custom AI-powered workflows that transform your business efficiency.",
     process: ["Workflow Audit & Opportunity Mapping", "AI Tool Selection & Architecture", "Development & Integration", "Testing, Training & Deployment"],
     deliverables: ["Custom Chatbots", "Automated Workflows", "AI Integrations", "Documentation", "Training Sessions"],
     example: "Stratos. AI chatbot handling 70% of customer queries, reducing support costs by 45%.",
@@ -167,7 +167,7 @@ const services = [
   },
   {
     icon: Package, title: "Packaging Design", number: "18",
-    desc: "Eye-catching product packaging, labels, and unboxing experiences that make your brand unforgettable.",
+    desc: "Standout product packaging, labels, and unboxing experiences that make your brand unforgettable.",
     longDesc: "We design packaging that sells on the shelf and delights at unboxing, combining structural innovation with stunning visual design.",
     process: ["Research & Concept Development", "Structural & Visual Design", "Prototyping & Material Selection", "Print Production & QA"],
     deliverables: ["Packaging Mockups", "Dieline Templates", "Print-Ready Files", "Material Specs", "Unboxing Guide"],
@@ -422,7 +422,7 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
             </div>
           </button>
 
-          {/* ── Expanded deep-dive with staggered animations ── */}
+          {/* ── Expanded closer look with staggered animations ── */}
           <AnimatePresence>
             {expanded && (
               <motion.div

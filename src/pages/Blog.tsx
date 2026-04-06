@@ -93,7 +93,7 @@ const articles = [
     tag: "Development",
     date: "September 12, 2024",
     read: "12 min",
-    excerpt: "A technical deep-dive into the Starkline project. React, WebSockets, and the architecture decisions that made it scale.",
+    excerpt: "A technical closer look into the Starkline project. React, WebSockets, and the architecture decisions that made it scale.",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop&hue=180",
     featured: false,
   },

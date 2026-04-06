@@ -22,7 +22,7 @@ const plans = [
   },
   {
     name: "Professional",
-    tagline: "Full creative & marketing powerhouse",
+    tagline: "Full creative & marketing team",
     icon: Crown,
     features: [
       "Everything in Starter",
