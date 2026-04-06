@@ -33,7 +33,7 @@ const MetallicSphere = () => {
   );
 };
 
-/* ── Realistic Asteroid ── */
+/* ── Meteor shooting through the sphere ── */
 const createAsteroidGeometry = (seed: number) => {
   const geo = new THREE.IcosahedronGeometry(1, 2);
   const pos = geo.attributes.position;
@@ -43,74 +43,151 @@ const createAsteroidGeometry = (seed: number) => {
   };
   for (let i = 0; i < pos.count; i++) {
     const v = new THREE.Vector3(pos.getX(i), pos.getY(i), pos.getZ(i));
-    const noise = 0.7 + rng(i) * 0.6;
-    v.multiplyScalar(noise);
+    v.multiplyScalar(0.7 + rng(i) * 0.6);
     pos.setXYZ(i, v.x, v.y, v.z);
   }
   geo.computeVertexNormals();
   return geo;
 };
 
-interface AsteroidData {
-  radius: number;
+interface MeteorData {
+  startX: number;
+  startY: number;
+  startZ: number;
+  endX: number;
+  endY: number;
+  endZ: number;
   speed: number;
-  offset: number;
-  tiltX: number;
-  tiltZ: number;
+  delay: number;
   scale: number;
   rotSpeed: number;
   seed: number;
-  yOffset: number;
 }
 
-const ASTEROID_COUNT = 8;
+const METEOR_COUNT = 5;
 
-const asteroidConfigs: AsteroidData[] = Array.from({ length: ASTEROID_COUNT }, (_, i) => ({
-  radius: 2.2 + Math.random() * 1.3,
-  speed: 0.15 + Math.random() * 0.25,
-  offset: (i / ASTEROID_COUNT) * Math.PI * 2 + Math.random() * 0.5,
-  tiltX: (Math.random() - 0.5) * 0.6,
-  tiltZ: (Math.random() - 0.5) * 0.4,
-  scale: 0.06 + Math.random() * 0.1,
-  rotSpeed: 0.5 + Math.random() * 2,
-  seed: i * 137 + 42,
-  yOffset: (Math.random() - 0.5) * 0.8,
-}));
+const meteorConfigs: MeteorData[] = Array.from({ length: METEOR_COUNT }, (_, i) => {
+  // Start from random corner/edge, pass through center, exit opposite side
+  const angle = (i / METEOR_COUNT) * Math.PI * 2 + Math.random() * 0.8;
+  const elevation = (Math.random() - 0.5) * 1.5;
+  const dist = 5;
+  return {
+    startX: Math.cos(angle) * dist,
+    startY: elevation + 2,
+    startZ: Math.sin(angle) * dist * 0.5 - 1,
+    endX: -Math.cos(angle) * dist,
+    endY: -elevation - 2,
+    endZ: -Math.sin(angle) * dist * 0.5 + 1,
+    speed: 0.08 + Math.random() * 0.06,
+    delay: i * 2.5 + Math.random() * 1.5,
+    scale: 0.05 + Math.random() * 0.06,
+    rotSpeed: 1 + Math.random() * 3,
+    seed: i * 137 + 42,
+  };
+});
 
-const Asteroid = ({ data }: { data: AsteroidData }) => {
-  const ref = useRef<THREE.Mesh>(null);
+const Meteor = ({ data }: { data: MeteorData }) => {
+  const groupRef = useRef<THREE.Group>(null);
+  const trailRef = useRef<THREE.Points>(null);
   const geo = useMemo(() => createAsteroidGeometry(data.seed), [data.seed]);
 
+  const trailCount = 30;
+  const trailPositions = useMemo(() => new Float32Array(trailCount * 3), []);
+  const trailOpacities = useMemo(() => new Float32Array(trailCount), []);
+
+  const trailTexture = useMemo(() => {
+    const c = document.createElement("canvas");
+    c.width = 32; c.height = 32;
+    const ctx = c.getContext("2d")!;
+    const g = ctx.createRadialGradient(16, 16, 0, 16, 16, 16);
+    g.addColorStop(0, "rgba(255,255,255,1)");
+    g.addColorStop(0.3, "rgba(255,200,100,0.6)");
+    g.addColorStop(1, "rgba(255,100,50,0)");
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, 32, 32);
+    return new THREE.CanvasTexture(c);
+  }, []);
+
   useFrame(({ clock }) => {
-    if (!ref.current) return;
+    if (!groupRef.current) return;
     const t = clock.getElapsedTime();
-    const angle = data.offset + t * data.speed;
 
-    ref.current.position.x = Math.cos(angle) * data.radius;
-    ref.current.position.z = Math.sin(angle) * data.radius;
-    ref.current.position.y = data.yOffset + Math.sin(t * 0.5 + data.offset) * 0.2;
+    // Loop cycle
+    const cycle = data.speed;
+    const totalDuration = 1 / cycle;
+    const progress = ((t + data.delay) % totalDuration) / totalDuration;
 
-    ref.current.rotation.x = t * data.rotSpeed * 0.7;
-    ref.current.rotation.y = t * data.rotSpeed;
-    ref.current.rotation.z = t * data.rotSpeed * 0.4;
+    // Ease: slow at edges, fast through center
+    const eased = progress;
+
+    const x = THREE.MathUtils.lerp(data.startX, data.endX, eased);
+    const y = THREE.MathUtils.lerp(data.startY, data.endY, eased);
+    const z = THREE.MathUtils.lerp(data.startZ, data.endZ, eased);
+
+    groupRef.current.position.set(x, y, z);
+    groupRef.current.rotation.x = t * data.rotSpeed * 0.7;
+    groupRef.current.rotation.y = t * data.rotSpeed;
+
+    // Update trail
+    if (trailRef.current) {
+      const pos = trailRef.current.geometry.attributes.position.array as Float32Array;
+      // Shift trail positions back
+      for (let i = trailCount - 1; i > 0; i--) {
+        pos[i * 3] = pos[(i - 1) * 3];
+        pos[i * 3 + 1] = pos[(i - 1) * 3 + 1];
+        pos[i * 3 + 2] = pos[(i - 1) * 3 + 2];
+      }
+      pos[0] = x;
+      pos[1] = y;
+      pos[2] = z;
+      trailRef.current.geometry.attributes.position.needsUpdate = true;
+    }
   });
 
   return (
-    <mesh ref={ref} geometry={geo} scale={data.scale}>
-      <meshStandardMaterial
-        color="#888888"
-        roughness={0.85}
-        metalness={0.2}
-        envMapIntensity={0.8}
-      />
-    </mesh>
+    <>
+      <group ref={groupRef}>
+        <mesh geometry={geo} scale={data.scale}>
+          <meshStandardMaterial
+            color="#aaaaaa"
+            roughness={0.8}
+            metalness={0.3}
+            emissive="#ff6633"
+            emissiveIntensity={0.3}
+            envMapIntensity={0.8}
+          />
+        </mesh>
+        {/* Glow around meteor */}
+        <mesh scale={data.scale * 3}>
+          <sphereGeometry args={[1, 16, 16]} />
+          <meshBasicMaterial color="#ff8844" transparent opacity={0.15} depthWrite={false} />
+        </mesh>
+      </group>
+
+      {/* Trail */}
+      <points ref={trailRef}>
+        <bufferGeometry>
+          <bufferAttribute attach="attributes-position" array={trailPositions} count={trailCount} itemSize={3} />
+        </bufferGeometry>
+        <pointsMaterial
+          size={0.06}
+          map={trailTexture}
+          color="#ff9944"
+          transparent
+          opacity={0.6}
+          depthWrite={false}
+          blending={THREE.AdditiveBlending}
+          sizeAttenuation
+        />
+      </points>
+    </>
   );
 };
 
-const AsteroidBelt = () => (
-  <group rotation={[0.3, 0, 0.15]}>
-    {asteroidConfigs.map((data, i) => (
-      <Asteroid key={i} data={data} />
+const MeteorShower = () => (
+  <group>
+    {meteorConfigs.map((data, i) => (
+      <Meteor key={i} data={data} />
     ))}
   </group>
 );
@@ -199,7 +276,7 @@ const FooterVortex = () => (
       <spotLight position={[0, 5, 0]} intensity={0.5} angle={0.4} penumbra={1} color="#4488ff" />
 
       <MetallicSphere />
-      <AsteroidBelt />
+      <MeteorShower />
       <OrbitParticles />
 
       <Environment preset="night" />
