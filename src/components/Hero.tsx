@@ -83,7 +83,7 @@ const Hero = ({ onStartProject }: { onStartProject?: () => void }) => {
         <div className={`flex flex-col sm:flex-row items-start gap-3 transition-all duration-700 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`} style={{ transitionDelay: "0.65s" }}>
           <Link
             to="/work"
-            className="magnetic-btn bg-accent text-accent-foreground font-display font-bold text-base px-6 py-2.5 rounded-full inline-flex items-center justify-center gap-3 hover:shadow-[0_0_40px_hsl(var(--accent)/0.3)] group transition-all duration-500 ease-out"
+            className="magnetic-btn bg-accent text-accent-foreground font-display font-bold text-sm sm:text-base px-5 sm:px-6 py-2.5 rounded-full inline-flex items-center justify-center gap-2 sm:gap-3 hover:shadow-[0_0_40px_hsl(var(--accent)/0.3)] group transition-all duration-500 ease-out"
             data-cursor-hover
           >
             Our Work
