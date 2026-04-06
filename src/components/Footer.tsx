@@ -21,38 +21,7 @@ const Footer = () => (
     <div className="mx-auto max-w-7xl px-6 py-16 md:px-8 lg:px-16 lg:py-20">
       <div className="grid gap-14 lg:grid-cols-[minmax(320px,0.9fr)_minmax(0,1.1fr)] lg:items-center">
         <div className="flex justify-center lg:justify-start">
-          <div className="relative flex h-[360px] w-full max-w-[340px] items-center justify-center">
-            <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-background via-card to-muted opacity-80 blur-2xl" />
-
-            <div className="relative h-[320px] w-[220px] rotate-[18deg]">
-              <div className="absolute left-1/2 top-0 h-[110px] w-[72px] -translate-x-1/2 rounded-[999px] bg-foreground shadow-2xl" />
-              <div className="absolute left-1/2 top-[210px] h-[110px] w-[72px] -translate-x-1/2 rounded-[999px] bg-foreground shadow-2xl" />
-              <div className="absolute left-1/2 top-[86px] h-7 w-24 -translate-x-1/2 rounded-full bg-foreground/90" />
-              <div className="absolute left-1/2 top-[208px] h-7 w-24 -translate-x-1/2 rounded-full bg-foreground/90" />
-
-              <div className="absolute left-1/2 top-1/2 h-[188px] w-[188px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-background via-card to-muted p-3 shadow-2xl ring-1 ring-border/70">
-                <div className="relative h-full w-full rounded-full bg-foreground shadow-inner shadow-background/10">
-                  <div className="absolute inset-[14px] rounded-full border border-border/30" />
-                  <div className="absolute inset-[22px] rounded-full bg-gradient-to-b from-foreground via-foreground to-secondary/80" />
-                  <div className="absolute left-1/2 top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-background shadow-sm" />
-                  <div className="absolute left-1/2 top-7 h-4 w-[1px] -translate-x-1/2 rounded-full bg-background/70" />
-
-                  {watchMarkers.map((marker) => (
-                    <span
-                      key={marker.angle}
-                      className={`absolute left-1/2 top-1/2 origin-center -translate-x-1/2 -translate-y-[72px] rounded-full bg-background ${marker.width} ${marker.height}`}
-                      style={{ transform: `translate(-50%, -72px) rotate(${marker.angle}deg)` }}
-                    />
-                  ))}
-
-                  <div className="absolute left-1/2 top-1/2 h-14 w-1 -translate-x-1/2 -translate-y-[48px] rounded-full bg-background" />
-                  <div className="absolute left-1/2 top-1/2 h-20 w-1 -translate-x-1/2 -translate-y-[68px] rounded-full bg-background/80 rotate-[55deg]" />
-                  <div className="absolute right-[-10px] top-1/2 h-10 w-4 -translate-y-1/2 rounded-r-full bg-gradient-to-b from-card to-muted ring-1 ring-border/70" />
-                  <div className="absolute right-[34px] top-[38px] h-16 w-10 rounded-full bg-background/10 blur-xl" />
-                </div>
-              </div>
-            </div>
-          </div>
+          <FooterOrb />
         </div>
 
         <div className="grid gap-10 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
