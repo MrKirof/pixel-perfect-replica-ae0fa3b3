@@ -67,12 +67,16 @@ type Step = 1 | 2 | 3;
 const StartProjectPopup = () => {
   const [step, setStep] = useState<Step>(1);
   const [selected, setSelected] = useState<string[]>([]);
+  const [expandedService, setExpandedService] = useState<string | null>(null);
   const [formData, setFormData] = useState({ name: "", email: "" });
 
   const toggle = (title: string) =>
     setSelected(prev =>
       prev.includes(title) ? prev.filter(s => s !== title) : [...prev, title]
     );
+
+  const toggleExpand = (title: string) =>
+    setExpandedService(prev => (prev === title ? null : title));
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
