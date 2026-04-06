@@ -217,41 +217,6 @@ const About = () => {
         </section>
       </FadeIn>
 
-      {/* ── Values ── */}
-      <FadeIn>
-        <section className="surface py-16 md:py-24 relative">
-          <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16">
-            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
-              <div>
-                <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent mb-4 block">Values</span>
-                <h2 className="font-display text-4xl md:text-5xl font-extrabold tracking-tight leading-[0.9]">
-                  What we<br />stand <span className="text-gradient">for</span>
-                </h2>
-              </div>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              {values.map((v, i) => (
-                <motion.div
-                  key={v.title}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className="group border border-border bg-card/30 p-8 hover:border-accent/40 transition-all duration-500 relative overflow-hidden"
-                >
-                  <div className="absolute -right-8 -top-8 w-32 h-32 rounded-full bg-accent/[0.03] blur-2xl" />
-                  <div className="w-12 h-12 border border-border/50 flex items-center justify-center mb-6 group-hover:border-accent/40 group-hover:bg-accent/5 transition-all duration-500">
-                    <v.icon size={20} className="text-muted-foreground group-hover:text-accent transition-colors duration-500" />
-                  </div>
-                  <h3 className="font-display text-base font-bold mb-3 group-hover:text-accent transition-colors">{v.title}</h3>
-                  <p className="text-muted-foreground font-body text-base leading-relaxed">{v.desc}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-      </FadeIn>
-
       {/* ── Timeline ── */}
       <FadeIn>
         <section className="surface py-16 md:py-24 relative">
