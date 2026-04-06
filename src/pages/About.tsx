@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import PageTransition from "@/components/PageTransition";
 import farhanImg from "@/assets/farhan-rayyan.jpg";
 import abuYousobImg from "@/assets/abu-yousob.jpg";
+import tarifulNafeesImg from "@/assets/tariful-nafees.png";
 import marefulFounderImg from "@/assets/mareful-kirof-founder.jpg";
 import StatCounter from "@/components/StatCounter";
 import BackgroundPaths from "@/components/BackgroundPaths";
@@ -24,7 +25,7 @@ const FadeIn = ({ children, className = "", delay = 0 }: { children: React.React
 const team = [
   { name: "FarHan Rayyan", role: "Director & COO", handle: "farhanrayyan", bio: "Director and COO overseeing operations, strategy, and delivery across all departments.", image: farhanImg, gradient: "linear-gradient(145deg, #0f172a8c 0%, #3B82F644 100%)", glowColor: "rgba(59, 130, 246, 0.6)", avatarBottom: "30px" },
   { name: "Abu Yousob", role: "Creative Director", handle: "abuyousob", bio: "10+ years shaping brands that win awards and hearts.", image: abuYousobImg, gradient: "linear-gradient(145deg, #4c1d958c 0%, #a855f744 100%)", glowColor: "rgba(168, 85, 247, 0.5)" },
-  { name: "Tariq Hussain", role: "Lead Developer", handle: "tariqhussain", bio: "React & TypeScript obsessive. Pixel-perfect or nothing.", image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=500&fit=crop&crop=face", gradient: "linear-gradient(145deg, #0c4a6e8c 0%, #0ea5e944 100%)", glowColor: "rgba(14, 165, 233, 0.5)" },
+  { name: "Tariful Nafees", role: "Project Manager & Client Relations", handle: "tarifulnafees", bio: "Manages meetings, project coordination, and client communication.", image: tarifulNafeesImg, gradient: "linear-gradient(145deg, #0c4a6e8c 0%, #0ea5e944 100%)", glowColor: "rgba(14, 165, 233, 0.5)" },
 ];
 
 const values = [
