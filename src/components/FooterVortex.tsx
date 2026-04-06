@@ -207,20 +207,25 @@ const Meteor = ({ startAngle, yStart, speed, delay, size }: MeteorProps) => {
     <>
       {/* Meteor head */}
       <group ref={headRef}>
-        {/* Bright core */}
-        <mesh scale={size * 0.8}>
-          <sphereGeometry args={[1, 12, 12]} />
-          <meshBasicMaterial color="#ffffff" />
+        {/* White-hot core */}
+        <mesh scale={size * 0.5}>
+          <sphereGeometry args={[1, 16, 16]} />
+          <meshBasicMaterial color="#fffef0" />
         </mesh>
-        {/* Inner glow */}
-        <mesh scale={size * 2}>
-          <sphereGeometry args={[1, 12, 12]} />
-          <meshBasicMaterial color="#ffcc66" transparent opacity={0.5} depthWrite={false} />
+        {/* Yellow-hot inner fire */}
+        <mesh scale={size * 1.2}>
+          <sphereGeometry args={[1, 16, 16]} />
+          <meshBasicMaterial color="#ffdd44" transparent opacity={0.7} depthWrite={false} />
         </mesh>
-        {/* Outer haze */}
-        <mesh scale={size * 4}>
+        {/* Orange corona */}
+        <mesh scale={size * 2.5}>
+          <sphereGeometry args={[1, 16, 16]} />
+          <meshBasicMaterial color="#ff6600" transparent opacity={0.25} depthWrite={false} />
+        </mesh>
+        {/* Red outer glow */}
+        <mesh scale={size * 4.5}>
           <sphereGeometry args={[1, 12, 12]} />
-          <meshBasicMaterial color="#ff6600" transparent opacity={0.12} depthWrite={false} />
+          <meshBasicMaterial color="#cc2200" transparent opacity={0.08} depthWrite={false} />
         </mesh>
       </group>
 
