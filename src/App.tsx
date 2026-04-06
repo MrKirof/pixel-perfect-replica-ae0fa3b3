@@ -26,6 +26,7 @@ const queryClient = new QueryClient();
 
 const AppContent = () => {
   const { pathname } = useLocation();
+  const [bookCallOpen, setBookCallOpen] = useState(false);
   return (
     <>
       <FloatingRocks />
@@ -42,8 +43,13 @@ const AppContent = () => {
           { label: "Contact", href: "/contact" },
         ]}
         ctaLabel="Book a Call"
-        ctaHref="/contact"
+        onCtaClick={() => setBookCallOpen(true)}
       />
+      <Dialog open={bookCallOpen} onOpenChange={setBookCallOpen}>
+        <DialogContent className="max-w-5xl w-[95vw] p-0 border-none bg-transparent overflow-y-auto max-h-[90vh] [&>button]:text-white [&>button]:z-50">
+          <BookCallSection />
+        </DialogContent>
+      </Dialog>
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="/about" element={<About />} />
