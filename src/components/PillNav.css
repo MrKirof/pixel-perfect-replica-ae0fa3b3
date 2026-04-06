@@ -40,7 +40,7 @@
   justify-content: center;
   padding: 0.45rem 1.1rem;
   border-radius: 9999px;
-  background: hsl(217 92% 60%);
+  background: rgba(255, 255, 255, 0.12);
   color: #fff;
   font-size: 0.65rem;
   font-weight: 700;
@@ -50,11 +50,12 @@
   margin-left: 0.25rem;
   transition: background 0.3s ease, box-shadow 0.3s ease;
   flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .pill-cta:hover {
-  background: hsl(217 92% 52%);
-  box-shadow: 0 0 20px hsla(217, 92%, 60%, 0.4);
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
 }
 
 .pill-cta-mobile {
