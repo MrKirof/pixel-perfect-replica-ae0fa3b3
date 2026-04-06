@@ -2,6 +2,8 @@ import { ArrowRight, ArrowUpRight, Globe, Users, Award, Trophy, Heart, Target, R
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import PageTransition from "@/components/PageTransition";
+import marefulImg1 from "@/assets/mareful-kirof-1.jpg";
+import marefulImg2 from "@/assets/mareful-kirof-2.jpg";
 import StatCounter from "@/components/StatCounter";
 import BackgroundPaths from "@/components/BackgroundPaths";
 import ProfileCard from "@/components/ProfileCard";
