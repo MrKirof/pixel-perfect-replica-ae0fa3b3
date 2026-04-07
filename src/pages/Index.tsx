@@ -3,6 +3,8 @@ import AnimatedGrid from "@/components/AnimatedGrid";
 import { Link } from "react-router-dom";
 import { useRef, useEffect, useState, useCallback } from "react";
 import { motion } from "framer-motion";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 import PageTransition from "@/components/PageTransition";
 import SectionHeading from "@/components/SectionHeading";
 import Hero from "@/components/Hero";
