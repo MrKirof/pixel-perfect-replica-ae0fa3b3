@@ -6,7 +6,7 @@ import farhanImg from "@/assets/farhan-rayyan.jpg";
 import abuYousobImg from "@/assets/abu-yousob.jpg";
 import tarifulNafeesImg from "@/assets/tariful-nafees.png";
 import marefulFounderImg from "@/assets/mareful-kirof-founder.jpg";
-import StatCounter from "@/components/StatCounter";
+
 import BackgroundPaths from "@/components/BackgroundPaths";
 import ProfileCard from "@/components/ProfileCard";
 import SEOHead from "@/components/SEOHead";
