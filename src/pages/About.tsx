@@ -1,4 +1,4 @@
-import { ArrowRight, ArrowUpRight, Trophy } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import PageTransition from "@/components/PageTransition";
@@ -6,7 +6,7 @@ import farhanImg from "@/assets/farhan-rayyan.jpg";
 import abuYousobImg from "@/assets/abu-yousob.jpg";
 import tarifulNafeesImg from "@/assets/tariful-nafees.png";
 import marefulFounderImg from "@/assets/mareful-kirof-founder.jpg";
-import StatCounter from "@/components/StatCounter";
+
 import BackgroundPaths from "@/components/BackgroundPaths";
 import ProfileCard from "@/components/ProfileCard";
 import SEOHead from "@/components/SEOHead";
@@ -24,9 +24,9 @@ const FadeIn = ({ children, className = "", delay = 0 }: { children: React.React
 );
 
 const team = [
-  { name: "FarHan Rayyan", role: "Director & COO", handle: "farhanrayyan", bio: "FarHan is the operational backbone of MrKirof. As Director & COO, he oversees strategy, team coordination, and delivery pipelines across all 18 service departments. His sharp eye for process optimization has helped the agency scale from 5 to 20 people — while maintaining zero missed deadlines. When he's not orchestrating workflows, he's mentoring junior leads and refining client experience systems.", image: farhanImg, gradient: "linear-gradient(145deg, #0f172a8c 0%, #3B82F644 100%)", glowColor: "rgba(59, 130, 246, 0.6)", avatarBottom: "30px" },
-  { name: "Abu Yousob", role: "Creative Director", handle: "abuyousob", bio: "With over 10 years of experience in visual storytelling, Abu leads the creative vision behind every MrKirof project. From brand identity systems to motion graphics, his work has earned multiple Awwwards mentions and Dribbble features. He believes great design isn't decoration — it's communication. His philosophy: if it doesn't make someone stop scrolling, it's not ready to ship.", image: abuYousobImg, gradient: "linear-gradient(145deg, #4c1d958c 0%, #a855f744 100%)", glowColor: "rgba(168, 85, 247, 0.5)" },
-  { name: "Tariful Nafees", role: "Project Manager & Client Relations", handle: "tarifulnafees", bio: "Tariful is the bridge between clients and the creative team. He manages project timelines, conducts client meetings, and ensures every deliverable exceeds expectations. Known for his calm under pressure and exceptional communication skills, he's handled 500+ client relationships across 14 countries — turning first-time clients into long-term partners.", image: tarifulNafeesImg, gradient: "linear-gradient(145deg, #0c4a6e8c 0%, #0ea5e944 100%)", glowColor: "rgba(14, 165, 233, 0.5)" },
+  { name: "FarHan Rayyan", role: "Director & COO", handle: "farhanrayyan", bio: "FarHan keeps everything running smoothly at MrKirof. He's the one making sure projects stay on track, teams are aligned, and clients are happy. He joined early on and helped grow the team from just 5 people to 20 — without ever dropping the ball. He genuinely cares about the people he works with, and it shows in how he leads.", image: farhanImg, gradient: "linear-gradient(145deg, #0f172a8c 0%, #3B82F644 100%)", glowColor: "rgba(59, 130, 246, 0.6)", avatarBottom: "30px" },
+  { name: "Abu Yousob", role: "Creative Director", handle: "abuyousob", bio: "Abu is the creative heart of MrKirof. He's been designing for over 10 years and has a real gift for turning ideas into visuals that actually mean something. Whether it's a full brand identity or a simple social post, he treats every project like it matters — because to him, it does. He's not about making things pretty for the sake of it. He wants the work to connect with people.", image: abuYousobImg, gradient: "linear-gradient(145deg, #4c1d958c 0%, #a855f744 100%)", glowColor: "rgba(168, 85, 247, 0.5)" },
+  { name: "Tariful Nafees", role: "Project Manager & Client Relations", handle: "tarifulnafees", bio: "Tariful is the person clients talk to the most, and for good reason. He listens well, communicates clearly, and always follows through. He's managed hundreds of projects and built real relationships with clients from all over the world. People trust him because he's honest and reliable. If something needs to get done, Tariful makes sure it happens.", image: tarifulNafeesImg, gradient: "linear-gradient(145deg, #0c4a6e8c 0%, #0ea5e944 100%)", glowColor: "rgba(14, 165, 233, 0.5)" },
 ];
 
 
@@ -39,13 +39,6 @@ const timeline = [
   { year: "2025", title: "The Future", desc: "Expanding into AI-powered design systems and product strategy." },
 ];
 
-const awards = [
-  { award: "Awwwards Honorable Mention", project: "Starkline Platform", year: "2024" },
-  { award: "Dribbble Top Agency", project: "Brand Identity Collection", year: "2024" },
-  { award: "CSS Design Awards", project: "Blumora App UI", year: "2023" },
-  { award: "FWA Site of the Day", project: "Pivvo Product Launch", year: "2023" },
-  { award: "Webby Nominee", project: "Noxian Financial Platform", year: "2022" },
-];
 
 const About = () => {
   return (
@@ -247,28 +240,6 @@ const About = () => {
         </section>
       </FadeIn>
 
-      {/* ── Stats ── */}
-      <FadeIn>
-        <section className="surface py-16 md:py-24 relative overflow-hidden">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] pointer-events-none" style={{ background: 'radial-gradient(ellipse 60% 40% at 50% 50%, hsl(var(--accent) / 0.04), transparent 70%)' }} />
-          <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16 relative z-10">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-0">
-              {[
-                { value: 12, label: "Years", suffix: "", prefix: "", trend: { direction: "up" as const, text: "+2 YoY" } },
-                { value: 1500, label: "Clients", suffix: "+", prefix: "", trend: { direction: "up" as const, text: "+34%" } },
-                { value: 3000, label: "Projects", suffix: "+", prefix: "", trend: { direction: "up" as const, text: "+28%" } },
-                { value: 500, label: "5-Star Reviews", suffix: "+", prefix: "", trend: { direction: "up" as const, text: "+52%" } },
-              ].map((stat, i) => (
-                <div key={stat.label} className="group relative py-12 md:py-16 text-center md:text-left md:pl-10 first:md:pl-0">
-                  {i > 0 && <div className="hidden md:block absolute left-0 top-8 bottom-8 w-px bg-gradient-to-b from-transparent via-border to-transparent" />}
-                  {i > 0 && <div className="md:hidden absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-border to-transparent" />}
-                  <StatCounter value={stat.value} suffix={stat.suffix} prefix={stat.prefix} label={stat.label} delay={i * 150} trend={stat.trend} />
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      </FadeIn>
 
       {/* ── Timeline ── */}
       <FadeIn>
@@ -316,82 +287,6 @@ const About = () => {
         </section>
       </FadeIn>
 
-      {/* ── Awards ── */}
-      <FadeIn>
-        <section className="surface py-16 md:py-24 relative">
-          <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16">
-            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
-              <div>
-                <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent mb-4 block">Recognition</span>
-                <h2 className="font-display text-4xl md:text-5xl font-extrabold tracking-tight leading-[0.9]">
-                  Awards &<br /><span className="text-gradient">features</span>
-                </h2>
-              </div>
-            </div>
-            <div className="space-y-0 divide-y divide-border/50">
-              {awards.map((a, i) => (
-                <motion.div
-                  key={a.award}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: i * 0.08 }}
-                  className="group flex items-center justify-between py-6 md:py-8 hover:px-4 transition-all duration-500"
-                  data-cursor-hover
-                >
-                  <div className="flex items-center gap-5">
-                    <Trophy size={16} className="text-accent flex-shrink-0" />
-                    <div>
-                      <h3 className="font-display text-base font-bold group-hover:text-accent transition-colors">{a.award}</h3>
-                      <p className="text-muted-foreground font-body text-base mt-0.5">{a.project}</p>
-                    </div>
-                  </div>
-                  <span className="font-mono text-xs text-muted-foreground/50">{a.year}</span>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-      </FadeIn>
-
-      {/* ── CTA ── */}
-      <FadeIn>
-        <section className="surface py-16 md:py-24 relative overflow-hidden">
-          <div className="absolute inset-0 pointer-events-none overflow-hidden">
-            <div className="absolute -top-[20%] -right-[10%] w-[70%] h-[140%] bg-accent/[0.03] origin-center" style={{ transform: 'rotate(-12deg)' }} />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px]" style={{ background: 'radial-gradient(ellipse 50% 40% at 50% 50%, hsl(var(--accent) / 0.06), transparent 70%)' }} />
-          </div>
-          <div className="max-w-7xl mx-auto text-center relative z-10 px-6 md:px-8 lg:px-16">
-            <span className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.3em] text-accent mb-10">
-              <span className="w-8 h-px bg-accent" />
-              Join 1500+ Happy Clients
-              <span className="w-8 h-px bg-accent" />
-            </span>
-            <h2 className="font-display text-3xl md:text-4xl font-extrabold leading-[0.85] tracking-tight mb-6">
-              Ready to work with<br />a team that <span className="text-gradient">cares</span>?
-            </h2>
-            <p className="text-muted-foreground font-body text-base mb-14 max-w-md mx-auto leading-relaxed">
-              Let's talk about your next project.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link
-                to="/contact"
-                className="magnetic-btn bg-accent text-accent-foreground font-display font-extrabold px-7 py-3 rounded-full inline-flex items-center gap-3 text-base hover:shadow-[0_0_60px_hsl(var(--accent)/0.3)] transition-all duration-500 group"
-                data-cursor-hover
-              >
-                Get in Touch <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <Link
-                to="/work"
-                className="magnetic-btn border border-foreground/20 text-foreground font-display font-bold px-7 py-3 rounded-full inline-flex items-center gap-3 text-base hover:border-accent hover:text-accent transition-all duration-500 group"
-                data-cursor-hover
-              >
-                See Our Work <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-              </Link>
-            </div>
-          </div>
-        </section>
-      </FadeIn>
     </PageTransition>
   );
 };
