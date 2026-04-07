@@ -188,6 +188,65 @@ const About = () => {
         </section>
       </FadeIn>
 
+      {/* ── Team ── */}
+      <FadeIn>
+        <section className="surface py-16 md:py-28 relative overflow-hidden">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] pointer-events-none" style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 0%, hsl(var(--accent) / 0.06), transparent 70%)' }} />
+          <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16 relative z-10">
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-20">
+              <div>
+                <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent mb-4 block">Team</span>
+                <h2 className="font-display text-4xl md:text-5xl font-extrabold tracking-tight leading-[0.9]">
+                  The minds behind<br />the <span className="text-gradient">magic</span>
+                </h2>
+              </div>
+              <p className="text-muted-foreground font-body text-base max-w-sm leading-relaxed">
+                A carefully assembled team of specialists who care deeply about their craft and your success.
+              </p>
+            </div>
+            <div className="space-y-20 md:space-y-28">
+              {team.map((member, i) => {
+                const isEven = i % 2 === 0;
+                return (
+                  <motion.div
+                    key={member.name}
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-80px" }}
+                    transition={{ duration: 0.7, delay: 0.1 }}
+                    className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center"
+                  >
+                    <div className={`lg:col-span-5 ${!isEven ? 'lg:order-2' : 'lg:order-1'}`}>
+                      <div className="relative group" data-cursor-hover>
+                        <div
+                          className="relative w-full max-w-[340px] mx-auto aspect-[3/4] overflow-hidden rounded-2xl"
+                          style={{ background: member.gradient }}
+                        >
+                          <img src={member.image} alt={member.name} loading="lazy" className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
+                          <div className="absolute inset-0 opacity-30 group-hover:opacity-0 transition-opacity duration-700" style={{ background: member.gradient }} />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                        </div>
+                        <div className="absolute -inset-4 -z-10 rounded-3xl opacity-40 blur-3xl group-hover:opacity-60 transition-opacity duration-700" style={{ background: member.glowColor }} />
+                      </div>
+                    </div>
+                    <div className={`lg:col-span-7 ${!isEven ? 'lg:order-1' : 'lg:order-2'}`}>
+                      <div className="flex items-center gap-4 mb-4">
+                        <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent">{String(i + 1).padStart(2, '0')}</span>
+                        <div className="h-px flex-1 bg-gradient-to-r from-accent/30 to-transparent" />
+                      </div>
+                      <h3 className="font-display text-3xl md:text-4xl font-extrabold tracking-tight leading-[0.9] mb-2">{member.name}</h3>
+                      <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent/70 mb-5">{member.role}</p>
+                      <p className="text-muted-foreground font-body text-base leading-relaxed max-w-lg mb-6">{member.bio}</p>
+                      <span className="inline-block font-mono text-xs text-muted-foreground/40">@{member.handle}</span>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      </FadeIn>
+
       {/* ── Stats ── */}
       <FadeIn>
         <section className="surface py-16 md:py-24 relative overflow-hidden">
@@ -222,7 +281,6 @@ const About = () => {
               </h2>
             </div>
             <div className="relative">
-              {/* Vertical line */}
               <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-accent/40 via-border to-transparent" />
               <div className="space-y-0">
                 {timeline.map((item, i) => (
@@ -232,27 +290,14 @@ const About = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: i * 0.08 }}
-                    className={`relative flex items-start gap-8 py-8 ${
-                      i % 2 === 0
-                        ? "md:flex-row md:text-right"
-                        : "md:flex-row-reverse md:text-left"
-                    }`}
+                    className={`relative flex items-start gap-8 py-8 ${i % 2 === 0 ? "md:flex-row md:text-right" : "md:flex-row-reverse md:text-left"}`}
                   >
                     <div className={`flex-1 hidden md:block ${i % 2 === 0 ? "pr-12" : "pl-12"}`}>
-                      {i % 2 === 0 && (
-                        <div>
-                          <h3 className="font-display text-base font-bold mb-1">{item.title}</h3>
-                          <p className="text-muted-foreground font-body text-base leading-relaxed">{item.desc}</p>
-                        </div>
-                      )}
-                      {i % 2 === 1 && (
-                        <div>
-                          <h3 className="font-display text-base font-bold mb-1">{item.title}</h3>
-                          <p className="text-muted-foreground font-body text-base leading-relaxed">{item.desc}</p>
-                        </div>
-                      )}
+                      <div>
+                        <h3 className="font-display text-base font-bold mb-1">{item.title}</h3>
+                        <p className="text-muted-foreground font-body text-base leading-relaxed">{item.desc}</p>
+                      </div>
                     </div>
-                    {/* Center dot */}
                     <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-8 h-8 border border-accent/40 bg-background flex items-center justify-center z-10">
                       <span className="font-mono text-xs text-accent">{item.year.slice(2)}</span>
                     </div>
@@ -266,84 +311,6 @@ const About = () => {
                   </motion.div>
                 ))}
               </div>
-            </div>
-          </div>
-        </section>
-      </FadeIn>
-
-      {/* ── Team ── */}
-      <FadeIn>
-        <section className="surface py-16 md:py-28 relative overflow-hidden">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] pointer-events-none" style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 0%, hsl(var(--accent) / 0.06), transparent 70%)' }} />
-          <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16 relative z-10">
-            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-20">
-              <div>
-                <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent mb-4 block">Team</span>
-                <h2 className="font-display text-4xl md:text-5xl font-extrabold tracking-tight leading-[0.9]">
-                  The minds behind<br />the <span className="text-gradient">magic</span>
-                </h2>
-              </div>
-              <p className="text-muted-foreground font-body text-base max-w-sm leading-relaxed">
-                A carefully assembled team of specialists who care deeply about their craft and your success.
-              </p>
-            </div>
-
-            {/* Alternating team members */}
-            <div className="space-y-20 md:space-y-28">
-              {team.map((member, i) => {
-                const isEven = i % 2 === 0;
-                return (
-                  <motion.div
-                    key={member.name}
-                    initial={{ opacity: 0, y: 40 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-80px" }}
-                    transition={{ duration: 0.7, delay: 0.1 }}
-                    className={`grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center ${!isEven ? 'lg:direction-rtl' : ''}`}
-                  >
-                    {/* Photo */}
-                    <div className={`lg:col-span-5 ${!isEven ? 'lg:order-2' : 'lg:order-1'}`}>
-                      <div className="relative group" data-cursor-hover>
-                        <div
-                          className="relative w-full max-w-[340px] mx-auto aspect-[3/4] overflow-hidden rounded-2xl"
-                          style={{ background: member.gradient }}
-                        >
-                          <img
-                            src={member.image}
-                            alt={member.name}
-                            loading="lazy"
-                            className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
-                          />
-                          {/* Colorful overlay */}
-                          <div className="absolute inset-0 opacity-30 group-hover:opacity-0 transition-opacity duration-700" style={{ background: member.gradient }} />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-                        </div>
-                        {/* Glow behind */}
-                        <div
-                          className="absolute -inset-4 -z-10 rounded-3xl opacity-40 blur-3xl group-hover:opacity-60 transition-opacity duration-700"
-                          style={{ background: member.glowColor }}
-                        />
-                      </div>
-                    </div>
-
-                    {/* Details */}
-                    <div className={`lg:col-span-7 ${!isEven ? 'lg:order-1' : 'lg:order-2'}`}>
-                      <div className="flex items-center gap-4 mb-4">
-                        <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent">{String(i + 1).padStart(2, '0')}</span>
-                        <div className="h-px flex-1 bg-gradient-to-r from-accent/30 to-transparent" />
-                      </div>
-                      <h3 className="font-display text-3xl md:text-4xl font-extrabold tracking-tight leading-[0.9] mb-2">
-                        {member.name}
-                      </h3>
-                      <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent/70 mb-5">{member.role}</p>
-                      <p className="text-muted-foreground font-body text-base leading-relaxed max-w-lg mb-6">
-                        {member.bio}
-                      </p>
-                      <span className="inline-block font-mono text-xs text-muted-foreground/40">@{member.handle}</span>
-                    </div>
-                  </motion.div>
-                );
-              })}
             </div>
           </div>
         </section>
