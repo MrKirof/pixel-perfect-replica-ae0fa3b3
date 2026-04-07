@@ -82,7 +82,7 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
   }, []);
 
   return (
-    <Link to="/services" className="block flex-shrink-0 w-[260px] sm:w-[300px] md:w-[340px] snap-start">
+    <Link to="/services" className="block flex-shrink-0 w-[260px] sm:w-[300px] md:w-[340px]">
       <motion.div
         ref={cardRef}
         initial={{ opacity: 0, y: 30, rotateY: -5 }}
@@ -214,8 +214,8 @@ const ServicesSection = () => {
       </div>
       <div
         ref={scrollRef}
-        className={`flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 relative z-10 pr-6 md:pr-8 lg:pr-16 select-none ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
-        style={{ scrollbarWidth: "none", msOverflowStyle: "none", paddingLeft: "max(1.5rem, calc((100vw - 80rem) / 2 + 4rem))" }}
+        className={`flex gap-4 overflow-x-auto pb-4 relative z-10 pr-6 md:pr-8 lg:pr-16 select-none ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
+        style={{ scrollbarWidth: "none", msOverflowStyle: "none", paddingLeft: "max(1.5rem, calc((100vw - 80rem) / 2 + 4rem))", scrollBehavior: "auto" }}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => { setIsHovered(false); setIsDragging(false); }}
         onMouseDown={handleMouseDown}
@@ -227,7 +227,7 @@ const ServicesSection = () => {
         ))}
           <Link
             to="/services"
-            className="flex-shrink-0 w-[260px] sm:w-[300px] md:w-[340px] border border-dashed border-border hover:border-accent flex flex-col items-center justify-center gap-4 snap-start transition-colors group"
+            className="flex-shrink-0 w-[260px] sm:w-[300px] md:w-[340px] border border-dashed border-border hover:border-accent flex flex-col items-center justify-center gap-4 transition-colors group"
           data-cursor-hover
         >
           <div className="w-16 h-16 border border-border group-hover:border-accent flex items-center justify-center group-hover:text-accent transition-colors">
