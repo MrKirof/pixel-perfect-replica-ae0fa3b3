@@ -1,4 +1,4 @@
-import { ArrowRight, ArrowUpRight, Trophy } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import PageTransition from "@/components/PageTransition";
