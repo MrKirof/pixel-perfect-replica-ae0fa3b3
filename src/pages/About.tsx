@@ -247,28 +247,6 @@ const About = () => {
         </section>
       </FadeIn>
 
-      {/* ── Stats ── */}
-      <FadeIn>
-        <section className="surface py-16 md:py-24 relative overflow-hidden">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] pointer-events-none" style={{ background: 'radial-gradient(ellipse 60% 40% at 50% 50%, hsl(var(--accent) / 0.04), transparent 70%)' }} />
-          <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16 relative z-10">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-0">
-              {[
-                { value: 12, label: "Years", suffix: "", prefix: "", trend: { direction: "up" as const, text: "+2 YoY" } },
-                { value: 1500, label: "Clients", suffix: "+", prefix: "", trend: { direction: "up" as const, text: "+34%" } },
-                { value: 3000, label: "Projects", suffix: "+", prefix: "", trend: { direction: "up" as const, text: "+28%" } },
-                { value: 500, label: "5-Star Reviews", suffix: "+", prefix: "", trend: { direction: "up" as const, text: "+52%" } },
-              ].map((stat, i) => (
-                <div key={stat.label} className="group relative py-12 md:py-16 text-center md:text-left md:pl-10 first:md:pl-0">
-                  {i > 0 && <div className="hidden md:block absolute left-0 top-8 bottom-8 w-px bg-gradient-to-b from-transparent via-border to-transparent" />}
-                  {i > 0 && <div className="md:hidden absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-border to-transparent" />}
-                  <StatCounter value={stat.value} suffix={stat.suffix} prefix={stat.prefix} label={stat.label} delay={i * 150} trend={stat.trend} />
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      </FadeIn>
 
       {/* ── Timeline ── */}
       <FadeIn>
