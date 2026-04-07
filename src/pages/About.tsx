@@ -273,10 +273,10 @@ const About = () => {
 
       {/* ── Team ── */}
       <FadeIn>
-        <section className="surface py-16 md:py-24 relative overflow-hidden">
+        <section className="surface py-16 md:py-28 relative overflow-hidden">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] pointer-events-none" style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 0%, hsl(var(--accent) / 0.06), transparent 70%)' }} />
           <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16 relative z-10">
-            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-20">
               <div>
                 <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent mb-4 block">Team</span>
                 <h2 className="font-display text-4xl md:text-5xl font-extrabold tracking-tight leading-[0.9]">
@@ -287,41 +287,63 @@ const About = () => {
                 A carefully assembled team of specialists who care deeply about their craft and your success.
               </p>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 max-w-5xl mx-auto">
-              {team.map((member, i) => (
-                <motion.div
-                  key={member.name}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className="group relative"
-                  data-cursor-hover
-                >
-                  {/* Card */}
-                  <div className="relative overflow-hidden rounded-2xl border border-border/30 bg-card/50 backdrop-blur-sm hover:border-accent/30 transition-all duration-500">
-                    {/* Image */}
-                    <div className="relative aspect-[3/4] overflow-hidden">
-                      <img
-                        src={member.image}
-                        alt={member.name}
-                        loading="lazy"
-                        className="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
-                        style={{ objectPosition: (member as any).avatarBottom ? 'center top' : 'center top' }}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
-                      {/* Accent glow on hover */}
-                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700" style={{ background: `linear-gradient(to top, ${member.glowColor.replace(')', ', 0.15)')}, transparent 60%)` }} />
+
+            {/* Alternating team members */}
+            <div className="space-y-20 md:space-y-28">
+              {team.map((member, i) => {
+                const isEven = i % 2 === 0;
+                return (
+                  <motion.div
+                    key={member.name}
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-80px" }}
+                    transition={{ duration: 0.7, delay: 0.1 }}
+                    className={`grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center ${!isEven ? 'lg:direction-rtl' : ''}`}
+                  >
+                    {/* Photo */}
+                    <div className={`lg:col-span-5 ${!isEven ? 'lg:order-2' : 'lg:order-1'}`}>
+                      <div className="relative group" data-cursor-hover>
+                        <div
+                          className="relative w-full max-w-[340px] mx-auto aspect-[3/4] overflow-hidden rounded-2xl"
+                          style={{ background: member.gradient }}
+                        >
+                          <img
+                            src={member.image}
+                            alt={member.name}
+                            loading="lazy"
+                            className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                          />
+                          {/* Colorful overlay */}
+                          <div className="absolute inset-0 opacity-30 group-hover:opacity-0 transition-opacity duration-700" style={{ background: member.gradient }} />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                        </div>
+                        {/* Glow behind */}
+                        <div
+                          className="absolute -inset-4 -z-10 rounded-3xl opacity-40 blur-3xl group-hover:opacity-60 transition-opacity duration-700"
+                          style={{ background: member.glowColor }}
+                        />
+                      </div>
                     </div>
-                    {/* Info */}
-                    <div className="relative px-5 pb-6 -mt-12 z-10">
-                      <h3 className="font-display text-lg font-bold text-foreground group-hover:text-accent transition-colors duration-300">{member.name}</h3>
-                      <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground mt-1">{member.role}</p>
-                      <p className="text-muted-foreground/70 text-sm mt-3 leading-relaxed">{member.bio}</p>
+
+                    {/* Details */}
+                    <div className={`lg:col-span-7 ${!isEven ? 'lg:order-1' : 'lg:order-2'}`}>
+                      <div className="flex items-center gap-4 mb-4">
+                        <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent">{String(i + 1).padStart(2, '0')}</span>
+                        <div className="h-px flex-1 bg-gradient-to-r from-accent/30 to-transparent" />
+                      </div>
+                      <h3 className="font-display text-3xl md:text-4xl font-extrabold tracking-tight leading-[0.9] mb-2">
+                        {member.name}
+                      </h3>
+                      <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent/70 mb-5">{member.role}</p>
+                      <p className="text-muted-foreground font-body text-base leading-relaxed max-w-lg mb-6">
+                        {member.bio}
+                      </p>
+                      <span className="inline-block font-mono text-xs text-muted-foreground/40">@{member.handle}</span>
                     </div>
-                  </div>
-                </motion.div>
-              ))}
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </section>
