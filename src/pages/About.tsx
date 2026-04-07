@@ -39,13 +39,6 @@ const timeline = [
   { year: "2025", title: "The Future", desc: "Expanding into AI-powered design systems and product strategy." },
 ];
 
-const awards = [
-  { award: "Awwwards Honorable Mention", project: "Starkline Platform", year: "2024" },
-  { award: "Dribbble Top Agency", project: "Brand Identity Collection", year: "2024" },
-  { award: "CSS Design Awards", project: "Blumora App UI", year: "2023" },
-  { award: "FWA Site of the Day", project: "Pivvo Product Launch", year: "2023" },
-  { award: "Webby Nominee", project: "Noxian Financial Platform", year: "2022" },
-];
 
 const About = () => {
   return (
