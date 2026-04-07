@@ -3,6 +3,8 @@ import AnimatedGrid from "@/components/AnimatedGrid";
 import { Link } from "react-router-dom";
 import { useRef, useEffect, useState, useCallback } from "react";
 import { motion } from "framer-motion";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 import PageTransition from "@/components/PageTransition";
 import SectionHeading from "@/components/SectionHeading";
 import Hero from "@/components/Hero";
@@ -124,73 +126,29 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
 };
 
 const ServicesSection = () => {
-  const scrollRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
-  const [isDragging, setIsDragging] = useState(false);
-  const dragStartX = useRef(0);
-  const dragScrollLeft = useRef(0);
-  const totalItems = services.length + 1;
-  const CARD_WIDTH = 360;
+  const autoplayPlugin = useRef(
+    Autoplay({ delay: 3000, stopOnInteraction: false, stopOnMouseEnter: true })
+  );
 
-  // Track active index on scroll
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: true, align: "start", slidesToScroll: 1, dragFree: true },
+    [autoplayPlugin.current]
+  );
+
   useEffect(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-    const onScroll = () => {
-      const idx = Math.round(el.scrollLeft / CARD_WIDTH);
-      setActiveIndex(Math.min(idx, totalItems - 1));
-    };
-    el.addEventListener("scroll", onScroll);
-    return () => el.removeEventListener("scroll", onScroll);
-  }, [totalItems]);
+    if (!emblaApi) return;
+    const onSelect = () => setActiveIndex(emblaApi.selectedScrollSnap());
+    emblaApi.on("select", onSelect);
+    onSelect();
+    return () => { emblaApi.off("select", onSelect); };
+  }, [emblaApi]);
 
-  // Auto-slide every 3 seconds, pause on hover
-  useEffect(() => {
-    if (isHovered || isDragging) return;
-    const interval = setInterval(() => {
-      const el = scrollRef.current;
-      if (!el) return;
-      const maxScroll = el.scrollWidth - el.clientWidth;
-      if (el.scrollLeft >= maxScroll - 10) {
-        el.scrollTo({ left: 0, behavior: "smooth" });
-      } else {
-        el.scrollBy({ left: CARD_WIDTH, behavior: "smooth" });
-      }
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [isHovered, isDragging]);
+  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
+  const scrollTo = useCallback((idx: number) => emblaApi?.scrollTo(idx), [emblaApi]);
 
-  // Drag support
-  const handleMouseDown = useCallback((e: React.MouseEvent) => {
-    const el = scrollRef.current;
-    if (!el) return;
-    setIsDragging(true);
-    dragStartX.current = e.pageX - el.offsetLeft;
-    dragScrollLeft.current = el.scrollLeft;
-  }, []);
-
-  const handleMouseMove = useCallback((e: React.MouseEvent) => {
-    if (!isDragging) return;
-    const el = scrollRef.current;
-    if (!el) return;
-    e.preventDefault();
-    const x = e.pageX - el.offsetLeft;
-    const walk = (x - dragStartX.current) * 1.5;
-    el.scrollLeft = dragScrollLeft.current - walk;
-  }, [isDragging]);
-
-  const handleMouseUp = useCallback(() => {
-    setIsDragging(false);
-  }, []);
-
-  const scroll = (dir: number) => {
-    scrollRef.current?.scrollBy({ left: dir * CARD_WIDTH, behavior: "smooth" });
-  };
-
-  const scrollToIndex = (idx: number) => {
-    scrollRef.current?.scrollTo({ left: idx * CARD_WIDTH, behavior: "smooth" });
-  };
+  const totalSlides = services.length + 1;
 
   return (
     <section className="relative py-10" style={{ backgroundColor: '#0a0a0a', color: '#ffffff' }}>
@@ -203,47 +161,42 @@ const ServicesSection = () => {
             description="From pixel to pipeline. Every layer of your brand covered."
           />
           <div className="flex items-center gap-4">
-            <button onClick={() => scroll(-1)} className="w-12 h-12 border border-border flex items-center justify-center hover:border-accent hover:text-accent transition-colors" data-cursor-hover>
+            <button onClick={scrollPrev} className="w-12 h-12 border border-border flex items-center justify-center hover:border-accent hover:text-accent transition-colors" data-cursor-hover>
               <ArrowRight size={16} className="rotate-180" />
             </button>
-            <button onClick={() => scroll(1)} className="w-12 h-12 border border-border flex items-center justify-center hover:border-accent hover:text-accent transition-colors" data-cursor-hover>
+            <button onClick={scrollNext} className="w-12 h-12 border border-border flex items-center justify-center hover:border-accent hover:text-accent transition-colors" data-cursor-hover>
               <ArrowRight size={16} />
             </button>
           </div>
         </div>
       </div>
-      <div
-        ref={scrollRef}
-        className={`flex gap-4 overflow-x-auto pb-4 relative z-10 pr-6 md:pr-8 lg:pr-16 select-none ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
-        style={{ scrollbarWidth: "none", msOverflowStyle: "none", paddingLeft: "max(1.5rem, calc((100vw - 80rem) / 2 + 4rem))", scrollBehavior: "auto" }}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => { setIsHovered(false); setIsDragging(false); }}
-        onMouseDown={handleMouseDown}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp}
-      >
-        {services.map((service, i) => (
-          <ServiceCard key={service.title} service={service} index={i} />
-        ))}
-          <Link
-            to="/services"
-            className="flex-shrink-0 w-[260px] sm:w-[300px] md:w-[340px] border border-dashed border-border hover:border-accent flex flex-col items-center justify-center gap-4 transition-colors group"
-          data-cursor-hover
-        >
-          <div className="w-16 h-16 border border-border group-hover:border-accent flex items-center justify-center group-hover:text-accent transition-colors">
-            <ArrowRight size={24} />
+      <div className="relative z-10" style={{ paddingLeft: "max(1.5rem, calc((100vw - 80rem) / 2 + 4rem))" }}>
+        <div className="overflow-hidden" ref={emblaRef}>
+          <div className="flex gap-4">
+            {services.map((service, i) => (
+              <ServiceCard key={service.title} service={service} index={i} />
+            ))}
+            <Link
+              to="/services"
+              className="flex-shrink-0 w-[260px] sm:w-[300px] md:w-[340px] min-h-[260px] border border-dashed border-border hover:border-accent flex flex-col items-center justify-center gap-4 transition-colors group"
+              data-cursor-hover
+            >
+              <div className="w-16 h-16 border border-border group-hover:border-accent flex items-center justify-center group-hover:text-accent transition-colors">
+                <ArrowRight size={24} />
+              </div>
+              <span className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground group-hover:text-accent transition-colors">
+                Explore all services
+              </span>
+            </Link>
           </div>
-          <span className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground group-hover:text-accent transition-colors">
-            Explore all services
-          </span>
-        </Link>
+        </div>
       </div>
       {/* Pagination dots */}
       <div className="flex items-center justify-center gap-2 mt-8 relative z-10">
-        {Array.from({ length: totalItems }).map((_, i) => (
+        {Array.from({ length: totalSlides }).map((_, i) => (
           <button
             key={i}
-            onClick={() => scrollToIndex(i)}
+            onClick={() => scrollTo(i)}
             className={`transition-all duration-300 rounded-full ${
               i === activeIndex
                 ? "w-6 h-2 bg-accent shadow-[0_0_10px_hsl(var(--accent)/0.4)]"
