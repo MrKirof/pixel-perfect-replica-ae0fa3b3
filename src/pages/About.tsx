@@ -274,7 +274,8 @@ const About = () => {
       {/* ── Team ── */}
       <FadeIn>
         <section className="surface py-16 md:py-24 relative overflow-hidden">
-          <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] pointer-events-none" style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 0%, hsl(var(--accent) / 0.06), transparent 70%)' }} />
+          <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16 relative z-10">
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
               <div>
                 <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent mb-4 block">Team</span>
@@ -286,32 +287,38 @@ const About = () => {
                 A carefully assembled team of specialists who care deeply about their craft and your success.
               </p>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-16 md:gap-20 max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 max-w-5xl mx-auto">
               {team.map((member, i) => (
                 <motion.div
                   key={member.name}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.06 }}
-                  className="team-card-wrapper"
-                  style={{ '--avatar-bottom': (member as any).avatarBottom || '-1px' } as React.CSSProperties}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  className="group relative"
+                  data-cursor-hover
                 >
-                  <ProfileCard
-                    avatarUrl={member.image}
-                    name=""
-                    title=""
-                    handle={member.handle}
-                    status={i === 0 ? "Director" : "Team"}
-                    showUserInfo={false}
-                    innerGradient={member.gradient}
-                    behindGlowColor={member.glowColor}
-                    behindGlowSize="60%"
-                    enableTilt={true}
-                  />
-                  <div className="text-center mt-4">
-                    <h3 className="text-lg font-semibold text-foreground">{member.name}</h3>
-                    <p className="text-sm text-muted-foreground">{member.role}</p>
+                  {/* Card */}
+                  <div className="relative overflow-hidden rounded-2xl border border-border/30 bg-card/50 backdrop-blur-sm hover:border-accent/30 transition-all duration-500">
+                    {/* Image */}
+                    <div className="relative aspect-[3/4] overflow-hidden">
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        loading="lazy"
+                        className="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                        style={{ objectPosition: (member as any).avatarBottom ? 'center top' : 'center top' }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
+                      {/* Accent glow on hover */}
+                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700" style={{ background: `linear-gradient(to top, ${member.glowColor.replace(')', ', 0.15)')}, transparent 60%)` }} />
+                    </div>
+                    {/* Info */}
+                    <div className="relative px-5 pb-6 -mt-12 z-10">
+                      <h3 className="font-display text-lg font-bold text-foreground group-hover:text-accent transition-colors duration-300">{member.name}</h3>
+                      <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground mt-1">{member.role}</p>
+                      <p className="text-muted-foreground/70 text-sm mt-3 leading-relaxed">{member.bio}</p>
+                    </div>
                   </div>
                 </motion.div>
               ))}
