@@ -433,3 +433,4 @@ const Index = ({ onStartProject }: { onStartProject?: () => void }) => {
 };
 
 export default Index;
+
