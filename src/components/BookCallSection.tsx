@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import StarBorder from "@/components/StarBorder";
+import { sendEmail } from "@/api/email";
 
 
 const TIME_SLOTS = [
@@ -92,14 +93,26 @@ const BookCallSection = () => {
     setStep("details");
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email) {
       toast.error("Please fill in your name and email");
       return;
     }
-    setStep("confirmed");
-    toast.success("Booking confirmed! We'll be in touch soon.");
+    await sendEmail({
+      service: "book-call",
+      name: formData.name,
+      email: formData.email,
+      message: formData.message,
+      formdata: {
+        date: selectedDate?.toISOString() || "",
+        time: selectedTime,
+        timezone: selectedTimezone,
+      }
+    }).then(() => {
+      setStep("confirmed");
+      toast.success("Booking confirmed! We'll be in touch soon.");
+    });
   };
 
   const handleReset = () => {
@@ -205,8 +218,8 @@ const BookCallSection = () => {
                       className={cn(
                         "relative w-10 h-10 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-500 border-2 overflow-hidden",
                         stepIndex === i + 0 ? "border-accent text-accent" :
-                        stepIndex > i ? "border-accent/40 text-accent bg-accent/10" :
-                        "border-border/50 text-muted-foreground/50"
+                          stepIndex > i ? "border-accent/40 text-accent bg-accent/10" :
+                            "border-border/50 text-muted-foreground/50"
                       )}
                       animate={stepIndex === i ? { scale: [1, 1.1, 1] } : {}}
                       transition={{ duration: 1.5, repeat: Infinity }}

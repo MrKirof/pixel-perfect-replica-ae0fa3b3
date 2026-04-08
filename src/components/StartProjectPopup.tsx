@@ -9,6 +9,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
+import { sendEmail } from "@/api/email";
 
 /* ─── Service categories ─── */
 const categories = [
@@ -78,14 +79,21 @@ const StartProjectPopup = () => {
   const toggleExpand = (title: string) =>
     setExpandedService(prev => (prev === title ? null : title));
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name.trim() || !formData.email.trim()) {
       toast.error("Please fill in your name and email");
       return;
     }
-    setStep(3);
-    toast.success("Project request submitted! We'll get back within 24 hours.");
+    await sendEmail({
+      service: "start-project",
+      name: formData.name,
+      email: formData.email,
+      formdata: selected,
+    }).then(() => {
+      setStep(3);
+      toast.success("Project request submitted! We'll get back within 24 hours.");
+    })
   };
 
   const stepLabels = ["Pick Services", "Your Info", "Done"];
@@ -122,8 +130,8 @@ const StartProjectPopup = () => {
                     <div className={cn(
                       "w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-bold transition-all duration-300",
                       isDone ? "bg-accent text-accent-foreground" :
-                      isActive ? "border-2 border-accent text-accent" :
-                      "border border-border/30 text-muted-foreground/40"
+                        isActive ? "border-2 border-accent text-accent" :
+                          "border border-border/30 text-muted-foreground/40"
                     )}>
                       {isDone ? <CheckCircle2 size={13} /> : stepNum}
                     </div>
