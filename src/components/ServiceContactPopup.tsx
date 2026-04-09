@@ -4,6 +4,7 @@ import { Mail, MessageSquare, Send, CheckCircle2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
+import { sendEmail } from "@/api/email";
 
 interface ServiceContactPopupProps {
   serviceName: string | null;
@@ -13,7 +14,7 @@ const ServiceContactPopup = ({ serviceName }: ServiceContactPopupProps) => {
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({ email: "", message: "" });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.email.trim()) {
       toast.error("Please enter your email");
@@ -23,8 +24,20 @@ const ServiceContactPopup = ({ serviceName }: ServiceContactPopupProps) => {
       toast.error("Please enter a message");
       return;
     }
-    setSubmitted(true);
-    toast.success("Message sent! We'll get back within 24 hours.");
+
+    await sendEmail({
+      service: "start-project",
+      name: "start-project",
+      email: formData.email,
+      message: 'project start message',
+      formdata: {
+        ...formData,
+        serviceName
+      }
+    }).then(() => {
+      setSubmitted(true);
+      toast.success("Message sent! We'll get back within 24 hours.");
+    });
   };
 
   return (

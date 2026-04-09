@@ -1,4 +1,4 @@
-const { getTransport } = require("./transport");
+import { getTransport } from "./transport.js";
 
 class MailError extends Error {
   constructor(message, cause) {
@@ -15,7 +15,7 @@ function defaultFrom() {
   return `${name} <${addr}>`;
 }
 
-async function sendMail(opts) {
+export async function sendMail(opts) {
   const transport = getTransport();
 
   let info;
@@ -47,4 +47,4 @@ async function sendMail(opts) {
   };
 }
 
-module.exports = { sendMail, MailError };
+export { MailError };

@@ -1,8 +1,8 @@
-const nodemailer = require("nodemailer");
+import nodemailer from "nodemailer";
 
 let transport = null;
 
-function getTransport() {
+export function getTransport() {
   if (transport) return transport;
 
   const host = process.env.SMTP_HOST;
@@ -23,8 +23,6 @@ function getTransport() {
   return transport;
 }
 
-async function verifyTransport() {
+export async function verifyTransport() {
   await getTransport().verify();
 }
-
-module.exports = { getTransport, verifyTransport };

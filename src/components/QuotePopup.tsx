@@ -4,6 +4,7 @@ import { Mail, Send, CheckCircle2, Zap, Crown, Rocket } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
+import { sendEmail } from "@/api/email";
 
 const planIcons: Record<string, React.ElementType> = {
   Starter: Zap,
@@ -29,14 +30,26 @@ const QuotePopup = ({ planName, features }: QuotePopupProps) => {
   const Icon = planName ? planIcons[planName] || Zap : Zap;
   const gradient = planName ? planGradients[planName] || planGradients.Starter : planGradients.Starter;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email.trim()) {
       toast.error("Please enter your email");
       return;
     }
-    setSubmitted(true);
-    toast.success("Quote request sent! We'll get back within 24 hours.");
+
+    await sendEmail({
+      service: "quote",
+      name: 'quote',
+      email: email,
+      message: 'quote message',
+      formdata: {
+        planname: planName,
+        features: features
+      }
+    }).then(() => {
+      setSubmitted(true);
+      toast.success("Quote request sent! We'll get back within 24 hours.");
+    });
   };
 
   return (

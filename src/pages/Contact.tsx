@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import PageTransition from "@/components/PageTransition";
 import BackgroundPaths from "@/components/BackgroundPaths";
 import SEOHead from "@/components/SEOHead";
+import { sendEmail } from "@/api/email";
 
 const globalLocations = [
   { x: "15%", y: "38%", city: "Los Angeles", timezone: "PST (UTC-8)", clients: "10+", projects: "15+" },
@@ -69,10 +70,18 @@ const Contact = () => {
   });
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(formData);
-    setSubmitted(true);
+    await sendEmail({
+      service: "contact",
+      name: formData.name,
+      email: formData.email,
+      message: formData.message,
+      formdata: formData
+    }).then(() => {
+      console.log(formData);
+      setSubmitted(true);
+    })
   };
 
   const inputStyles = "w-full bg-card border border-border px-5 py-4 font-body text-base text-foreground focus:outline-none focus:border-accent transition-all duration-300 placeholder:text-muted-foreground/30";
