@@ -1,5 +1,5 @@
 export async function sendEmail(data) {
-  const res = await fetch("http://localhost:5000/api/send-email", {
+  const res = await fetch("http://k104nngvcihh5qrvnrjzgvf2.163.227.238.91.sslip.io/api/send-email", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
