@@ -1,6 +1,10 @@
 import { useEffect, useRef } from "react";
 
-const HeroScene = () => {
+interface HeroSceneProps {
+  starCount?: number;
+}
+
+const HeroScene = ({ starCount = 40 }: HeroSceneProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -13,9 +17,9 @@ const HeroScene = () => {
     let isVisible = true;
 
     const resize = () => {
-      canvas.width = canvas.offsetWidth * devicePixelRatio;
-      canvas.height = canvas.offsetHeight * devicePixelRatio;
-      ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
+      canvas.width = canvas.offsetWidth * Math.min(devicePixelRatio, 1.5);
+      canvas.height = canvas.offsetHeight * Math.min(devicePixelRatio, 1.5);
+      ctx.setTransform(Math.min(devicePixelRatio, 1.5), 0, 0, Math.min(devicePixelRatio, 1.5), 0, 0);
     };
     resize();
     window.addEventListener("resize", resize);
@@ -31,7 +35,7 @@ const HeroScene = () => {
       o: number; r: number; ts: number; to: number;
     }
     const stars: Star[] = [];
-    for (let i = 0; i < 60; i++) {
+    for (let i = 0; i < starCount; i++) {
       stars.push({
         x: Math.random() * w(), y: Math.random() * h(),
         vx: (Math.random() - 0.5) * 0.15, vy: (Math.random() - 0.5) * 0.15,
@@ -41,12 +45,19 @@ const HeroScene = () => {
     }
 
     let time = 0;
+    let lastDraw = 0;
+    const targetInterval = 1000 / 30;
 
-    const draw = () => {
+    const draw = (now: number) => {
       if (!isVisible) {
         animId = requestAnimationFrame(draw);
         return;
       }
+      if (now - lastDraw < targetInterval) {
+        animId = requestAnimationFrame(draw);
+        return;
+      }
+      lastDraw = now;
       ctx.clearRect(0, 0, w(), h());
       time += 0.016;
 
@@ -60,24 +71,19 @@ const HeroScene = () => {
         ctx.fillStyle = `rgba(255,255,255,${s.o * tw})`;
         ctx.fill();
       }
-
       animId = requestAnimationFrame(draw);
     };
-    draw();
+    animId = requestAnimationFrame(draw);
 
     return () => {
       cancelAnimationFrame(animId);
       window.removeEventListener("resize", resize);
       document.removeEventListener("visibilitychange", onVisChange);
     };
-  }, []);
+  }, [starCount]);
 
   return (
-    <canvas
-      ref={canvasRef}
-      className="absolute inset-0 w-full h-full"
-      style={{ pointerEvents: "none", zIndex: 1 }}
-    />
+    <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" style={{ pointerEvents: "none", zIndex: 1 }} />
   );
 };
 

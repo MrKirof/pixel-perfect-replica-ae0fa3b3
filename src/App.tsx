@@ -6,7 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
 import { lazy, Suspense, useState, useEffect, useMemo } from "react";
-import NoiseOverlay from "@/components/NoiseOverlay";
+import { usePerformanceTier } from "@/hooks/usePerformanceTier";
 
 import PillNav from "@/components/PillNav";
 import Footer from "@/components/Footer";
@@ -16,6 +16,7 @@ import QuotePopup from "@/components/QuotePopup";
 import ServiceContactPopup from "@/components/ServiceContactPopup";
 
 const FloatingRocks = lazy(() => import("@/components/FloatingRocks"));
+const NoiseOverlay = lazy(() => import("@/components/NoiseOverlay"));
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 // Lazy-loaded routes for code splitting
@@ -50,6 +51,7 @@ const AppContent = () => {
   const [serviceContactOpen, setServiceContactOpen] = useState(false);
   const [serviceContactName, setServiceContactName] = useState<string | null>(null);
   const isTouchDevice = useMemo(() => typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0), []);
+  const { config } = usePerformanceTier();
 
   useEffect(() => {
     const handleStartProject = () => setStartProjectOpen(true);
@@ -75,11 +77,17 @@ const AppContent = () => {
   return (
     <>
       <ScrollToTop />
-      <Suspense fallback={null}>
-        <FloatingRocks />
-      </Suspense>
-      <NoiseOverlay />
-      {!isTouchDevice && (
+      {config.enableFloatingRocks && (
+        <Suspense fallback={null}>
+          <FloatingRocks count={config.floatingRockCount} />
+        </Suspense>
+      )}
+      {config.enableNoiseOverlay && (
+        <Suspense fallback={null}>
+          <NoiseOverlay />
+        </Suspense>
+      )}
+      {!isTouchDevice && config.enableSplashCursor && (
         <Suspense fallback={null}>
           <SplashCursor DYE_RESOLUTION={512} SIM_RESOLUTION={64} />
         </Suspense>
