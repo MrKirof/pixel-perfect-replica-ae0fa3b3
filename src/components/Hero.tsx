@@ -1,10 +1,12 @@
 import { ArrowRight, ArrowDown } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, lazy, Suspense } from "react";
 import TextScramble from "@/components/TextScramble";
 import MarqueeStrip from "@/components/MarqueeStrip";
 import HeroScene from "@/components/HeroScene";
-import AnimatedPlanet from "@/components/AnimatedPlanet";
+import { usePerformanceTier } from "@/hooks/usePerformanceTier";
+
+const AnimatedPlanet = lazy(() => import("@/components/AnimatedPlanet"));
 
 const clients = [
   "Lumara", "Veltro", "Noxian", "Starkline", "Crestfield",
