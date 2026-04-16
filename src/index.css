@@ -334,27 +334,63 @@ html {
 
 /* ── Mobile fixes ── */
 @media (max-width: 768px) {
-  * { cursor: auto !important; }
-  
-  /* Ensure touch targets are large enough */
-  button, a, [role="menuitem"] {
+  * {
+    cursor: auto !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  body {
+    overflow-x: hidden;
+    text-rendering: optimizeSpeed;
+    -webkit-tap-highlight-color: transparent;
+    overscroll-behavior-y: contain;
+  }
+
+  button, a, [role="menuitem"], input, textarea, select {
     min-height: 44px;
     min-width: 44px;
   }
-  
-  /* Fix overflow issues on mobile */
-  body {
-    overflow-x: hidden;
-  }
-  
-  /* Reduce heavy animations on mobile */
+
   .morphing-orb,
   .animate-nebula-drift-1,
-  .animate-nebula-drift-2 {
+  .animate-nebula-drift-2,
+  .hero-gradient-text,
+  .counter-glow,
+  .animated-border-glow::before,
+  .service-card::after,
+  .magnetic-btn::before {
     animation: none !important;
+    transition: none !important;
   }
-  
-  /* Ensure sections are visible */
+
+  .hero-gradient-text {
+    background-size: 100% 100%;
+  }
+
+  .magnetic-btn,
+  .service-card,
+  .pill-nav,
+  .mobile-menu-popover,
+  .glass {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .magnetic-btn:hover,
+  .hover-lift:hover,
+  .service-card:hover,
+  .img-reveal:hover img {
+    transform: none !important;
+  }
+
+  .service-card::after,
+  .hover-circle {
+    display: none !important;
+  }
+
   section {
     overflow: visible;
   }
