@@ -5,6 +5,7 @@ import PageTransition from "@/components/PageTransition";
 import BackgroundPaths from "@/components/BackgroundPaths";
 import SEOHead from "@/components/SEOHead";
 import { sendEmail } from "@/api/email";
+import { toast } from "sonner";
 
 const globalLocations = [
   { x: "15%", y: "38%", city: "Los Angeles", timezone: "PST (UTC-8)", clients: "10+", projects: "15+" },
