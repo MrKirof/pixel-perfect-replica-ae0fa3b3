@@ -27,7 +27,7 @@ const Hero = ({ onStartProject }: { onStartProject?: () => void }) => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex flex-col overflow-hidden px-0">
+    <section className="relative min-h-[100svh] flex flex-col overflow-hidden px-0">
       {/* Star particles */}
       <HeroScene starCount={config.heroStarCount} />
 
