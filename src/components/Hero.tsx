@@ -48,7 +48,17 @@ const Hero = ({ onStartProject }: { onStartProject?: () => void }) => {
       </div>
 
       {/* 3D Animated Planet */}
-      <AnimatedPlanet />
+      {config.enableAnimatedPlanet ? (
+        <Suspense fallback={null}>
+          <AnimatedPlanet
+            ringRockCount={config.ringRockCount}
+            dustCount={config.dustCount}
+            fallingStarCount={config.fallingStarCount}
+            sphereDetail={config.planetSphereDetail}
+            pixelRatio={config.pixelRatio}
+          />
+        </Suspense>
+      ) : null}
 
       {/* Content. left-aligned editorial layout */}
       <div className="relative z-10 flex-1 flex flex-col justify-center sm:justify-end pb-[12vh] sm:pb-[22vh] md:pb-[14vh]">
