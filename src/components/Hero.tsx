@@ -28,7 +28,7 @@ const Hero = ({ onStartProject }: { onStartProject?: () => void }) => {
   }, [isMobile]);
 
   return (
-    <section className="relative min-h-[100svh] flex flex-col overflow-hidden px-0">
+    <section className="relative min-h-[auto] sm:min-h-[100svh] flex flex-col overflow-hidden px-0">
       <HeroScene starCount={config.heroStarCount} />
 
       {!isMobile && (
@@ -60,7 +60,7 @@ const Hero = ({ onStartProject }: { onStartProject?: () => void }) => {
         </Suspense>
       ) : null}
 
-      <div className="relative z-10 flex-1 flex flex-col justify-end pb-[14vh] sm:pb-[22vh] md:pb-[14vh] pt-28 sm:pt-32">
+      <div className="relative z-10 flex-1 flex flex-col justify-center sm:justify-end pb-4 sm:pb-[22vh] md:pb-[14vh] pt-20 sm:pt-32">
         <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 md:px-8 lg:px-16">
           {!isMobile && (
             <div className="absolute bottom-[10vh] left-0 w-[700px] h-[500px] md:w-[1000px] md:h-[600px] pointer-events-none" style={{ background: 'radial-gradient(ellipse 60% 50% at 30% 60%, hsl(var(--accent) / 0.06), transparent 70%)', filter: 'blur(60px)' }} />
