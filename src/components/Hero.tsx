@@ -19,6 +19,7 @@ const Hero = ({ onStartProject }: { onStartProject?: () => void }) => {
     else window.dispatchEvent(new Event('open-start-project'));
   };
   const [loaded, setLoaded] = useState(false);
+  const { config } = usePerformanceTier();
 
   useEffect(() => {
     const t = setTimeout(() => setLoaded(true), 100);
@@ -28,7 +29,7 @@ const Hero = ({ onStartProject }: { onStartProject?: () => void }) => {
   return (
     <section className="relative min-h-screen flex flex-col overflow-hidden px-0">
       {/* Star particles */}
-      <HeroScene />
+      <HeroScene starCount={config.heroStarCount} />
 
       {/* Nebula cloud overlay */}
       <div className="absolute inset-x-0 top-0 z-[2] pointer-events-none" style={{ height: '55vh' }}>
