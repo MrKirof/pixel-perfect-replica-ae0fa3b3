@@ -28,7 +28,7 @@ const Hero = ({ onStartProject }: { onStartProject?: () => void }) => {
   }, [isMobile]);
 
   return (
-    <section className="relative min-h-[100svh] flex flex-col overflow-hidden px-0">
+    <section className="relative min-h-[auto] sm:min-h-[100svh] flex flex-col overflow-hidden px-0">
       <HeroScene starCount={config.heroStarCount} />
 
       {!isMobile && (
