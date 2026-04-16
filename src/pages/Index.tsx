@@ -43,12 +43,13 @@ const animVariants: Record<AnimStyle, { initial: object; whileInView: object }> 
 
 const FadeInSection = ({ children, className = "", delay = 0, style = "fade" }: { children: React.ReactNode; className?: string; delay?: number; style?: AnimStyle }) => {
   const v = animVariants[style];
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
   return (
     <motion.div
-      initial={v.initial as any}
-      whileInView={v.whileInView as any}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.85, delay, ease: [0.16, 1, 0.3, 1] }}
+      initial={isMobile ? { opacity: 0, y: 20 } : (v.initial as any)}
+      whileInView={isMobile ? { opacity: 1, y: 0 } : (v.whileInView as any)}
+      viewport={{ once: true, amount: 0.05 }}
+      transition={{ duration: isMobile ? 0.5 : 0.85, delay: isMobile ? 0 : delay, ease: [0.16, 1, 0.3, 1] }}
       className={className}
     >
       {children}
