@@ -72,16 +72,20 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    await sendEmail({
-      service: "contact",
-      name: formData.name,
-      email: formData.email,
-      message: formData.message,
-      formdata: formData
-    }).then(() => {
+    try {
+      await sendEmail({
+        service: "contact",
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+        formdata: formData
+      });
       console.log(formData);
       setSubmitted(true);
-    })
+    } catch (err) {
+      console.error("Contact email failed:", err);
+      toast.error("Failed to send. Please try again or email us directly.");
+    }
   };
 
   const inputStyles = "w-full bg-card border border-border px-5 py-4 font-body text-base text-foreground focus:outline-none focus:border-accent transition-all duration-300 placeholder:text-muted-foreground/30";

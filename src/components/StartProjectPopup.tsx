@@ -85,15 +85,19 @@ const StartProjectPopup = () => {
       toast.error("Please fill in your name and email");
       return;
     }
-    await sendEmail({
-      service: "start-project",
-      name: formData.name,
-      email: formData.email,
-      formdata: selected,
-    }).then(() => {
+    try {
+      await sendEmail({
+        service: "start-project",
+        name: formData.name,
+        email: formData.email,
+        formdata: selected,
+      });
       setStep(3);
       toast.success("Project request submitted! We'll get back within 24 hours.");
-    })
+    } catch (err) {
+      console.error("Start project email failed:", err);
+      toast.error("Failed to send. Please try again or email us directly.");
+    }
   };
 
   const stepLabels = ["Pick Services", "Your Info", "Done"];
