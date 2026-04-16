@@ -1,10 +1,12 @@
 import { ArrowRight, ArrowDown } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, lazy, Suspense } from "react";
 import TextScramble from "@/components/TextScramble";
 import MarqueeStrip from "@/components/MarqueeStrip";
 import HeroScene from "@/components/HeroScene";
-import AnimatedPlanet from "@/components/AnimatedPlanet";
+import { usePerformanceTier } from "@/hooks/usePerformanceTier";
+
+const AnimatedPlanet = lazy(() => import("@/components/AnimatedPlanet"));
 
 const clients = [
   "Lumara", "Veltro", "Noxian", "Starkline", "Crestfield",
@@ -17,6 +19,7 @@ const Hero = ({ onStartProject }: { onStartProject?: () => void }) => {
     else window.dispatchEvent(new Event('open-start-project'));
   };
   const [loaded, setLoaded] = useState(false);
+  const { config } = usePerformanceTier();
 
   useEffect(() => {
     const t = setTimeout(() => setLoaded(true), 100);
@@ -26,7 +29,7 @@ const Hero = ({ onStartProject }: { onStartProject?: () => void }) => {
   return (
     <section className="relative min-h-screen flex flex-col overflow-hidden px-0">
       {/* Star particles */}
-      <HeroScene />
+      <HeroScene starCount={config.heroStarCount} />
 
       {/* Nebula cloud overlay */}
       <div className="absolute inset-x-0 top-0 z-[2] pointer-events-none" style={{ height: '55vh' }}>
@@ -45,7 +48,17 @@ const Hero = ({ onStartProject }: { onStartProject?: () => void }) => {
       </div>
 
       {/* 3D Animated Planet */}
-      <AnimatedPlanet />
+      {config.enableAnimatedPlanet ? (
+        <Suspense fallback={null}>
+          <AnimatedPlanet
+            ringRockCount={config.ringRockCount}
+            dustCount={config.dustCount}
+            fallingStarCount={config.fallingStarCount}
+            sphereDetail={config.planetSphereDetail}
+            pixelRatio={config.pixelRatio}
+          />
+        </Suspense>
+      ) : null}
 
       {/* Content. left-aligned editorial layout */}
       <div className="relative z-10 flex-1 flex flex-col justify-center sm:justify-end pb-[12vh] sm:pb-[22vh] md:pb-[14vh]">
