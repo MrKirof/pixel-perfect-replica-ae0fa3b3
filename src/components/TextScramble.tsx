@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { usePerformanceTier } from "@/hooks/usePerformanceTier";
 
 const chars = "!<>-_\\/[]{}—=+*^?#________";
 
@@ -12,8 +13,14 @@ const TextScramble = ({ text, className = "", delay = 0 }: TextScrambleProps) =>
   const [display, setDisplay] = useState("");
   const ref = useRef<HTMLSpanElement>(null);
   const hasAnimated = useRef(false);
+  const { config } = usePerformanceTier();
 
   useEffect(() => {
+    if (!config.enableTextScramble) {
+      setDisplay(text);
+      return;
+    }
+
     const el = ref.current;
     if (!el) return;
 
@@ -26,7 +33,7 @@ const TextScramble = ({ text, className = "", delay = 0 }: TextScrambleProps) =>
           setTimeout(() => {
             let frame = 0;
             const totalFrames = Math.max(text.length, 12);
-            const interval = 30; // ms per frame
+            const interval = 30;
 
             const scramble = () => {
               const progress = frame / totalFrames;
@@ -60,13 +67,9 @@ const TextScramble = ({ text, className = "", delay = 0 }: TextScrambleProps) =>
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, [text, delay]);
+  }, [text, delay, config.enableTextScramble]);
 
-  return (
-    <span ref={ref} className={className}>
-      {display || "\u00A0".repeat(text.length)}
-    </span>
-  );
+  return <span ref={ref} className={className}>{display || "\u00A0".repeat(text.length)}</span>;
 };
 
 export default TextScramble;

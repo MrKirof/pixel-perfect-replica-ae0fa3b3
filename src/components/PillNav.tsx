@@ -47,6 +47,7 @@ const PillNav = ({
   const activeHref = location.pathname;
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileViewport, setIsMobileViewport] = useState(false);
   const circleRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const tlRefs = useRef<(gsap.core.Timeline | null)[]>([]);
   const activeTweenRefs = useRef<(gsap.core.Tween | null)[]>([]);
@@ -58,7 +59,13 @@ const PillNav = ({
   const logoRef = useRef<HTMLAnchorElement | null>(null);
   const navContainerRef = useRef<HTMLDivElement>(null);
 
-  // Scroll detection
+  useEffect(() => {
+    const handleViewport = () => setIsMobileViewport(window.innerWidth < 768);
+    handleViewport();
+    window.addEventListener('resize', handleViewport);
+    return () => window.removeEventListener('resize', handleViewport);
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -68,20 +75,26 @@ const PillNav = ({
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu on route change
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [location.pathname]);
 
-  // Animate nav on route change
   useEffect(() => {
     const container = navContainerRef.current;
-    if (container) {
-      gsap.fromTo(container, { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease });
-    }
-  }, [location.pathname, ease]);
+    if (!container || isMobileViewport) return;
+    gsap.fromTo(container, { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease });
+  }, [location.pathname, ease, isMobileViewport]);
 
   useEffect(() => {
+    const menu = mobileMenuRef.current;
+    if (menu) gsap.set(menu, { visibility: 'hidden', opacity: 0, scaleY: 1 });
+
+    if (isMobileViewport) {
+      tlRefs.current.forEach((timeline) => timeline?.kill());
+      activeTweenRefs.current.forEach((tween) => tween?.kill());
+      return;
+    }
+
     const layout = () => {
       circleRefs.current.forEach((circle, index) => {
         if (!circle?.parentElement) return;
@@ -121,9 +134,6 @@ const PillNav = ({
     window.addEventListener('resize', layout);
     if (document.fonts?.ready) document.fonts.ready.then(layout).catch(() => {});
 
-    const menu = mobileMenuRef.current;
-    if (menu) gsap.set(menu, { visibility: 'hidden', opacity: 0, scaleY: 1 });
-
     if (initialLoadAnimation) {
       const logoEl = logoRef.current;
       const navItems = navItemsRef.current;
@@ -138,9 +148,10 @@ const PillNav = ({
     }
 
     return () => window.removeEventListener('resize', layout);
-  }, [items, ease, initialLoadAnimation]);
+  }, [items, ease, initialLoadAnimation, isMobileViewport]);
 
   const handleEnter = (i: number) => {
+    if (isMobileViewport) return;
     const tl = tlRefs.current[i];
     if (!tl) return;
     activeTweenRefs.current[i]?.kill();
@@ -148,6 +159,7 @@ const PillNav = ({
   };
 
   const handleLeave = (i: number) => {
+    if (isMobileViewport) return;
     const tl = tlRefs.current[i];
     if (!tl) return;
     activeTweenRefs.current[i]?.kill();
@@ -155,6 +167,7 @@ const PillNav = ({
   };
 
   const handleLogoEnter = () => {
+    if (isMobileViewport) return;
     const img = logoImgRef.current;
     if (!img) return;
     logoTweenRef.current?.kill();
@@ -168,7 +181,7 @@ const PillNav = ({
     const hamburger = hamburgerRef.current;
     const menu = mobileMenuRef.current;
 
-    if (hamburger) {
+    if (hamburger && !isMobileViewport) {
       const lines = hamburger.querySelectorAll('.hamburger-line');
       if (newState) {
         gsap.to(lines[0], { rotation: 45, y: 3, duration: 0.3, ease });
@@ -180,7 +193,11 @@ const PillNav = ({
     }
 
     if (menu) {
-      if (newState) {
+      if (isMobileViewport) {
+        menu.style.visibility = newState ? 'visible' : 'hidden';
+        menu.style.opacity = newState ? '1' : '0';
+        menu.style.transform = newState ? 'translateX(-50%) translateY(0)' : 'translateX(-50%) translateY(8px)';
+      } else if (newState) {
         gsap.set(menu, { visibility: 'visible' });
         gsap.fromTo(menu, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.3, ease, transformOrigin: 'top center' });
       } else {

@@ -7,11 +7,11 @@ export function getPerformanceTier(): PerformanceTier {
   if (typeof window === "undefined") return "mid";
 
   const cores = navigator.hardwareConcurrency || 2;
-  const memory = (navigator as any).deviceMemory || 4; // GB
+  const memory = (navigator as any).deviceMemory || 4;
   const isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
   const dpr = window.devicePixelRatio || 1;
+  const screenWidth = window.innerWidth || 1280;
 
-  // Check WebGL capability
   let maxTextureSize = 0;
   try {
     const c = document.createElement("canvas");
@@ -27,7 +27,8 @@ export function getPerformanceTier(): PerformanceTier {
   score += cores >= 8 ? 3 : cores >= 4 ? 2 : 0;
   score += memory >= 8 ? 3 : memory >= 4 ? 2 : 0;
   score += maxTextureSize >= 8192 ? 2 : maxTextureSize >= 4096 ? 1 : 0;
-  if (isMobile) score -= 2;
+  if (isMobile) score -= 3;
+  if (screenWidth < 768) score -= 2;
   if (dpr > 2) score -= 1;
 
   if (score >= 6) return "high";
@@ -37,6 +38,8 @@ export function getPerformanceTier(): PerformanceTier {
 
 /** Performance config based on tier */
 export function getPerformanceConfig(tier: PerformanceTier) {
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+
   switch (tier) {
     case "low":
       return {
@@ -44,41 +47,47 @@ export function getPerformanceConfig(tier: PerformanceTier) {
         enableFloatingRocks: false,
         enableAnimatedPlanet: false,
         enableNoiseOverlay: false,
+        enableFooterVortex: false,
+        enableTextScramble: false,
         ringRockCount: 0,
         dustCount: 0,
         fallingStarCount: 0,
-        heroStarCount: 15,
+        heroStarCount: 10,
         floatingRockCount: 0,
-        planetSphereDetail: 64,
+        planetSphereDetail: 48,
         pixelRatio: 1,
       };
     case "mid":
       return {
         enableSplashCursor: false,
-        enableFloatingRocks: true,
-        enableAnimatedPlanet: true,
-        enableNoiseOverlay: true,
-        ringRockCount: 2000,
-        dustCount: 800,
-        fallingStarCount: 15,
-        heroStarCount: 30,
-        floatingRockCount: 15,
-        planetSphereDetail: 128,
-        pixelRatio: Math.min(window.devicePixelRatio, 1.5),
+        enableFloatingRocks: !isMobile,
+        enableAnimatedPlanet: !isMobile,
+        enableNoiseOverlay: !isMobile,
+        enableFooterVortex: !isMobile,
+        enableTextScramble: !isMobile,
+        ringRockCount: isMobile ? 0 : 1400,
+        dustCount: isMobile ? 0 : 500,
+        fallingStarCount: isMobile ? 0 : 10,
+        heroStarCount: isMobile ? 16 : 28,
+        floatingRockCount: isMobile ? 0 : 12,
+        planetSphereDetail: isMobile ? 64 : 128,
+        pixelRatio: isMobile ? 1 : Math.min(window.devicePixelRatio, 1.5),
       };
     case "high":
       return {
-        enableSplashCursor: true,
-        enableFloatingRocks: true,
-        enableAnimatedPlanet: true,
-        enableNoiseOverlay: true,
-        ringRockCount: 3500,
-        dustCount: 1500,
-        fallingStarCount: 25,
-        heroStarCount: 60,
-        floatingRockCount: 25,
-        planetSphereDetail: 256,
-        pixelRatio: Math.min(window.devicePixelRatio, 2),
+        enableSplashCursor: !isMobile,
+        enableFloatingRocks: !isMobile,
+        enableAnimatedPlanet: !isMobile,
+        enableNoiseOverlay: !isMobile,
+        enableFooterVortex: !isMobile,
+        enableTextScramble: !isMobile,
+        ringRockCount: isMobile ? 0 : 3500,
+        dustCount: isMobile ? 0 : 1500,
+        fallingStarCount: isMobile ? 0 : 25,
+        heroStarCount: isMobile ? 22 : 60,
+        floatingRockCount: isMobile ? 0 : 25,
+        planetSphereDetail: isMobile ? 72 : 256,
+        pixelRatio: isMobile ? 1 : Math.min(window.devicePixelRatio, 2),
       };
   }
 }
