@@ -332,9 +332,32 @@ html {
   scroll-behavior: smooth;
 }
 
-/* ── Mobile cursor restore ── */
+/* ── Mobile fixes ── */
 @media (max-width: 768px) {
   * { cursor: auto !important; }
+  
+  /* Ensure touch targets are large enough */
+  button, a, [role="menuitem"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Fix overflow issues on mobile */
+  body {
+    overflow-x: hidden;
+  }
+  
+  /* Reduce heavy animations on mobile */
+  .morphing-orb,
+  .animate-nebula-drift-1,
+  .animate-nebula-drift-2 {
+    animation: none !important;
+  }
+  
+  /* Ensure sections are visible */
+  section {
+    overflow: visible;
+  }
 }
 
 /* ── Large watermark text ── */
