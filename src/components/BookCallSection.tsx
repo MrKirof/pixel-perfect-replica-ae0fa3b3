@@ -99,20 +99,24 @@ const BookCallSection = () => {
       toast.error("Please fill in your name and email");
       return;
     }
-    await sendEmail({
-      service: "book-call",
-      name: formData.name,
-      email: formData.email,
-      message: formData.message,
-      formdata: {
-        date: selectedDate?.toISOString() || "",
-        time: selectedTime,
-        timezone: selectedTimezone,
-      }
-    }).then(() => {
+    try {
+      await sendEmail({
+        service: "book-call",
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+        formdata: {
+          date: selectedDate?.toISOString() || "",
+          time: selectedTime,
+          timezone: selectedTimezone,
+        }
+      });
       setStep("confirmed");
       toast.success("Booking confirmed! We'll be in touch soon.");
-    });
+    } catch (err) {
+      console.error("Book call email failed:", err);
+      toast.error("Failed to send. Please try again or email us directly.");
+    }
   };
 
   const handleReset = () => {
