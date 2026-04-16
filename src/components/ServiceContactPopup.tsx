@@ -25,19 +25,23 @@ const ServiceContactPopup = ({ serviceName }: ServiceContactPopupProps) => {
       return;
     }
 
-    await sendEmail({
-      service: "start-project",
-      name: "start-project",
-      email: formData.email,
-      message: 'project start message',
-      formdata: {
-        ...formData,
-        serviceName
-      }
-    }).then(() => {
+    try {
+      await sendEmail({
+        service: "start-project",
+        name: "start-project",
+        email: formData.email,
+        message: 'project start message',
+        formdata: {
+          ...formData,
+          serviceName
+        }
+      });
       setSubmitted(true);
       toast.success("Message sent! We'll get back within 24 hours.");
-    });
+    } catch (err) {
+      console.error("Service contact email failed:", err);
+      toast.error("Failed to send. Please try again or email us directly.");
+    }
   };
 
   return (

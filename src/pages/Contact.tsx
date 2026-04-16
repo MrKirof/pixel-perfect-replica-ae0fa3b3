@@ -5,6 +5,7 @@ import PageTransition from "@/components/PageTransition";
 import BackgroundPaths from "@/components/BackgroundPaths";
 import SEOHead from "@/components/SEOHead";
 import { sendEmail } from "@/api/email";
+import { toast } from "sonner";
 
 const globalLocations = [
   { x: "15%", y: "38%", city: "Los Angeles", timezone: "PST (UTC-8)", clients: "10+", projects: "15+" },
@@ -72,16 +73,20 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    await sendEmail({
-      service: "contact",
-      name: formData.name,
-      email: formData.email,
-      message: formData.message,
-      formdata: formData
-    }).then(() => {
+    try {
+      await sendEmail({
+        service: "contact",
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+        formdata: formData
+      });
       console.log(formData);
       setSubmitted(true);
-    })
+    } catch (err) {
+      console.error("Contact email failed:", err);
+      toast.error("Failed to send. Please try again or email us directly.");
+    }
   };
 
   const inputStyles = "w-full bg-card border border-border px-5 py-4 font-body text-base text-foreground focus:outline-none focus:border-accent transition-all duration-300 placeholder:text-muted-foreground/30";

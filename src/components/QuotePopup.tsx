@@ -37,19 +37,23 @@ const QuotePopup = ({ planName, features }: QuotePopupProps) => {
       return;
     }
 
-    await sendEmail({
-      service: "quote",
-      name: 'quote',
-      email: email,
-      message: 'quote message',
-      formdata: {
-        planname: planName,
-        features: features
-      }
-    }).then(() => {
+    try {
+      await sendEmail({
+        service: "quote",
+        name: 'quote',
+        email: email,
+        message: 'quote message',
+        formdata: {
+          planname: planName,
+          features: features
+        }
+      });
       setSubmitted(true);
       toast.success("Quote request sent! We'll get back within 24 hours.");
-    });
+    } catch (err) {
+      console.error("Quote email failed:", err);
+      toast.error("Failed to send. Please try again or email us directly.");
+    }
   };
 
   return (
